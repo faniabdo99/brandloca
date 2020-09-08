@@ -1,0 +1,81 @@
+<?php
+use Illuminate\Support\Facades\Route;
+Route::get('/','HomeController@getHomepage')->name('home');
+//Users System
+Route::get('login' , 'AuthController@getLogin')->name('login.get');
+Route::post('login' , 'AuthController@postLogin')->name('login.post');
+Route::get('signup' , 'AuthController@getSignup')->name('signup.get');
+Route::post('signup' , 'AuthController@postSignup')->name('signup.post');
+Route::get('logout' , 'AuthController@logout')->name('logout');
+//Pages Routes 
+Route::get('product' , 'HomeController@getProductPage')->name('product');
+Route::get('contact' , 'PagesController@getContact')->name('contact');
+Route::get('checkout' , 'PagesController@getCheckout')->name('checkout');
+Route::get('category' , 'PagesController@getCategoryPage')->name('category');
+//Admin Only Routes
+Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
+    Route::get('/' , 'AdminController@getHome')->name('admin.home');
+    //System Settings
+    Route::prefix('system')->group(function(){
+      Route::get('/' , 'SystemSettingsController@getHome')->name('admin.system.home');
+      Route::get('/edit/{id}' , 'SystemSettingsController@getEdit')->name('admin.system.getEdit');
+      Route::post('/edit/{id}' , 'SystemSettingsController@postEdit')->name('admin.system.postEdit');
+    });
+    //Categories
+    Route::prefix('categories')->group(function(){
+      Route::get('/' , 'CategoriesController@getHome')->name('admin.categories.home');
+      Route::get('/new' , 'CategoriesController@getNew')->name('admin.categories.getNew');
+      Route::post('/new' , 'CategoriesController@postNew')->name('admin.categories.postNew');
+      Route::get('/edit/{id}' , 'CategoriesController@getEdit')->name('admin.categories.getEdit');
+      Route::post('/edit/{id}' , 'CategoriesController@postEdit')->name('admin.categories.postEdit');
+      Route::get('/localize/{id}' , 'CategoriesController@getLocalize')->name('admin.categories.getLocalize');
+    });
+    //Products System
+    Route::prefix('products')->group(function(){
+      Route::get('/' , 'ProductsController@getHome')->name('admin.products.home');
+      Route::get('/new' , 'ProductsController@getNew')->name('admin.products.getNew');
+      Route::post('/new' , 'ProductsController@postNew')->name('admin.products.postNew');
+      Route::get('/edit/{id}' , 'ProductsController@getEdit')->name('admin.products.getEdit');
+      Route::post('/edit/{id}' , 'ProductsController@postEdit')->name('admin.products.postEdit');
+      Route::get('/localize/{id}' , 'ProductsController@getLocalize')->name('admin.products.getLocalize');
+    });
+    //Users System
+    Route::prefix('users')->group(function(){
+      Route::get('/' , 'UsersController@getHome')->name('admin.users.home');
+    });
+    //Discount System
+    Route::prefix('discount')->group(function(){
+      Route::get('/' , 'DiscountController@getHome')->name('admin.discount.home');
+      Route::get('/new' , 'DiscountController@getNew')->name('admin.discount.getNew');
+      Route::post('/new' , 'DiscountController@postNew')->name('admin.discount.postNew');
+      Route::get('/edit/{id}' , 'DiscountController@getEdit')->name('admin.discount.getEdit');
+      Route::post('/edit/{id}' , 'DiscountController@postEdit')->name('admin.discount.postEdit');
+    });
+    //Coupouns System
+    Route::prefix('coupoun')->group(function(){
+      Route::get('/' , 'CoupounsController@getHome')->name('admin.coupoun.home');
+      Route::get('/new' , 'CoupounsController@getNew')->name('admin.coupoun.getNew');
+      Route::post('/new' , 'CoupounsController@postNew')->name('admin.coupoun.postNew');
+      Route::get('/edit/{id}' , 'CoupounsController@getEdit')->name('admin.coupoun.getEdit');
+      Route::post('/edit/{id}' , 'CoupounsController@postEdit')->name('admin.coupoun.postEdit');
+    });
+    //Shipping Costs System
+    Route::prefix('shipping-costs')->group(function(){
+      Route::get('/' , 'ShippingCostsController@getHome')->name('admin.shippingCosts.home');
+      Route::get('/new' , 'ShippingCostsController@getNew')->name('admin.shippingCosts.getNew');
+      Route::post('/new' , 'ShippingCostsController@postNew')->name('admin.shippingCosts.postNew');
+      Route::get('/edit/{id}' , 'ShippingCostsController@getEdit')->name('admin.shippingCosts.getEdit');
+      Route::post('/edit/{id}' , 'ShippingCostsController@postEdit')->name('admin.shippingCosts.postEdit');
+    });
+      //Orders System
+      Route::prefix('orders')->group(function(){
+        Route::get('/' , 'OrdersController@getHome')->name('admin.orders.home');
+        Route::get('/single/{id}' , 'OrdersController@getSingleOrder')->name('admin.orders.single');
+        Route::post('/update-status/{id}' , 'OrdersController@updateOrderStatus')->name('admin.orders.updateStatus');
+        Route::get('/new' , 'ProductsController@getNew')->name('admin.products.getNew');
+        Route::post('/new' , 'ProductsController@postNew')->name('admin.products.postNew');
+        Route::get('/edit/{id}' , 'ProductsController@getEdit')->name('admin.products.getEdit');
+        Route::post('/edit/{id}' , 'ProductsController@postEdit')->name('admin.products.postEdit');
+        Route::get('/localize/{id}' , 'ProductsController@getLocalize')->name('admin.products.getLocalize');
+      });
+  });

@@ -1,0 +1,91 @@
+//Auth System
+.auth-hero{
+    height: 50vh;
+    background-image: url('../img/bg.jpg');
+    .dark-overlap{
+        height: 50vh;
+        width: 100%;
+        padding: 10%;
+        text-align: center;
+        background: $darkoverlap;
+        h1 , p{
+            color:#fff;
+        }
+        h1{
+            margin-bottom: 40px;
+        }
+    }
+}
+.auth-form{
+    form{
+        h4{
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .form-input-container{
+            position: relative;
+            i{
+                position: absolute;
+                bottom:45px;
+                right: 15px;
+                z-index: 5;
+                color:$black;
+            }
+            input{
+                z-index: 4;
+                position: relative;
+                width: 100%;
+                padding: 10px 45px 10px 10px;
+                border:none;
+                border-bottom:2px solid $lightgray;
+                font-size: 0.9em;
+                margin-bottom: 30px;
+            }
+        }
+        button{
+            display: block;
+            width: 100%;
+        }
+        .social-auth{
+            list-style-type: none;
+            display: flex;
+            li{
+                flex:1;
+                margin: 0px 10px;
+                text-align: center;
+                padding: 8px;
+                border-radius: 4px;
+                a{
+                    i{
+                        margin-left: 15px;
+                    }
+                    font-size:0.9em;
+                }
+                &.auth-with-google{
+                    background-color: $google;
+                    a{
+                        color:#fff;
+                    }
+                }
+                &.auth-with-facebook{
+                    background-color: $facebook;
+                    a{
+                        color:#fff;
+                    }
+                }
+                &.auth-with-twitter{
+                    background-color: $twitter;
+                    a{
+                        color:#fff;
+                    }
+                }
+            }
+        }
+    }
+    .no-account-box{
+        text-align: right;  
+            h4{
+                margin-bottom: 20px;
+            }
+    }
+}
