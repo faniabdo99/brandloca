@@ -13,6 +13,7 @@
                               <div class="bgc-white p-20 bd mb-5">
                                 <table class="table table-striped">
                                   <thead>
+                                    <th>Code</th>
                                     <th>Size</th>
                                     <th>Color</th>
                                     <th>Color Code</th>
@@ -23,12 +24,13 @@
                                   <tbody>
                                     @forelse ($CurrentVariations as $Variation)
                                       <tr>
+                                        <td>{{$Variation->ref_code}}</td>
                                         <td>{{$Variation->size}}</td>
                                         <td>{{$Variation->color}}</td>
                                         <td>{{$Variation->color_code}}</td>
                                         <td>{{$Variation->inventory}}</td>
                                         <td>{{$Variation->status}}</td>
-                                        <td><a class="btn btn-sm btn-danger mr-3" href="#">Delete</a><a class="btn btn-sm btn-primary" href="#">Update</a></td>
+                                        <td><a class="btn btn-sm btn-danger mr-3" href="{{route('admin.products.variation.delete' , $Variation->id)}}">Delete</a></td>
                                       </tr>
                                     @empty
 

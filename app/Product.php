@@ -13,7 +13,6 @@ class Product extends Model{
             'description' => 'Deleted Category'
         ]);
     }
-
     //Non-Relation Methods
     public function getInventoryValueAttribute(){
         if($this->fake_inventory == 0){

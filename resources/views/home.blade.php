@@ -1,4 +1,5 @@
 @include('layout.header')
+
 <body>
 	@include('layout.navbar')
 	@include('layout.errors')
@@ -89,21 +90,25 @@
 			</div>
 			<div class="product-slider owl-carousel">
 				@forelse($NewProducts as $NewProduct)
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+				<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
+					<div class="product-item">
+						<div class="pi-pic">
+							<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
+							<div class="pi-links">
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+							</div>
 						</div>
+						<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
+							<div class="pi-text">
+								<h6>{{$NewProduct->price}} L.E</h6>
+								<p>{{$NewProduct->title}}</p>
+							</div>
+						</a>
 					</div>
-					<div class="pi-text">
-						<h6>{{$NewProduct->price}} L.E</h6>
-						<p>{{$NewProduct->title}}</p>
-					</div>
-				</div>
+				</a>
 				@empty
-					<p class="text-center">لا يوجد منتجات جديدة حالياً</p>
+				<p class="text-center">لا يوجد منتجات جديدة حالياً</p>
 				@endforelse
 			</div>
 		</div>
@@ -128,22 +133,26 @@
 			<div class="row">
 				@forelse($PromotedProducts as $PromotedProduct)
 				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+					<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">
+						<div class="product-item">
+							<div class="pi-pic">
+								<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
+								<div class="pi-links">
+									<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+									<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+								</div>
 							</div>
+							<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">
+								<div class="pi-text">
+									<h6>{{$PromotedProduct->price}} L.E</h6>
+									<p>{{$PromotedProduct->title}}</p>
+								</div>
+							</a>
 						</div>
-						<div class="pi-text">
-							<h6>{{$PromotedProduct->price}} L.E</h6>
-							<p>{{$PromotedProduct->title}}</p>
-						</div>
-					</div>
+					</a>
 				</div>
 				@empty
-					<p class="text-center">لا يوجد منتجات مميزة حالياً</p>
+				<p class="text-center">لا يوجد منتجات مميزة حالياً</p>
 				@endforelse
 			</div>
 			<div class="text-center pt-5">
@@ -172,7 +181,8 @@
 		</div>
 	</section>
 	<!-- Banner section end  -->
-    @include('layout.footer')
-    @include('layout.scripts')
-	</body>
+	@include('layout.footer')
+	@include('layout.scripts')
+</body>
+
 </html>

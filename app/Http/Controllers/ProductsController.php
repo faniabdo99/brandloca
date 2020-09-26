@@ -165,19 +165,19 @@ class ProductsController extends Controller{
         return back()->withErrors($Validator->errors()->all());
       }else{
         //Check if This Variation Exsist
-        $ProductModelNumber = Product::find($id)->get()->model_number;
+        $ProductModelNumber = Product::find($id)->first()->model_number;
         $CurrentVariations = Product_Variation::where('product_id' , $id)->get();
         $isDupliact = $CurrentVariations->map(function($item) use($r){
-          if($item->color == $r->color && $item->size == $r->size && $item->color_code == $r->color_code){
+          if($item->color == $r->color and $item->size == $r->size and $item->color_code and $r->color_code){
             //Duplicate Entry
             $item->update([
               'inventory' => $item->inventory + $r->inventory,
               'status' => $r->status
             ]);
-            return true;
+            return 'updated';
           }
         });
-        if($isDupliact){
+        if($isDupliact->contains('updated')){
           return back()->withSuccess("Variation Updated");
         }else{
           $VariationData = $r->all();
@@ -187,6 +187,10 @@ class ProductsController extends Controller{
           return back()->withSuccess('Variation Added Successfully');
         }
       }
+    }
+    public function deleteVariations($id){
+      Product_Variation::findOrFail($id)->delete();
+      return back()->withSuccess('Variation Deleted Successfully');
     }
     //Non-Admin Routes
     public function getAll(Request $r){
@@ -212,14 +216,13 @@ class ProductsController extends Controller{
     }
     public function getWithFilter($Category){
         $TheCategory = Category::where('slug' , $Category)->first();
-
         $Categories = Category::latest()->get();
         $FiltersList = $this->getAllTags();
         $Products = Product::where('category_id' , $TheCategory->id)->latest()->get();
         return view('products.index' , compact('Categories' , 'FiltersList' , 'Products'));
 
     }
-    public function getSingle($id , $slug){
+    public function getSingle($slug,$id){
         $TheProduct = Product::findOrFail($id);
         return view('products.single' , compact('TheProduct'));
     }

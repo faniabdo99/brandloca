@@ -1048,7 +1048,7 @@ ol {
   text-align: right;
 }
 
-.product-item .pi-links a {
+.product-item .pi-links .add-card, .product-item .pi-links .wishlist-btn {
   display: inline-table;
   width: 36px;
   height: 36px;

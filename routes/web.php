@@ -30,7 +30,7 @@ Route::middleware('guest')->group(function () {
 Route::get('trace-order' , 'OrdersController@getTrace')->name('order.trace');
 
 //Pages Routes
-Route::get('product' , 'HomeController@getProductPage')->name('product');
+Route::get('product/{id}/{slug}' , 'ProductsController@getSingle')->name('product');
 Route::get('contact' , 'PagesController@getContact')->name('contact');
 Route::post('contact' , 'PagesController@postContact')->name('contact.post');
 Route::get('checkout' , 'PagesController@getCheckout')->name('checkout');
@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
       Route::post('/edit/{id}' , 'ProductsController@postEdit')->name('admin.products.postEdit');
       Route::get('/variations/{id}' , 'ProductsController@getVariations')->name('admin.products.variations');
       Route::post('/variations/{id}' , 'ProductsController@postVariations')->name('admin.products.postVariations');
+      Route::get('/variations/delete/{id}' , 'ProductsController@deleteVariations')->name('admin.products.variation.delete');
     });
     //Users System
     Route::prefix('users')->group(function(){
