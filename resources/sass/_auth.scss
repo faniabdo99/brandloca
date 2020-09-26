@@ -1,0 +1,145 @@
+//Profile Page
+.profile-section{
+    direction: rtl;
+    padding-top:50px;
+    .account-main-data , .account-latest-orders{
+        h4{
+            font-size: 1.4em;
+        }
+        text-align: right;
+    }
+    //Update Profile Page 
+    .edit-account-data{
+        text-align: right;
+        form {
+            label{
+                font-weight: bold;
+                display: block;
+            }
+            input , select{
+                display: block;
+                width: 100%;
+                padding: 14px;
+                border-radius: 50px;
+                border:0;
+                background-color: $lightgray;
+                margin-bottom: 25px;
+            }
+            //Reset Number Filed 
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance: textfield;
+            }
+        }
+    }
+    .user-account-wishlist{
+        h4{
+            text-align: right;
+            font-size: 1.3em;
+        }
+    }
+    .user-account-report-form{
+        text-align: right;
+        form {
+            label{
+                font-weight: bold;
+                display: block;
+            }
+            input , select , textarea{
+                display: block;
+                width: 100%;
+                padding: 14px;
+                border-radius: 50px;
+                border:0;
+                background-color: $lightgray;
+                margin-bottom: 25px;
+            }
+            textarea{
+                border-radius: 20px;
+            }
+        }
+    }
+    .user-account-report{
+        text-align: right;
+        ul{
+            list-style: none;
+            li{
+                margin-bottom: 25px;
+                i{
+                    margin-left: 15px;
+                }
+                a{
+                    color:$black;
+                    transition: color ease 0.3s;
+                    &:hover{
+                        color:$brand;
+                        transition: color ease 0.3s;
+                    }
+                }
+            }
+        }
+    }
+}
+.profile-sidebar{
+        //User Info Sidebar
+        .user-info{
+            img{ //User Profile Image
+                display: block;
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                margin: 0 0 25px auto;
+                box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            }
+            h2{ //User Name
+                font-size: 1.5em;
+                margin-bottom: 20px;
+                max-width: 75%;
+            }
+            p{
+                color: $medgray;
+            }
+            text-align: right;
+        }
+        .user-profile-actions-list{
+            ul{
+                list-style: none;
+                li{
+                    margin-bottom: 30px;
+                    text-align: right;
+                    a{
+                        color:$medgray;
+                    }
+                    transition: all ease 0.3s;
+                    &.active , &:hover{
+                        position: relative;
+                        transition: all ease 0.3s;
+                        &:after{
+                            content: '';
+                            height: 2px;
+                            width: 25px;
+                            background-color: $brand;
+                            border-radius: 5px;
+                            position: absolute;
+                            right: 33px;
+                            top: 25px;
+                            transition: all ease 0.3s;
+                        }
+                        a{
+                            color: $black;
+                            transition: all ease 0.3s;
+                            i{
+                                color: $brand;
+                                transition: all ease 0.3s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+}

@@ -10,7 +10,7 @@
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="fas fa-shopping-basket"></i> </span><span class="title">Products</span> <span class="arrow"><i class="fas fa-chevron-right"></i></span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="sidebar-link" href="{{route('admin.products.home')}}">All Products</a></li>
+                  <li><a class="sidebar-link" href="{{route('admin.products.home')}}">All Products</a></li>
                     <li><a class="sidebar-link" href="{{route('admin.products.getNew')}}">New Product</a></li>
                 </ul>
             </li>

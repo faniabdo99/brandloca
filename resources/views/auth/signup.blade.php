@@ -47,9 +47,9 @@
                         <button class="site-btn mb-5">انشاء حساب</button>
                         <p class="text-right">انشاء حساب بواسطة :</p>
                         <ul class="social-auth">
-                            <li class="auth-with-google"><a href="#"><i class="fab fa-google"></i> جوجل</a></li>
-                            <li class="auth-with-facebook"><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
-                            <li class="auth-with-twitter"><a href="#"><i class="fab fa-twitter"></i> تويتر</a></li>
+                            <li class="auth-with-google"><a href="{{route('login.social','google')}}"><i class="fab fa-google"></i> جوجل</a></li>
+                            <li class="auth-with-facebook"><a href="{{route('login.social','facebook')}}"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+                            <li class="auth-with-twitter"><a href="{{route('login.social','twitter')}}"><i class="fab fa-twitter"></i> تويتر</a></li>
                         </ul>
                     </form>
                 </div>
@@ -65,5 +65,6 @@
     </section>
     <!-- auth Form End -->
     @include('layout.scripts')
+    <script src="{{url('public/js/')}}/auth.js"></script>
 </body>
 </html>

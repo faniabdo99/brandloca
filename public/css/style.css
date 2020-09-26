@@ -739,6 +739,194 @@ ol {
 }
 
 /* ------------------
+  Auth section
+---------------------*/
+.profile-section {
+  direction: rtl;
+  padding-top: 50px;
+}
+.profile-section .account-main-data, .profile-section .account-latest-orders {
+  text-align: right;
+}
+.profile-section .account-main-data h4, .profile-section .account-latest-orders h4 {
+  font-size: 1.4em;
+}
+.profile-section .edit-account-data {
+  text-align: right;
+}
+.profile-section .edit-account-data form {
+  /* Firefox */
+}
+.profile-section .edit-account-data form label {
+  font-weight: bold;
+  display: block;
+}
+.profile-section .edit-account-data form input, .profile-section .edit-account-data form select {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 50px;
+  border: 0;
+  background-color: #f1f1f1;
+  margin-bottom: 25px;
+}
+.profile-section .edit-account-data form input::-webkit-outer-spin-button,
+.profile-section .edit-account-data form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.profile-section .edit-account-data form input[type=number] {
+  -moz-appearance: textfield;
+}
+.profile-section .user-account-wishlist h4 {
+  text-align: right;
+  font-size: 1.3em;
+}
+.profile-section .user-account-report-form {
+  text-align: right;
+}
+.profile-section .user-account-report-form form label {
+  font-weight: bold;
+  display: block;
+}
+.profile-section .user-account-report-form form input, .profile-section .user-account-report-form form select, .profile-section .user-account-report-form form textarea {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 50px;
+  border: 0;
+  background-color: #f1f1f1;
+  margin-bottom: 25px;
+}
+.profile-section .user-account-report-form form textarea {
+  border-radius: 20px;
+}
+.profile-section .user-account-report {
+  text-align: right;
+}
+.profile-section .user-account-report ul {
+  list-style: none;
+}
+.profile-section .user-account-report ul li {
+  margin-bottom: 25px;
+}
+.profile-section .user-account-report ul li i {
+  margin-left: 15px;
+}
+.profile-section .user-account-report ul li a {
+  color: #393733;
+  transition: color ease 0.3s;
+}
+.profile-section .user-account-report ul li a:hover {
+  color: #FEC906;
+  transition: color ease 0.3s;
+}
+
+.profile-sidebar .user-info {
+  text-align: right;
+}
+.profile-sidebar .user-info img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 0 0 25px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.profile-sidebar .user-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  max-width: 75%;
+}
+.profile-sidebar .user-info p {
+  color: #cccccc;
+}
+.profile-sidebar .user-profile-actions-list ul {
+  list-style: none;
+}
+.profile-sidebar .user-profile-actions-list ul li {
+  margin-bottom: 30px;
+  text-align: right;
+  transition: all ease 0.3s;
+}
+.profile-sidebar .user-profile-actions-list ul li a {
+  color: #cccccc;
+}
+.profile-sidebar .user-profile-actions-list ul li.active, .profile-sidebar .user-profile-actions-list ul li:hover {
+  position: relative;
+  transition: all ease 0.3s;
+}
+.profile-sidebar .user-profile-actions-list ul li.active:after, .profile-sidebar .user-profile-actions-list ul li:hover:after {
+  content: "";
+  height: 2px;
+  width: 25px;
+  background-color: #FEC906;
+  border-radius: 5px;
+  position: absolute;
+  right: 33px;
+  top: 25px;
+  transition: all ease 0.3s;
+}
+.profile-sidebar .user-profile-actions-list ul li.active a, .profile-sidebar .user-profile-actions-list ul li:hover a {
+  color: #393733;
+  transition: all ease 0.3s;
+}
+.profile-sidebar .user-profile-actions-list ul li.active a i, .profile-sidebar .user-profile-actions-list ul li:hover a i {
+  color: #FEC906;
+  transition: all ease 0.3s;
+}
+
+/* ------------------
+  Orders section
+---------------------*/
+.trace-section {
+  padding-top: 50px;
+}
+.trace-section .trace-order-form {
+  text-align: right;
+}
+.trace-section .trace-order-form h4 {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+.trace-section .trace-order-form form {
+  display: flex;
+}
+.trace-section .trace-order-form form input {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border: 0;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  flex: 10;
+}
+.trace-section .trace-order-form form button {
+  flex: 1;
+  background-color: #FEC906;
+  color: #393733;
+  border: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  transition: background-color ease 0.3s;
+}
+.trace-section .trace-order-form form button:hover {
+  cursor: pointer;
+  background-color: #ddb113;
+  transition: background-color ease 0.3s;
+}
+.trace-section .trace-order-result {
+  text-align: right;
+}
+.trace-section .trace-order-result h4 {
+  font-size: 1.3em;
+}
+
+/* ------------------
   Features section
 ---------------------*/
 .feature {
@@ -787,11 +975,11 @@ ol {
   margin-bottom: 70px;
 }
 
-.product-slider {
+.product-slider, .product-slider-slider {
   direction: ltr;
 }
 
-.product-slider .owl-nav {
+.product-slider .owl-nav, .product-slider-slider .owl-nav {
   position: absolute;
   top: calc(50% - 60px);
   width: 100%;
@@ -799,18 +987,20 @@ ol {
 }
 
 .product-slider .owl-nav button.owl-next,
-.product-slider .owl-nav button.owl-prev {
+.product-slider .owl-nav button.owl-prev,
+.product-slider-small .owl-nav button.owl-next,
+.product-slider-small .owl-nav button.owl-prev {
   color: #a4a4a4;
   font-size: 42px;
   position: relative;
 }
 
-.product-slider .owl-nav button.owl-next {
+.product-slider .owl-nav button.owl-next, .product-slider-small .owl-nav button.owl-next {
   float: right;
   right: -92px;
 }
 
-.product-slider .owl-nav button.owl-prev {
+.product-slider .owl-nav button.owl-prev, .product-slider-small .owl-nav button.owl-prev {
   float: left;
   left: -92px;
 }
@@ -818,6 +1008,10 @@ ol {
 .product-item .pi-pic {
   position: relative;
   display: block;
+}
+.product-item .pi-pic img {
+  height: 400px;
+  width: 100%;
 }
 
 .product-item .tag-new,

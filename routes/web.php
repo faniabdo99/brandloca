@@ -2,14 +2,37 @@
 use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@getHomepage')->name('home');
 //Users System
-Route::get('login' , 'AuthController@getLogin')->name('login.get');
-Route::post('login' , 'AuthController@postLogin')->name('login.post');
-Route::get('signup' , 'AuthController@getSignup')->name('signup.get');
-Route::post('signup' , 'AuthController@postSignup')->name('signup.post');
-Route::get('logout' , 'AuthController@logout')->name('logout');
-//Pages Routes 
+Route::middleware('auth')->group(function () {
+  Route::get('profile' , 'AuthController@getProfile')->name('profile');
+  Route::get('wishlist' , 'AuthController@getWishlist')->name('wishlist');
+  Route::get('report' , 'AuthController@getReport')->name('profile.report');
+  Route::get('logout' , 'AuthController@logout')->name('logout');
+  //Update Account Data
+  Route::get('edit-profile' , 'AuthController@getEditProfile')->name('profile.edit');
+  Route::post('edit-profile' , 'AuthController@postEditProfile')->name('profile.edit.post');
+  Route::post('edit-password' , 'AuthController@postUpdatePassword')->name('profile.password.edit.post');
+  //Account Approval
+  Route::get('approve-account/{code}' , 'AuthController@getApproveAccount')->name('profile.approve');
+});
+Route::middleware('guest')->group(function () {
+  Route::get('login' , 'AuthController@getLogin')->name('login.get');
+  Route::post('login' , 'AuthController@postLogin')->name('login.post');
+  Route::get('signup' , 'AuthController@getSignup')->name('signup.get');
+  Route::post('signup' , 'AuthController@postSignup')->name('signup.post');
+  Route::get('reset-password' , 'AuthController@getResetPage')->name('reset.get');
+  Route::post('reset-password' , 'AuthController@postResetPage')->name('reset.post');
+  Route::get('choose-password/{email}/{code}' , 'AuthController@getChoosePasswordPage')->name('reset.choosePassword.get');
+  Route::post('choose-password/' , 'AuthController@postChoosePasswordPage')->name('reset.choosePassword.post');
+  //Social Signup System
+  Route::get('social-login/{provider}' , 'AuthController@redirectToProvider')->name('login.social');
+  Route::get('login/{driver}/callback' , 'AuthController@handleProviderCallback')->name('login.social.callback');
+});
+Route::get('trace-order' , 'OrdersController@getTrace')->name('order.trace');
+
+//Pages Routes
 Route::get('product' , 'HomeController@getProductPage')->name('product');
 Route::get('contact' , 'PagesController@getContact')->name('contact');
+Route::post('contact' , 'PagesController@postContact')->name('contact.post');
 Route::get('checkout' , 'PagesController@getCheckout')->name('checkout');
 Route::get('category' , 'PagesController@getCategoryPage')->name('category');
 //Admin Only Routes
@@ -28,7 +51,6 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
       Route::post('/new' , 'CategoriesController@postNew')->name('admin.categories.postNew');
       Route::get('/edit/{id}' , 'CategoriesController@getEdit')->name('admin.categories.getEdit');
       Route::post('/edit/{id}' , 'CategoriesController@postEdit')->name('admin.categories.postEdit');
-      Route::get('/localize/{id}' , 'CategoriesController@getLocalize')->name('admin.categories.getLocalize');
     });
     //Products System
     Route::prefix('products')->group(function(){
@@ -37,7 +59,8 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
       Route::post('/new' , 'ProductsController@postNew')->name('admin.products.postNew');
       Route::get('/edit/{id}' , 'ProductsController@getEdit')->name('admin.products.getEdit');
       Route::post('/edit/{id}' , 'ProductsController@postEdit')->name('admin.products.postEdit');
-      Route::get('/localize/{id}' , 'ProductsController@getLocalize')->name('admin.products.getLocalize');
+      Route::get('/variations/{id}' , 'ProductsController@getVariations')->name('admin.products.variations');
+      Route::post('/variations/{id}' , 'ProductsController@postVariations')->name('admin.products.postVariations');
     });
     //Users System
     Route::prefix('users')->group(function(){

@@ -4,12 +4,12 @@ use Illuminate\Http\Request;
 use Validator;
 use Mail;
 use Carbon\Carbon;
+use DB;
 //Models
-use App\Setting;
 use App\Category;
 use App\Product;
+use App\Product_Variation;
 use App\Product_Image;
-use App\Product_Local;
 use App\Discount;
 //Mails
 use App\Mail\QuestionAboutProduct;
@@ -35,33 +35,25 @@ class ProductsController extends Controller{
     }
     public function getNew(){
         $AllCategories = Category::latest()->get();
-        $NextProductIdQuery = Product::latest()->first();
-        if($NextProductIdQuery == null){
-            $NextProductId = 1;
-        }else{
-            $NextProductId = $NextProductIdQuery->id + 1;
-        }
-        $ReadyToUseTagsArray = $this->getAllTags();
+        $id = DB::select("SHOW TABLE STATUS LIKE 'products'");
+        $NextProductId= $id[0]->Auto_increment;
         $DiscountsList = Discount::whereDate('valid_until' , '>' , Carbon::today())->get();
-        return view('admin.product.new' , compact('AllCategories' , 'NextProductId' , 'ReadyToUseTagsArray' , 'DiscountsList'));
+        return view('admin.product.new' , compact('AllCategories' , 'NextProductId' , 'DiscountsList'));
     }
     public function postNew(Request $r){
         //Validate the request
         $Rules = [
             'title' => 'required|min:5|max:255',
+            'model_number' => 'required',
             'slug' => 'required|min:5|max:255|unique:products',
-            'description' => 'required|min:25',
-            'body' => 'required|min:40',
+            'description' => 'required|min:20',
+            'body' => 'required|min:30',
             'id' => 'required|integer',
             'price' => 'required|numeric',
             'inventory' => 'required|numeric',
-            'min_order' => 'required|numeric',
-            'season' => 'required',
-            'gender' => 'required',
             'weight' => 'numeric',
             'height' => 'nullable|numeric',
             'width' => 'nullable|numeric',
-            'tax_rate' => 'required',
             'image' => 'nullable|image|max:45000000'
         ];
         $validator = Validator::make($r->all() , $Rules);
@@ -78,11 +70,7 @@ class ProductsController extends Controller{
                 $ProductData['image'] = 'product.png';
             }
             $ProductData['slug'] = strtolower(str_replace(' ' , '-' , $r->slug));
-            $ProductData['show_inventory'] = ($r->show_inventory == 'on') ? 1 : 0;
             $ProductData['is_promoted'] = ($r->is_promoted == 'on') ? 1 : 0;
-            $ProductData['allow_reviews'] = ($r->allow_reviews == 'on') ? 1 : 0;
-            $ProductData['allow_reservations'] = ($r->allow_reservations == 'on') ? 1 : 0;
-            $ProductData['price'] = sprintf("%.2f",$r->price);
             $ProductData['user_id'] = auth()->user()->id;
             $NewProduct = Product::create($ProductData);
             return redirect()->route('admin.products.home')->withSuccess('Product Created Successfully !');
@@ -101,43 +89,35 @@ class ProductsController extends Controller{
         //Validate the request
         $Rules = [
             'title' => 'required|min:5|max:255',
-            'description' => 'required|min:25',
-            'body' => 'required|min:40',
+            'model_number' => 'required',
+            'description' => 'required|min:20',
+            'body' => 'required|min:30',
             'id' => 'required|integer',
             'price' => 'required|numeric',
             'inventory' => 'required|numeric',
-            'min_order' => 'required|numeric',
-            'season' => 'required',
-            'gender' => 'required',
             'weight' => 'numeric',
             'height' => 'nullable|numeric',
             'width' => 'nullable|numeric',
-            'tax_rate' => 'required',
             'image' => 'image|max:45000000'
-    ];
-    $validator = Validator::make($r->all() , $Rules);
-    if($validator->fails()){
-        return back()->withErrors($validator->errors()->all())->withInput();
-    }else{
-        //Prepare The Data For Uploading
-        $ProductData = $r->except('custom_tags');
-        //Handle The Image
-        if($r->has('image')){
-            $ProductData['image'] = $TheProduct->slug.'.'.$r->image->getClientOriginalExtension();
-            $r->image->storeAs('images/products' , $ProductData['image']);
+        ];
+        $validator = Validator::make($r->all() , $Rules);
+        if($validator->fails()){
+            return back()->withErrors($validator->errors()->all())->withInput();
         }else{
-            $ProductData['image'] = $TheProduct->image;
-        }
-        $ProductData['show_inventory'] = ($r->show_inventory == 'on') ? 1 : 0;
-        $ProductData['is_promoted'] = ($r->is_promoted == 'on') ? 1 : 0;
-        $ProductData['allow_reviews'] = ($r->allow_reviews == 'on') ? 1 : 0;
-        $ProductData['allow_reservations'] = ($r->allow_reservations == 'on') ? 1 : 0;
-        $ProductData['user_id'] = auth()->user()->id;
-        $ProductData['price'] = sprintf("%.2f",$r->price);
-        $TheProduct->update($ProductData);
-        return redirect()->route('admin.products.home')->withSuccess('Product Updated Successfully !');
-    }
-}
+            //Prepare The Data For Uploading
+            $ProductData = $r->except('custom_tags');
+            //Handle The Image
+            if($r->has('image')){
+                $ProductData['image'] = $TheProduct->slug.'.'.$r->image->getClientOriginalExtension();
+                $r->image->storeAs('images/products' , $ProductData['image']);
+            }else{
+                $ProductData['image'] = $TheProduct->image;
+            }
+            $ProductData['is_promoted'] = ($r->is_promoted == 'on') ? 1 : 0;
+            $ProductData['user_id'] = auth()->user()->id;
+            $TheProduct->update($ProductData);
+            return redirect()->route('admin.products.home')->withSuccess('Product Updated Successfully !');
+    }}
     //Delete
     public function delete(Request $r){
         Product::findOrFail($r->item_id)->delete();
@@ -165,54 +145,49 @@ class ProductsController extends Controller{
             return response('Image Uploaded');
         }
     }
-    //Localize
-    public function getLocalize($id){
-        $Product = Product::findOrFail($id);
-        $SystemLangs = explode(',' , Setting::where('title' , 'languages_list')->first()->value);
-        return view('admin.product.localize' , compact('Product' , 'SystemLangs'));
+    //Variations Control
+    public function getVariations($id){
+      $TheProduct = Product::find($id);
+      $CurrentVariations = Product_Variation::where('product_id' , $id)->get();
+      return view('admin.product.variations' , compact('TheProduct' , 'CurrentVariations'));
     }
-
-    public function postLocalize(Request $r){
-        $Rules = [
-            'title_value' => 'required|min:5|max:255',
-            'slug_value' => 'required|min:5|max:255',
-            'description_value' => 'required|min:25',
-            'body_value' => 'required|min:25',
-            'lang_code' => 'required',
-            'product_id' => 'required'
-        ];
-        $validator = Validator::make($r->all() , $Rules);
-        if($validator->fails()){
-            $Respone = [
-                'error' => true,
-                'list' => $validator->errors()->all()
-            ];
-            return response($Respone);
+    public function postVariations(Request $r , $id){
+      //Validate the Request
+      $Rules = [
+        'color' => 'required',
+        'color_code' => 'required',
+        'size' => 'required',
+        'inventory' => 'required|numeric',
+        'status' => 'required'
+      ];
+      $Validator = Validator::make($r->all() , $Rules);
+      if($Validator->fails()){
+        return back()->withErrors($Validator->errors()->all());
+      }else{
+        //Check if This Variation Exsist
+        $ProductModelNumber = Product::find($id)->get()->model_number;
+        $CurrentVariations = Product_Variation::where('product_id' , $id)->get();
+        $isDupliact = $CurrentVariations->map(function($item) use($r){
+          if($item->color == $r->color && $item->size == $r->size && $item->color_code == $r->color_code){
+            //Duplicate Entry
+            $item->update([
+              'inventory' => $item->inventory + $r->inventory,
+              'status' => $r->status
+            ]);
+            return true;
+          }
+        });
+        if($isDupliact){
+          return back()->withSuccess("Variation Updated");
         }else{
-            //Check if this is existing and update it accordingly
-            $LocalizedData = Product_Local::where('lang_code' , $r->lang_code)->where('product_id' , $r->product_id)->first();
-            if($LocalizedData != null){
-                //Update
-                $LocalizedData->update($r->all());
-                $Respone = [
-                    'error' => false,
-                    'list' => 'Translation Updated'
-                ];
-                return response($Respone);
-            }else{
-                //Create
-                $NewLocalizedData = Product_Local::create($r->all());
-                $Respone = [
-                    'error' => false,
-                    'list' => 'Translation Created'
-                ];
-                return response($Respone);
-            }
+          $VariationData = $r->all();
+          $VariationData['product_id'] = $id;
+          $VariationData['ref_code'] = $ProductModelNumber.'_'.strtolower($r->color).'_'.$r->size;
+          Product_Variation::create($VariationData);
+          return back()->withSuccess('Variation Added Successfully');
         }
+      }
     }
-
-
-
     //Non-Admin Routes
     public function getAll(Request $r){
         $FiltersCode = '';

@@ -1,7 +1,5 @@
 @include('admin.layout.header')
-
 <body class="app">
-
     <div>
         @include('admin.layout.sidebar')
         <div class="page-container">
@@ -50,7 +48,7 @@
         //Auto Create Clean Slug...
         var SlugValue;
         $('input[name="title"]').keyup(function(){
-            SlugValue = $(this).val().replace(/\s+/g, '-').replace(/[^a-zA-Z ]/g, "-").toLowerCase();
+          SlugValue = $(this).val().replace(/\s+/g, '-').replace(/[^[\u0621-\u064A0-9 ]]/g, "-").toLowerCase();
             //Assign the value to the input
             $('input[name="slug"]').val(SlugValue);
         });

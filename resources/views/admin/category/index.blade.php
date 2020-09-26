@@ -27,13 +27,12 @@
                                         <tbody>
                                             @forelse ($Categories as $Single)
                                             <tr>
-                                                <td>{{$Single->local_title}}</td>
+                                                <td>{{$Single->title}}</td>
                                                 <td>{{$Single->short_description}}</td>
                                                 <td>25</td>
                                                 <td>
                                                     <a href="{{route('admin.categories.getEdit' , $Single->id)}}" class="btn btn-primary">Edit</a>
-                                                    <a id="delete-btn" href="javascript:;" item-id="{{$Single->id}}" action-route="{{ route('admin.category.delete') }}" class="btn btn-danger">Delete</a>
-                                                    <a href="{{route('admin.categories.getLocalize' , $Single->id)}}" class="btn btn-success">Localize</a>
+                                                    <a href="javascript:;" item-id="{{$Single->id}}" action-route="{{ route('admin.category.delete') }}" class="btn btn-danger delete-btn">Delete</a>
                                                 </td>
                                             </tr>
                                             @empty
@@ -50,7 +49,7 @@
     </div>
     @include('admin.layout.scripts')
     <script>
-        $('#delete-btn').dblclick(function(){
+        $('.delete-btn').dblclick(function(){
             var Elem = $(this);
             var ItemId = $(this).attr('item-id');
             var ActionRoute = $(this).attr('action-route');

@@ -33,15 +33,15 @@
                             <input type="password" id="password" placeholder="أدخل كلمة المرور هنا" name="password" required>
                         </div>
                         <div class="text-right mb-5">
-                            <input type="checkbox" value="yes" name="save_login" id="save-login"> <label for="save-login">تذكرني في المرة القادمة</label> 
+                            <input type="checkbox" value="yes" name="save_login" id="save-login"> <label for="save-login">تذكرني في المرة القادمة</label>
                         </div>
-                        <p class="text-right">نسيت كلمة المرور ؟ <a href="#">اضغط هنا</a></p>
+                        <p class="text-right">نسيت كلمة المرور ؟ <a href="{{route('reset.get')}}">اضغط هنا</a></p>
                         <button class="site-btn mb-5">تسجيل الدخول</button>
                         <p class="text-right">تسجيل الدخول بواسطة :</p>
                         <ul class="social-auth">
-                            <li class="auth-with-google"><a href="#"><i class="fab fa-google"></i> جوجل</a></li>
-                            <li class="auth-with-facebook"><a href="#"><i class="fab fa-facebook"></i> فيسبوك</a></li>
-                            <li class="auth-with-twitter"><a href="#"><i class="fab fa-twitter"></i> تويتر</a></li>
+                          <li class="auth-with-google"><a href="{{route('login.social','google')}}"><i class="fab fa-google"></i> جوجل</a></li>
+                          <li class="auth-with-facebook"><a href="{{route('login.social','facebook')}}"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+                          <li class="auth-with-twitter"><a href="{{route('login.social','twitter')}}"><i class="fab fa-twitter"></i> تويتر</a></li>
                         </ul>
                     </form>
                 </div>
@@ -57,5 +57,6 @@
     </section>
     <!-- auth Form End -->
     @include('layout.scripts')
+    <script src="{{url('public/js/')}}/auth.js"></script>
 </body>
 </html>

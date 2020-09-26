@@ -19,7 +19,7 @@ class User extends Authenticatable
     public function getProfileImageAttribute(){
         $UserImageArray = explode('.' , $this->image);
         if($UserImageArray[0] == $this->id || $UserImageArray[0] == 'user'){
-            return url('storage/app/images/users').'/'.$this->image;
+            return url('storage/app/public/users').'/'.$this->image;
         }else{
             return $this->image;
         }

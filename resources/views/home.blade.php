@@ -1,6 +1,7 @@
 @include('layout.header')
 <body>
-@include('layout.navbar')
+	@include('layout.navbar')
+	@include('layout.errors')
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
@@ -87,79 +88,27 @@
 				<h2>منتجات جديدة</h2>
 			</div>
 			<div class="product-slider owl-carousel">
+				@forelse($NewProducts as $NewProduct)
 				<div class="product-item">
 					<div class="pi-pic">
-						<img src="{{url('public/img')}}/product/1.jpg" alt="">
+						<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
 						<div class="pi-links">
 							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 						</div>
 					</div>
 					<div class="pi-text">
-						<h6>150 L.E</h6>
-						<p>ترينج شتوي موديل أسد</p>
+						<h6>{{$NewProduct->price}} L.E</h6>
+						<p>{{$NewProduct->title}}</p>
 					</div>
 				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<div class="tag-new">جديد</div>
-						<img src="{{url('public/img')}}/product/2.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>150 L.E</h6>
-						<p>موديل صيفي موديل قطة</p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="{{url('public/img')}}/product/3.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>150 L.E</h6>
-						<p>ترينج شتوي موديل أسد</p>
-					</div>
-				</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/4.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
+				@empty
+					<p class="text-center">لا يوجد منتجات جديدة حالياً</p>
+				@endforelse
 			</div>
 		</div>
 	</section>
 	<!-- letest product section end -->
-
-
-
 	<!-- Product filter section -->
 	<section class="product-filter-section">
 		<div class="container">
@@ -177,127 +126,25 @@
 				<li><a href="#">LEGGINGS</a></li>
 			</ul> --}}
 			<div class="row">
+				@forelse($PromotedProducts as $PromotedProduct)
 				<div class="col-lg-3 col-sm-6">
 					<div class="product-item">
 						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/5.jpg" alt="">
+							<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
 						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
+							<h6>{{$PromotedProduct->price}} L.E</h6>
+							<p>{{$PromotedProduct->title}}</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<div class="tag-sale">خصم 20%</div>
-							<img src="{{url('public/img')}}/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>موديل صيفي موديل قطة</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/7.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/8.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/9.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/10.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>موديل صيفي موديل قطة</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/11.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{url('public/img')}}/product/12.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>150 L.E</h6>
-							<p>ترينج شتوي موديل أسد</p>
-						</div>
-					</div>
-				</div>
+				@empty
+					<p class="text-center">لا يوجد منتجات مميزة حالياً</p>
+				@endforelse
 			</div>
 			<div class="text-center pt-5">
 				<button class="site-btn sb-line sb-dark">عرض المزيد</button>

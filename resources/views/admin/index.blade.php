@@ -1,5 +1,4 @@
 @include('admin.layout.header' , ['PageTitle' => 'Dashboard'])
-
 <body class="app">
     <div>
         @include('admin.layout.sidebar')
@@ -92,7 +91,7 @@
                                                         <td>{{formatPrice($Order->final_total).getCurrency()['symbole']}}</td>
                                                         <td><a href="{{route('admin.orders.single' , $Order->id)}}" class="text-success">Order Details</a></td>
                                                     </tr>
-                                                    @empty 
+                                                    @empty
 
                                                     @endforelse
                                                 </tbody>

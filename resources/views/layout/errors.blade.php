@@ -4,7 +4,7 @@
         <i class="fas fa-check"></i>
     </div>
     <div class="notification-content">
-        <h2>تم بنجاح !</h2>
+        <b>تم بنجاح !</b>
         <p>{{session('success')}}</p>
     </div>
 </div>

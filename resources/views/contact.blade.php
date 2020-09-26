@@ -1,6 +1,7 @@
-@include('layout.header')
+@include('layout.header' , ['pageTitle' => 'اتصل بنا'])
 <body>
     @include('layout.navbar')
+    @include('layout.errors')
 	<!-- Contact section -->
 	<section class="contact-section">
 		<div class="container">
@@ -9,19 +10,20 @@
 					<h3>تواصل معنا</h3>
 					<p>جسر السويس , شارع جمال عبد الناصر</p>
 					<p dir="ltr">0020 115 1411 867</p>
-					<p>support@arte.com</p>
+					<p>support@arteonline.com</p>
 					<div class="contact-social">
 						<a href="#"><i class="fa fa-youtube"></i></a>
 						<a href="#"><i class="fa fa-instagram"></i></a>
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
 					</div>
-					<form class="contact-form">
-						<input type="text" placeholder="الاسم">
-						<input type="text" placeholder="البريد الإلكتروني">
-						<input type="text" placeholder="عنوان الرسالة">
-						<textarea placeholder="الرسالة"></textarea>
-						<button class="site-btn">ارسال</button>
+					<form action="{{route('contact.post')}}" method="post" class="contact-form">
+            @csrf
+						<input required type="text" name="name" placeholder="الاسم">
+						<input required type="email" name="email" placeholder="البريد الإلكتروني">
+						<input required type="text" name="subject" placeholder="عنوان الرسالة">
+						<textarea required name="message" placeholder="الرسالة"></textarea>
+						<button type="submit" class="site-btn">ارسال</button>
 					</form>
 				</div>
 			</div>
