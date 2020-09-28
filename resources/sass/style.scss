@@ -175,6 +175,12 @@
 	transition: all 0.4s ease;
 	text-align: center;
 	}
+	.wishlist-btn.liked{
+		background: #eca1a1;
+		i{
+			color: #fff;
+		}
+	}
 }
 
 .product-item .pi-links a i {
@@ -533,7 +539,22 @@
 ------------------*/
 
 .filter-widget {
-	margin-bottom: 100px;
+	margin-bottom: 60px;
+	.search-form{
+		label{
+			font-weight: bold;
+			display: block;
+		}
+		input{
+			display: block;
+			width: 100%;
+			padding: 14px;
+			border-radius: 50px;
+			border:0;
+			background-color: $lightgray;
+			margin-bottom: 15px;
+		}
+	}
 }
 
 .filter-widget .fw-title {
@@ -798,6 +819,21 @@
 .product-section {
 	padding-top: 70px;
 	padding-bottom: 65px;
+	.add-to-wishlist-btn{
+		border:1px solid $black;
+		transition: all ease 0.3s;
+		&.liked{
+			background: #eca1a1;
+			color:#fff;
+			border-color: #eca1a1;
+		}
+		&:hover{
+			background: #eca1a1;
+			color:#fff;
+			border-color: #eca1a1;
+			transition: all ease 0.3s;
+		}
+	}
 }
 
 .back-link {

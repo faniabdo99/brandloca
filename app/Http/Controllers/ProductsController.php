@@ -29,10 +29,12 @@ class ProductsController extends Controller{
         $ReadyToUseTagsArray = array_unique($FinalMasterTagsArray = call_user_func_array('array_merge', $MasterTagsArray));
         return $ReadyToUseTagsArray;
     }
+    //Admin Home
     public function getHome(){
         $Products = Product::latest()->get();
         return view('admin.product.index' , compact('Products'));
     }
+    //Add
     public function getNew(){
         $AllCategories = Category::latest()->get();
         $id = DB::select("SHOW TABLE STATUS LIKE 'products'");
@@ -192,7 +194,8 @@ class ProductsController extends Controller{
       Product_Variation::findOrFail($id)->delete();
       return back()->withSuccess('Variation Deleted Successfully');
     }
-    //Non-Admin Routes
+    // ============== Non-Admin Routes ================
+    //Home (shop)
     public function getAll(Request $r){
         $FiltersCode = '';
         if($r->has('category_filters') && !empty($r->category_filters) && $r->category_filters != null){
@@ -212,7 +215,7 @@ class ProductsController extends Controller{
         //Must Use Vars
         $Categories = Category::latest()->get();
         $FiltersList = $this->getAllTags();
-        return view('products.index' , compact('Categories' , 'FiltersList' , 'Products' ));
+        return view('products.all' , compact('Categories' , 'FiltersList' , 'Products' ));
     }
     public function getWithFilter($Category){
         $TheCategory = Category::where('slug' , $Category)->first();

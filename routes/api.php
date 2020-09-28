@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 //Non Admin API Routes
 Route::post('resend-confirmation-mail' , 'AuthController@resendConfirmationMail')->name('auth.resendConfirmation');
 Route::post('account-report-form' , 'AuthController@postReport')->name('profile.report.post');
+Route::post('add-to-wishlist' , 'FavouriteController@ToggleFavourite')->name('favourite.toggle');
+
 
 
 

@@ -14,17 +14,6 @@ class Product extends Model{
         ]);
     }
     //Non-Relation Methods
-    public function getInventoryValueAttribute(){
-        if($this->fake_inventory == 0){
-            return $this->inventory;
-        }else{
-            if($this->inventory > $this->fake_inventory){
-                return $this->fake_inventory;
-            }else{
-                return $this->inventory;
-            }
-        }
-    }
     public function getIsActiveAttribute(){
         if($this->status == 'Available'){
             return true;
@@ -60,32 +49,6 @@ class Product extends Model{
             return false;
         }
     }
-    public function getFinalPriceAttribute(){
-        if($this->discount_id){
-            //Check if there is a discount on this product
-            $TheDiscount = Discount::find($this->discount_id);
-            if($TheDiscount && Carbon::parse($TheDiscount->valid_until) > Carbon::today()){
-                //Check the type -_-
-                if($TheDiscount->type == 'fixed'){
-                    $ThePrice = $this->price - $TheDiscount->amount;
-                }elseif($TheDiscount->type == 'percent'){
-                    $TheDiscountAmount = ($this->price * $TheDiscount->amount) / 100;
-                    $ThePrice = $this->price - $TheDiscountAmount;
-                }
-                $returnPrice = $ThePrice;
-            }else{
-                  $returnPrice = $this->price;
-            }
-        }else{
-              $returnPrice = $this->price;
-        }
-        //Convert Currency if Needed
-        $PriceTo = session()->has('currency') ? session()->get('currency') : 'EUR';
-        return convertCurrency($returnPrice , 'EUR' , $PriceTo);
-    }
-    public function getTaxAmountAttribute(){
-        return ($this->final_price * $this->tax_rate);
-    }
     public function getStatusClassAttribute(){
         $StatuesArray = [];
         if($this->status == 'Sold Out'){
@@ -102,5 +65,15 @@ class Product extends Model{
             $StatuesArray['background'] = 'd-none';
         }
         return $StatuesArray;
+    }
+
+    public function AvailableVariations(){
+      $Variations = Product_Variation::where('product_id' , $this->id)->where('inventory' , '>' , '0')->where('status' , 'Available')->get();
+      $DataArray = [
+        'sizes' => $Variations->pluck('size')->unique(),
+        'color_codes' => $Variations->pluck('color_code')->unique(),
+        'inevntory' => $Variations->sum('inventory')
+      ];
+      return $DataArray;
     }
 }

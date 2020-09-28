@@ -6,31 +6,33 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 order-2 order-lg-1 text-right">
+          <div class="filter-widget">
+            <form class="search-form" action="#" method="post">
+              <label for="search_term">بحث</label>
+              <input id="search_term" type="text" placeholder="ادخل كلمة البحث هنا و اضغط Enter" name="search_term" value="">
+              <button type="button" class="site-btn site-btn-sm" name="button">بحث</button>
+            </form>
+          </div>
 					<div class="filter-widget">
 						<h2 class="fw-title">الأقسام</h2>
 						<ul class="category-menu">
-							<li><a href="#">بيجاما</a>
-								<ul class="sub-menu">
+              @forelse ($Categories as $Category)
+                <li><a href="#">{{$Category->title}}</a>
+								{{-- <ul class="sub-menu">
 									<li><a href="#">0-4 سنوات </a></li>
 									<li><a href="#">4-9 سنوات</a></li>
 									<li><a href="#">10-16 سنة</a></li>
-								</ul>
+								</ul> --}}
 							</li>
-							<li><a href="#">جينز</a>
-								<ul class="sub-menu">
-									<li><a href="#">Midi Dresses <span>(2)</span></a></li>
-									<li><a href="#">Maxi Dresses<span>(56)</span></a></li>
-									<li><a href="#">Prom Dresses<span>(36)</span></a></li>
-								</ul></li>
-							<li><a href="#">أحذية</a></li>
-							<li><a href="#">تيشيرت</a></li>
+              @empty
+              @endforelse
 						</ul>
 					</div>
-					<div class="filter-widget mb-0">
+					<div class="filter-widget">
 						<h2 class="fw-title">فلترة النتائج</h2>
 						<div class="price-range-wrap">
 							<h4>السعر</h4>
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="270">
+              <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" data-min="10" data-max="270">
 								<div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
 								<span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
@@ -43,48 +45,7 @@
                             </div>
                         </div>
 					</div>
-					<div class="filter-widget mb-0">
-						<h2 class="fw-title">اللون</h2>
-						<div class="fw-color-choose">
-							<div class="cs-item">
-								<input type="radio" name="cs" id="gray-color">
-								<label class="cs-gray" for="gray-color">
-									<span>(3)</span>
-								</label>
-							</div>
-							<div class="cs-item">
-								<input type="radio" name="cs" id="orange-color">
-								<label class="cs-orange" for="orange-color">
-									<span>(25)</span>
-								</label>
-							</div>
-							<div class="cs-item">
-								<input type="radio" name="cs" id="yollow-color">
-								<label class="cs-yollow" for="yollow-color">
-									<span>(112)</span>
-								</label>
-							</div>
-							<div class="cs-item">
-								<input type="radio" name="cs" id="green-color">
-								<label class="cs-green" for="green-color">
-									<span>(75)</span>
-								</label>
-							</div>
-							<div class="cs-item">
-								<input type="radio" name="cs" id="purple-color">
-								<label class="cs-purple" for="purple-color">
-									<span>(9)</span>
-								</label>
-							</div>
-							<div class="cs-item">
-								<input type="radio" name="cs" id="blue-color" checked="">
-								<label class="cs-blue" for="blue-color">
-									<span>(29)</span>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="filter-widget mb-0">
+					<div class="filter-widget">
 						<h2 class="fw-title">الحجم</h2>
 						<div class="fw-size-choose">
 							<div class="sc-item">

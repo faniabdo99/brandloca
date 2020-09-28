@@ -1,5 +1,4 @@
 /* buttons */
-
 .site-btn {
 	display: inline-block;
 	border: none;
@@ -10,13 +9,19 @@
 	border-radius: 50px;
 	text-transform: uppercase;
 	background: $brand;
-	color: #fff;
+	color: $black;
 	line-height: normal;
 	cursor: pointer;
 	text-align: center;
+	transition: all ease 0.3s;
+	&.site-btn-sm{
+		padding: 5px 20px 5px;
+		min-width: 100px;
+	}
 }
 
 .site-btn:hover {
+	transition: all ease 0.3s;
 	color: #fff;
 }
 

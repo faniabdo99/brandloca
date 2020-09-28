@@ -128,13 +128,19 @@ ol {
   border-radius: 50px;
   text-transform: uppercase;
   background: #FEC906;
-  color: #fff;
+  color: #393733;
   line-height: normal;
   cursor: pointer;
   text-align: center;
+  transition: all ease 0.3s;
+}
+.site-btn.site-btn-sm {
+  padding: 5px 20px 5px;
+  min-width: 100px;
 }
 
 .site-btn:hover {
+  transition: all ease 0.3s;
   color: #fff;
 }
 
@@ -1064,6 +1070,12 @@ ol {
   transition: all 0.4s ease;
   text-align: center;
 }
+.product-item .pi-links .wishlist-btn.liked {
+  background: #eca1a1;
+}
+.product-item .pi-links .wishlist-btn.liked i {
+  color: #fff;
+}
 
 .product-item .pi-links a i {
   display: inline-block;
@@ -1408,7 +1420,20 @@ ol {
   Category page
 ------------------*/
 .filter-widget {
-  margin-bottom: 100px;
+  margin-bottom: 60px;
+}
+.filter-widget .search-form label {
+  font-weight: bold;
+  display: block;
+}
+.filter-widget .search-form input {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 50px;
+  border: 0;
+  background-color: #f1f1f1;
+  margin-bottom: 15px;
 }
 
 .filter-widget .fw-title {
@@ -1665,6 +1690,21 @@ ol {
 .product-section {
   padding-top: 70px;
   padding-bottom: 65px;
+}
+.product-section .add-to-wishlist-btn {
+  border: 1px solid #393733;
+  transition: all ease 0.3s;
+}
+.product-section .add-to-wishlist-btn.liked {
+  background: #eca1a1;
+  color: #fff;
+  border-color: #eca1a1;
+}
+.product-section .add-to-wishlist-btn:hover {
+  background: #eca1a1;
+  color: #fff;
+  border-color: #eca1a1;
+  transition: all ease 0.3s;
 }
 
 .back-link {

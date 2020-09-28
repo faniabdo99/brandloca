@@ -1,5 +1,4 @@
 @include('layout.header')
-
 <body>
     @include('layout.navbar')
     <!-- product section -->
@@ -33,39 +32,44 @@
                     </div>
                     <p class="font-weight-bold">الحجم</p>
                     <div class="fw-size-choose mb-5">
+                      @forelse ($TheProduct->AvailableVariations()['sizes'] as $Size)
                         <div class="sc-item">
-                            <input type="radio" name="sc" id="xs-size">
-                            <label for="xs-size">10</label>
+                            <input type="radio" name="sc" id="size-{{$Size}}" value="{{$Size}}">
+                            <label for="size-{{$Size}}">{{$Size}}</label>
                         </div>
-                        <div class="sc-item">
-                            <input type="radio" name="sc" id="s-size">
-                            <label for="s-size">12</label>
-                        </div>
-                        <div class="sc-item">
-                            <input type="radio" name="sc" id="m-size" checked="">
-                            <label for="m-size">14</label>
-                        </div>
-                        <div class="sc-item disable">
+                      @empty
+                      @endforelse
+                        {{-- <div class="sc-item disable">
                             <input type="radio" name="sc" id="l-size" disabled>
                             <label for="l-size">16</label>
-                        </div>
+                        </div> --}}
                     </div>
                     <p class="font-weight-bold">اللون</p>
                     <div class="fw-size-choose mb-5">
+                      @forelse ($TheProduct->AvailableVariations()['color_codes'] as $key => $Color)
                         <div class="sc-item">
-                            <input type="radio" name="color" id="red">
-                            <label for="red" style="background:red;"></label>
+                            <input type="radio" name="color" id="color-{{$key}}" value="{{$Color}}">
+                            <label for="color-{{$key}}" style="background:{{$Color}};"></label>
                         </div>
-                        <div class="sc-item disable">
+                      @empty
+                      @endforelse
+                        {{-- <div class="sc-item disable">
                             <input type="radio" name="color" id="green" disabled title="هذا اللون غير متوفر حالياً">
                             <label for="green" style="background:green;" title="هذا اللون غير متوفر حالياً"></label>
-                        </div>
+                        </div> --}}
                     </div>
                     <p class="font-weight-bold">الكمية المطلوبة</p>
                     <div class="quantity">
                         <div class="pro-qty"><input type="text" value="1"></div>
                     </div>
-                    <a href="#" class="site-btn">اضف الى السلة</a>
+                    <a href="#" class="site-btn"><i class="flaticon-bag"></i> اضف الى السلة</a>
+                    @auth
+                      @if($TheProduct->LikedByUser())
+                        <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="flaticon-heart"></i> أحببته</a>
+                      @else
+                        <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" class="site-btn sb-white add-to-wishlist-btn"><i class="flaticon-heart"></i> اضافة الى المفضلة</a>
+                      @endif
+                    @endauth
                     <div id="accordion" class="accordion-area">
                         <div class="panel">
                             <div class="panel-header" id="headingOne">

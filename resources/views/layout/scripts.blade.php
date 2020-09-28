@@ -5,7 +5,6 @@
 	<script src="{{url('public/js')}}/bootstrap.min.js"></script>
 	<script src="{{url('public/js')}}/jquery.slicknav.min.js"></script>
 	<script src="{{url('public/js')}}/owl.carousel.min.js"></script>
-	<script src="{{url('public/js')}}/jquery.nicescroll.min.js"></script>
 	<script src="{{url('public/js')}}/jquery.zoom.min.js"></script>
 	<script src="{{url('public/js')}}/jquery-ui.min.js"></script>
-	<script src="{{url('public/js')}}/main.js"></script>
+	<script src="{{url('public/js')}}/app.js"></script>

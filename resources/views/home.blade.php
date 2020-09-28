@@ -96,7 +96,9 @@
 							<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+								@auth
+									<a href="javascript:;" class="wishlist-btn @if($NewProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$NewProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+								@endauth
 							</div>
 						</div>
 						<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
@@ -139,7 +141,9 @@
 								<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
 								<div class="pi-links">
 									<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-									<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+									@auth
+										<a href="javascript:;" class="wishlist-btn @if($PromotedProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$PromotedProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+									@endauth
 								</div>
 							</div>
 							<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">

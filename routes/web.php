@@ -28,9 +28,10 @@ Route::middleware('guest')->group(function () {
   Route::get('login/{driver}/callback' , 'AuthController@handleProviderCallback')->name('login.social.callback');
 });
 Route::get('trace-order' , 'OrdersController@getTrace')->name('order.trace');
-
-//Pages Routes
+//Products List
+Route::get('shop' , 'ProductsController@getAll')->name('shop');
 Route::get('product/{id}/{slug}' , 'ProductsController@getSingle')->name('product');
+//Pages Routes
 Route::get('contact' , 'PagesController@getContact')->name('contact');
 Route::post('contact' , 'PagesController@postContact')->name('contact.post');
 Route::get('checkout' , 'PagesController@getCheckout')->name('checkout');
