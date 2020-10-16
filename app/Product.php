@@ -87,7 +87,8 @@ class Product extends Model{
     }
 
     public function AvailableVariations(){
-      $Variations = Product_Variation::where('product_id' , $this->id)->where('inventory' , '>' , '0')->where('status' , 'Available')->get();
+      //Get Sizes
+      $Variations = Product_Variation::where('product_id' , $this->id)->get();
       $DataArray = [
         'sizes' => $Variations->pluck('size')->unique(),
         'color_codes' => $Variations->pluck('color_code')->unique(),

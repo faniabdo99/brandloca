@@ -36,9 +36,9 @@
 							<div class="up-item">
 								<div class="shopping-card">
 									<i class="fas fa-shopping-cart"></i>
-									<span>0</span>
+									<span>{{CartItemsCount()}}</span>
 								</div>
-								<a href="#">عربة التسوق</a>
+								<a href="{{route('order.cart')}}">عربة التسوق</a>
 							</div>
 						</div>
 						@endauth

@@ -1,4 +1,5 @@
 @include('layout.header')
+
 <body>
     @include('layout.navbar')
     <!-- product section -->
@@ -13,9 +14,9 @@
                         <div class="product-thumbs-track">
                             <div class="pt active" data-imgbigurl="{{$TheProduct->MainImage}}"><img src="{{$TheProduct->MainImage}}" alt="{{$TheProduct->title}}"></div>
                             @forelse($TheProduct->GalleryImages as $Image)
-                                <div class="pt" data-imgbigurl="{{$Image->ImagePath}}"><img src="{{$Image->ImagePath}}" alt="{{$TheProduct->title}}"></div>
-                                @empty
-                                @endforelse
+                                <div class="pt active" data-imgbigurl="{{$Image->ImagePath}}"><img src="{{$Image->ImagePath}}" alt="{{$TheProduct->title}}"></div>
+                            @empty
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -39,32 +40,32 @@
                         <form action="javascript:;" id="product-cart-form" method="post">
                             <div class="fw-size-choose mb-5">
                                 @forelse ($TheProduct->AvailableVariations()['sizes'] as $Size)
-                                <div class="sc-item">
-                                    <input type="radio" name="size" id="size-{{$Size}}" value="{{$Size}}">
+                                @php
+                                  //Check if this size available
+                                  $CheckSize = App\Product_Variation::where('product_id' , $TheProduct->id)->where('size' , $Size)->where('inventory' , '>' , 0)->where('status' ,'Available')->count();
+                                @endphp
+                                <div class="sc-item @if(!$CheckSize) disable @endif"  >
+                                    <input type="radio" name="size" id="size-{{$Size}}" value="{{$Size}}"  @if(!$CheckSize) disabled title="تم بيع هذا المقاس بالكامل" @endif>
                                     <label for="size-{{$Size}}">{{$Size}}</label>
                                 </div>
                                 @empty
                                 <p class="text-right">هذا المنتج غير متوفر للبيع حالياً</p>
                                 @endforelse
-                                {{-- <div class="sc-item disable">
-                                  <input type="radio" name="sc" id="l-size" disabled>
-                                  <label for="l-size">16</label>
-                              </div> --}}
                             </div>
                             <p class="font-weight-bold">اللون</p>
                             <div class="fw-size-choose mb-5">
                                 @forelse ($TheProduct->AvailableVariations()['color_codes'] as $key => $Color)
-                                <div class="sc-item">
-                                    <input type="radio" name="color" id="color-{{$key}}" value="{{$Color}}">
+                                @php
+                                  //Check if this size available
+                                  $CheckColor = App\Product_Variation::where('product_id' , $TheProduct->id)->where('color_code' , $Color)->where('inventory' , '>' , 0)->where('status' ,'Available')->count();
+                                @endphp
+                                <div class="sc-item @if(!$CheckColor) disable @endif">
+                                    <input type="radio" name="color" id="color-{{$key}}" value="{{$Color}}"  @if(!$CheckColor) disabled title="تم بيع هذا اللون بالكامل" @endif>
                                     <label for="color-{{$key}}" style="background:{{$Color}};"></label>
                                 </div>
                                 @empty
                                 <p class="text-right">هذا المنتج غير متوفر للبيع حالياً</p>
                                 @endforelse
-                                {{-- <div class="sc-item disable">
-                                    <input type="radio" name="color" id="green" disabled title="هذا اللون غير متوفر حالياً">
-                                    <label for="green" style="background:green;" title="هذا اللون غير متوفر حالياً"></label>
-                                </div> --}}
                             </div>
                             <p class="font-weight-bold">الكمية المطلوبة</p>
                             <div class="quantity">
@@ -73,15 +74,17 @@
                             @auth
                             @if($TheProduct->AvailableVariations()['inventory'] > 0)
                                 <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
+                            @else
+                              <p class="text-danger">تم البيع بالكامل</p>
+                            @endif
+                            @if($TheProduct->LikedByUser())
+                                <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}"
+                                  class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="flaticon-heart"></i> أحببته</a>
+                                @else
+                                <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" class="site-btn sb-white add-to-wishlist-btn"><i
+                                      class="flaticon-heart"></i> اضافة الى المفضلة</a>
                                 @endif
-                                @if($TheProduct->LikedByUser())
-                                    <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}"
-                                      class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="flaticon-heart"></i> أحببته</a>
-                                    @else
-                                    <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" class="site-btn sb-white add-to-wishlist-btn"><i
-                                          class="flaticon-heart"></i> اضافة الى المفضلة</a>
-                                    @endif
-                                    @endauth
+                              @endauth
                         </form>
                         <div id="accordion" class="accordion-area">
                             <div class="panel">

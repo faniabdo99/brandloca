@@ -2,6 +2,15 @@
 use Illuminate\Support\Facades\Cookie;
 //Models
 use App\Category;
+use App\Cart;
+//Cart System Helpers
+function CartItemsCount(){
+  if(auth()->check()){
+    return Cart::where('user_id' , auth()->user()->id)->where('status' , 'active')->count('qty');
+  }else{
+    return null;
+  }
+}
 //List The Categories
 function CategoriesList(){
   return App\Category::latest()->get();

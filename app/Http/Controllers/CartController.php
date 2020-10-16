@@ -49,4 +49,17 @@ class CartController extends Controller{
         }
       }
     }
+    public function getCart(){
+      if(auth()->check()){
+        $CartItems = Cart::where('user_id' , auth()->user()->id)->where('status' , 'active')->get();
+        $CartTotal = $CartItems->map(function($item){
+          return $item->TotalPrice;
+        })->toArray();
+
+        return view('orders.cart' , compact('CartItems' ,  'CartTotal'));
+      }else{
+        $NoUser = true;
+        return view('orders.cart' , compact('NoUser'));
+      }
+    }
 }
