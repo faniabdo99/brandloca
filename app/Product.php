@@ -14,6 +14,14 @@ class Product extends Model{
         ]);
     }
     //Non-Relation Methods
+    public function getStatusValueAttribute(){
+      $AvailableStatuses = [
+        'Available' => 'متاح',
+        'SoldOut' => 'مباع',
+        'Invisible' => 'مخفي',
+      ];
+      return $AvailableStatuses[$this->status];
+    }
     public function getIsActiveAttribute(){
         if($this->status == 'Available'){
             return true;
@@ -38,16 +46,27 @@ class Product extends Model{
         }
     }
     public function HasDiscount(){
+      $ReturnedArray = [];
         if($this->discount_id){
             $TheDiscount = Discount::find($this->discount_id);
             if($TheDiscount && Carbon::parse($TheDiscount->valid_until) > Carbon::today()){
-                return true;
+              $ReturnedArray['HasDiscount'] = true;
+              //Calculate the new price
+              if($TheDiscount->type == 'percent'){
+                $DiscountAmonut = ($this->price * $TheDiscount->amount)/100;
+              }else{
+                $DiscountAmonut = $TheDiscount->amount;
+              }
+              $ReturnedArray['NewPrice'] = $this->price - $DiscountAmonut;
             }else{
-                return false;
+              $ReturnedArray['HasDiscount'] = false;
+              $ReturnedArray['NewPrice'] = $this->price;
             }
         }else{
-            return false;
+          $ReturnedArray['HasDiscount'] = false;
+          $ReturnedArray['NewPrice'] = $this->price;
         }
+        return $ReturnedArray;
     }
     public function getStatusClassAttribute(){
         $StatuesArray = [];
@@ -72,7 +91,8 @@ class Product extends Model{
       $DataArray = [
         'sizes' => $Variations->pluck('size')->unique(),
         'color_codes' => $Variations->pluck('color_code')->unique(),
-        'inevntory' => $Variations->sum('inventory')
+        'variations' => $Variations,
+        'inventory' => $Variations->sum('inventory')
       ];
       return $DataArray;
     }

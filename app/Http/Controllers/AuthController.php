@@ -329,4 +329,31 @@ class AuthController extends Controller{
             //TODO: Send the report message
         }
     }
+
+
+    //Admin Realted Functions
+    public function getHome(){
+      $Users = User::latest()->get();
+      return view('admin.user.index' , compact('Users'));
+    }
+    public function delete(Request $r){
+      $User = User::findOrFail($r->item_id)->delete();
+      return response("User Deleted Successfully");
+    }
+    public function ToggleActive(Request $r){
+      $User = User::findOrFail($r->item_id)->first();
+      $User->confirmed = !$User->confirmed;
+      $User->save();
+      if($User->confirmed == 1){
+        return response([
+          'successMessage' => 'User Activated',
+          'btnMessage' => 'Deactivate'
+        ]);
+      }else{
+        return response([
+          'successMessage' => 'User Deactivated',
+          'btnMessage' => 'Activate'
+        ]);
+      }
+    }
 }

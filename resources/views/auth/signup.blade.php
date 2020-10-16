@@ -4,7 +4,7 @@
     @include('layout.errors')
     <!-- Hero section -->
 	<section class="hero-section auth-hero">
-        <div class="dark-overlap">
+      <div class="dark-overlap">
         <div class="container">
             <div class="row">
                 <div class="col-12">

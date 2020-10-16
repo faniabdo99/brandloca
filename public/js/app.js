@@ -96,10 +96,10 @@
 "use strict";
 
 
-function ShowNoto(className, text) {
+function ShowNoto(className, text, type) {
   //Create The Element
-  $('body').append('<div class="noto"></div>');
-  $('.noto').html(text).addClass(className).fadeIn('fast').delay(3000).fadeOut('fast');
+  $('body').append("\n      <div class=\"notification ".concat(className, "\">\n          <div class=\"notification-icon\">\n              <i class=\"fas fa-times\"></i>\n          </div>\n          <div class=\"notification-content\">\n              <b>\u062E\u0637\u0623</b>\n              <p>").concat(text, "</p>\n          </div>\n      </div>"));
+  $('.notification').fadeIn('fast').delay(3000).fadeOut('fast');
 }
 
 $(window).on('load', function () {
@@ -337,7 +337,7 @@ $(window).on('load', function () {
         }
       },
       error: function error(XMLHttpRequest, textStatus, errorThrown) {
-        ShowNoto('noto-danger', errorThrown, 'Error');
+        ShowNoto('notification-danger', errorThrown, 'Error');
       }
     });
   });
@@ -365,7 +365,87 @@ $(window).on('load', function () {
         }
       },
       error: function error(XMLHttpRequest, textStatus, errorThrown) {
-        ShowNoto('noto-danger', errorThrown, 'Error');
+        ShowNoto('notification-danger', errorThrown, 'Error');
+      }
+    });
+  }); //Filter Products
+
+  var OriginalData = $('#products-list').html();
+  $('#filter-products').click(function (e) {
+    e.preventDefault(); //Update the Icon
+
+    $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+    $('#products-list').html('Loading ...');
+    var ActionRoute = $(this).data('action');
+    var Data = $(this).parent().parent().parent().serialize();
+    var UserId = $(this).data('user');
+    var That = $(this);
+    $.ajax({
+      method: 'post',
+      url: ActionRoute,
+      data: Data,
+      success: function success(response) {
+        $('#products-list').html(OriginalData);
+        var CurrentProducts = $('#products-list > div');
+        CurrentProducts.each(function () {
+          if (!response.includes($(this).data('id'))) {
+            $(this).fadeOut('fast');
+          }
+        });
+        That.html('فلترة');
+      },
+      error: function error(XMLHttpRequest, textStatus, errorThrown) {
+        ShowNoto('notification-danger', errorThrown, 'Error');
+      }
+    });
+  });
+  $('#add-to-cart').click(function (e) {
+    e.preventDefault(); //Validate the Stuff
+
+    var size = $('#product-cart-form input[name="size"]:checked').val();
+    var color = $('#product-cart-form input[name="color"]:checked').val();
+    var qty = $('#product-cart-form input[name="qty"]').val();
+
+    if (!size) {
+      ShowNoto('notification-danger', 'يرجى اختيار الحجم المطلوب', 'Error');
+      return false;
+    }
+
+    if (!color) {
+      ShowNoto('notification-danger', 'يرجى اختيار اللون المطلوب', 'Error');
+      return false;
+    }
+
+    if (!qty || !Number.isInteger(parseInt(qty))) {
+      ShowNoto('notification-danger', 'يرجى اختيار الكمية المطلوبة', 'Error');
+      return false;
+    } //Update the Icon
+
+
+    $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+    var ActionRoute = $(this).data('action');
+    var Data = {
+      'qty': $('#product-cart-form input[name="qty"]').val(),
+      'color': $('#product-cart-form input[name="color"]:checked').val(),
+      'size': $('#product-cart-form input[name="size"]:checked').val(),
+      'user_id': $(this).data('user'),
+      'product_id': $(this).data('product')
+    };
+    var That = $(this);
+    $.ajax({
+      method: 'post',
+      url: ActionRoute,
+      data: Data,
+      success: function success(response) {
+        That.html('<i class="flaticon-bag"></i> في السلة ' + Data.qty); //Update navbar cart icon
+
+        var CurrentValue = parseInt($('.shopping-card').find('span').html());
+        $('.shopping-card').find('span').html(CurrentValue + Data.qty);
+      },
+      error: function error(response, textStatus, errorThrown) {
+        console.log(response);
+        That.html('<i class="flaticon-bag"></i> اضف الى السلة');
+        ShowNoto('notification-danger', response.responseJSON, 'Error');
       }
     });
   });

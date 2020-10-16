@@ -52,7 +52,6 @@ class ProductsController extends Controller{
             'body' => 'required|min:30',
             'id' => 'required|integer',
             'price' => 'required|numeric',
-            'inventory' => 'required|numeric',
             'weight' => 'numeric',
             'height' => 'nullable|numeric',
             'width' => 'nullable|numeric',
@@ -63,7 +62,7 @@ class ProductsController extends Controller{
             return back()->withErrors($validator->errors()->all())->withInput();
         }else{
             //Prepare The Data For Uploading
-            $ProductData = $r->except('custom_tags');
+            $ProductData = $r->all();
             //Handle The Image
             if($r->has('image')){
                 $ProductData['image'] = $r->slug.'.'.$r->image->getClientOriginalExtension();
@@ -71,7 +70,7 @@ class ProductsController extends Controller{
             }else{
                 $ProductData['image'] = 'product.png';
             }
-            $ProductData['slug'] = strtolower(str_replace(' ' , '-' , $r->slug));
+            $ProductData['slug'] = str_replace(' ' , '-' , $r->slug);
             $ProductData['is_promoted'] = ($r->is_promoted == 'on') ? 1 : 0;
             $ProductData['user_id'] = auth()->user()->id;
             $NewProduct = Product::create($ProductData);
@@ -96,7 +95,6 @@ class ProductsController extends Controller{
             'body' => 'required|min:30',
             'id' => 'required|integer',
             'price' => 'required|numeric',
-            'inventory' => 'required|numeric',
             'weight' => 'numeric',
             'height' => 'nullable|numeric',
             'width' => 'nullable|numeric',
@@ -195,38 +193,81 @@ class ProductsController extends Controller{
       return back()->withSuccess('Variation Deleted Successfully');
     }
     // ============== Non-Admin Routes ================
+    public function ApplyFilters(Request $r){
+      $Filters = '';
+      if($r->has('category') && $r->category){
+        $TheCategory = Category::where('slug' , $r->category)->first();
+        $Categories = Category::latest()->get();
+        $Filters .= "->where('category_id' , $TheCategory->id)";
+      }
+      if($r->size && $r->size != null){
+        $Filters .= "->where('size' , '$r->size')";
+      }
+      if($r->season && $r->season != null){
+        $Filters .= "->where('season' , '$r->season')";
+      }
+      if($r->type && $r->type != null){
+        $Filters .= "->where('type' ,'$r->type')";
+      }
+      if($r->category_id && $r->category_id != null){
+        $Filters .= "->where('category_id' ,'$r->category_id')";
+      }
+      $Query = "\$Products = App\Product::where('status' , '!=' , 'Invisible')".$Filters."->latest()->get();";
+      eval($Query);
+      return $Products->pluck('id')->toArray();
+    }
     //Home (shop)
     public function getAll(Request $r){
-        $FiltersCode = '';
-        if($r->has('category_filters') && !empty($r->category_filters) && $r->category_filters != null){
-            $TheCategory = Category::where('slug' , $r->category_filters)->first();
-            $FiltersCode = "->where('category_id' , \$TheCategory->id)";
-        }
-        if($r->has('season_filters') && !empty($r->season_filters) && $r->season_filters != null){
-            $Season = $r->season_filters;
-            $FiltersCode = $FiltersCode . "->where('season' , \$Season)";
-        }
-        if($r->has('gender_filters') && !empty($r->gender_filters) && $r->gender_filters != null){
-            $Gender = $r->gender_filters;
-            $FiltersCode = $FiltersCode . "->where('gender' , \$Gender)";
-        }
-        $Query = '$Products = App\Product::orderBy("id" , "desc")'.$FiltersCode.'->get();';
-        eval($Query);
-        //Must Use Vars
         $Categories = Category::latest()->get();
-        $FiltersList = $this->getAllTags();
-        return view('products.all' , compact('Categories' , 'FiltersList' , 'Products' ));
+        $Products = Product::where('status' , '!=' , 'Invisible')->latest()->limit(9)->get();
+        return view('products.all' , compact('Categories' , 'Products'));
     }
-    public function getWithFilter($Category){
-        $TheCategory = Category::where('slug' , $Category)->first();
-        $Categories = Category::latest()->get();
-        $FiltersList = $this->getAllTags();
-        $Products = Product::where('category_id' , $TheCategory->id)->latest()->get();
-        return view('products.index' , compact('Categories' , 'FiltersList' , 'Products'));
+    public function getCategoryAll($Category){
+      $TheCategory = Category::where('slug' , $Category)->first();
+      $Categories = Category::latest()->get();
+      $Products = Product::where('category_id' , $TheCategory->id)->latest()->limit(9)->get();
+      $AvailableSizes = $Products->pluck('size')->unique();
+      $AvailableSeasons = $Products->pluck('season')->unique();
+      $AvailableTypes = $Products->pluck('type')->unique();
+      return view('products.category' , compact('Products' , 'Categories' , 'AvailableSizes' , 'AvailableSeasons','AvailableTypes'));
+    }
+    public function getSizeAll($Size){
+      $Categories = Category::latest()->get();
+      $Products = Product::where('size' , $Size)->latest()->limit(9)->get();
+      $AvailableCategories = $Products->pluck('category_id')->unique();
+      $AvailableSeasons = $Products->pluck('season')->unique();
+      $AvailableTypes = $Products->pluck('type')->unique();
+      return view('products.size' , compact('Products' , 'Categories' , 'AvailableCategories' , 'AvailableSeasons','AvailableTypes'));
+    }
+    public function getSeasonAll($Season){
+      $Categories = Category::latest()->get();
+      $Products = Product::where('season' , $Season)->latest()->get();
+      $AvailableSizes = $Products->pluck('size')->unique();
+      $AvailableCategories = $Products->pluck('category_id')->unique();
+      $AvailableTypes = $Products->pluck('type')->unique();
+      return view('products.season' , compact('Products' , 'Categories' , 'AvailableSizes' , 'AvailableCategories','AvailableTypes'));
+    }
+    public function getTypeAll($Type){
+      $Categories = Category::latest()->get();
+      $Products = Product::where('type' , $Type)->latest()->limit(9)->get();
+      $AvailableSizes = $Products->pluck('size')->unique();
+      $AvailableCategories = $Products->pluck('category_id')->unique();
+      $AvailableSeasons = $Products->pluck('season')->unique();
+      return view('products.type' , compact('Products' , 'Categories' , 'AvailableSizes' , 'AvailableCategories','AvailableSeasons'));
+    }
+    public function searchProducts(Request $r){
+      $Categories = Category::latest()->get();
+      $Products = Product::where('title' , 'like' , "%$r->search_term%")->latest()->limit(9)->get();
+      return view('products.all' , compact('Products','Categories'));
+    }
+    public function filterProductsList(Request $r){
 
     }
     public function getSingle($slug,$id){
         $TheProduct = Product::findOrFail($id);
+        if($TheProduct->status == 'Invisible'){
+          abort(404);
+        }
         return view('products.single' , compact('TheProduct'));
     }
     public function askQuestion(Request $r){

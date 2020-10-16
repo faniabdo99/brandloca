@@ -18,7 +18,6 @@
             <li class="nav-item"><a class="sidebar-link" href="{{route('admin.users.home')}}"><span class="icon-holder"><i class="fas fa-users"></i> </span><span class="title">Users</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="{{route('admin.discount.home')}}"><span class="icon-holder"><i class="fas fa-percent"></i> </span><span class="title">Discounts</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="{{route('admin.coupoun.home')}}"><span class="icon-holder"><i class="fas fa-ticket-alt"></i> </span><span class="title">Coupon Codes</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="{{route('admin.shippingCosts.home')}}"><span class="icon-holder"><i class="fas fa-truck"></i> </span><span class="title">Shipping Costs</span></a></li>
             <li class="nav-item"><a class="sidebar-link" href="{{route('admin.orders.home')}}"><span class="icon-holder"><i class="fas fa-file"></i> </span><span class="title">Orders</span></a></li>
         </ul>
     </div>

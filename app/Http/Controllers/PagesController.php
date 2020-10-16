@@ -33,6 +33,8 @@ class PagesController extends Controller{
         return back()->withSuccess('تم الارسال بنجاح!');
       }
     }
+    public function getPrivacyPolicy(){return view('static.privacy-policy');}
+    public function getReturnPolicy(){return view('static.return-policy');}
     public function getCheckout(){
         return view('checkout');
     }

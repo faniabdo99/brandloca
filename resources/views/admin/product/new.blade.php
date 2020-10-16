@@ -63,6 +63,32 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
+                                                <label>Sizes</label>
+                                                <select class="form-control" name="size" required>
+                                                        <option value="mini_bb">Mini Baby (3m - 1y)</option>
+                                                        <option value="bb">Baby (1-4 years)</option>
+                                                        <option value="medium">Medium (5-9 years)</option>
+                                                        <option value="adult">Adults (10-16 years)</option>
+                                                        <option value="older">Older (16+ years)</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Season</label>
+                                                <select class="form-control" name="season" required>
+                                                        <option value="summer">Summer</option>
+                                                        <option value="winter">Winter</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Type</label>
+                                                <select class="form-control" name="type" required>
+                                                        <option value="pajama">Pajama</option>
+                                                        <option value="tshirt">T-Shirts</option>
+                                                        <option value="pants">Pants</option>
+                                                        <option value="shoes">Shoes</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Discount</label>
                                                 <select class="form-control" name="discount_id">
                                                         <option selected value="">No Discount</option>

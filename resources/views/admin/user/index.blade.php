@@ -1,4 +1,5 @@
 @include('admin.layout.header')
+
 <body class="app">
     <div>
         @include('admin.layout.sidebar')
@@ -12,8 +13,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="bgc-white bd bdrs-3 p-20 mB-20 mT-30">
-                                    <table id="dataTable" class="table table-striped table-bordered" cellspacing="0"
-                                        width="100%">
+                                    <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -29,13 +29,18 @@
                                             <tr>
                                                 <td>{{$Single->name}}</td>
                                                 <td>{{$Single->email}}</td>
-                                                <td>@if($Single->active) Active @else Not Active @endif</td>
+                                                <td>
+                                                    @if($Single->active) Active
+                                                        @else Not Active @endif</td>
                                                 <td>{{$Single->code}}</td>
                                                 <td>{{$Single->country}}</td>
                                                 <td>
-                                                    <a id="activate-btn" href="javascript:;" item-id="{{$Single->id}}" action-route="{{route('admin.user.toggleActive')}}" class="btn btn-primary">@if($Single->confirmed) Deactivate @else Activate @endif</a>
-                                                    <a id="delete-btn" href="javascript:;" item-id="{{$Single->id}}" action-route="{{ route('admin.user.delete') }}" class="btn btn-danger">Delete</a>
-                                                    {{-- <a href="{{route('admin.products.getLocalize' , $Single->id)}}" class="btn btn-success">Add to Group</a> --}}
+                                                    <a href="javascript:;" item-id="{{$Single->id}}" action-route="{{route('admin.user.toggleActive')}}" class="activate-btn btn btn-primary">
+                                                        @if($Single->confirmed) Deactivate
+                                                            @else Activate @endif</a>
+                                                                <a href="javascript:;" item-id="{{$Single->id}}" action-route="{{ route('admin.user.delete') }}" class="delete-btn btn btn-danger">Delete</a>
+                                                                {{-- <a href="{{route('admin.products.getLocalize' , $Single->id)}}" class="btn btn-success">Add to Group
+                                                    </a> --}}
                                                 </td>
                                             </tr>
                                             @empty
@@ -52,47 +57,49 @@
     </div>
     @include('admin.layout.scripts')
     <script>
-        $('#delete-btn').dblclick(function(){
+        $('.delete-btn').dblclick(function() {
             var Elem = $(this);
             var ItemId = $(this).attr('item-id');
             var ActionRoute = $(this).attr('action-route');
             $(this).html('<i class="fas fa-spinner fa-spin"></i>');
             $.ajax({
-                method : 'POST',
-                url: ActionRoute ,
-                data: {item_id : ItemId},
-                success: function(response){
-                    Elem.parent().parent().fadeOut('fast');
-                    ShowNoto('noto-success' , response , 'Success');
+                method: 'POST',
+                url: ActionRoute,
+                data: {
+                    item_id: ItemId
                 },
-                error: function(XMLHttpRequest, textStatus, errorThrown){
-                    ShowNoto('noto-danger' , errorThrown , 'Error');
+                success: function(response) {
+                    Elem.parent().parent().fadeOut('fast');
+                    ShowNoto('noto-success', response, 'Success');
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    ShowNoto('noto-danger', errorThrown, 'Error');
                     Elem.html('Delete');
                 }
             });
         });
 
-        $('#activate-btn').click(function(){
+        $('.activate-btn').click(function() {
             var Elem = $(this);
             var ItemId = $(this).attr('item-id');
             var ActionRoute = $(this).attr('action-route');
             $(this).html('<i class="fas fa-spinner fa-spin"></i>');
             $.ajax({
-                method : 'POST',
-                url: ActionRoute ,
-                data: {item_id : ItemId},
-                success: function(response){
-                    ShowNoto('noto-success' , response.successMessage , 'Success');
+                method: 'POST',
+                url: ActionRoute,
+                data: {
+                    item_id: ItemId
+                },
+                success: function(response) {
+                    ShowNoto('noto-success', response.successMessage, 'Success');
                     Elem.html(response.btnMessage);
                 },
-                error: function(XMLHttpRequest, textStatus, errorThrown){
-                    ShowNoto('noto-danger' , errorThrown , 'Error');
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    ShowNoto('noto-danger', errorThrown, 'Error');
                     Elem.html('Activate');
                 }
             });
         });
-        
     </script>
 </body>
-
 </html>

@@ -1,5 +1,4 @@
 @include('layout.header')
-
 <body>
 	@include('layout.navbar')
 	@include('layout.errors')
@@ -95,7 +94,7 @@
 						<div class="pi-pic">
 							<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+								{{-- <a href="{{route('cart.add')}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a> --}}
 								@auth
 									<a href="javascript:;" class="wishlist-btn @if($NewProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$NewProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
 								@endauth
@@ -160,7 +159,7 @@
 				@endforelse
 			</div>
 			<div class="text-center pt-5">
-				<button class="site-btn sb-line sb-dark">عرض المزيد</button>
+				<a href="{{route('shop')}}" class="site-btn sb-line sb-dark">عرض المزيد</a>
 			</div>
 		</div>
 	</section>

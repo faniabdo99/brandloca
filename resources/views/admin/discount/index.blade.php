@@ -1,5 +1,4 @@
 @include('admin.layout.header')
-
 <body class="app">
     <div>
         @include('admin.layout.sidebar')
@@ -28,7 +27,7 @@
                                             @forelse ($Discounts as $Single)
                                             <tr>
                                                 <td>{{$Single->title}}</td>
-                                                <td>{{$Single->amount}} @if($Single->type == 'percent') % @else ‏€ @endif</td>
+                                                <td>{{$Single->amount}} @if($Single->type == 'percent') % @else ‏L.E @endif</td>
                                                 <td>{{$Single->ActiveOnProducts->count()}}</td>
                                                 <td>{{$Single->valid_until->format('Y-m-d')}}</td>
                                                 <td>

@@ -29,6 +29,10 @@
 ---------------------*/
 @import 'orders';
 /* ------------------
+  Products section
+---------------------*/
+@import 'products';
+/* ------------------
   Features section
 ---------------------*/
 
@@ -885,7 +889,17 @@
 	text-transform: uppercase;
 	margin-bottom: 18px;
 }
-
+.product-details .p-old-price {
+	font-size: 16px;
+	color: $danger;
+	text-decoration: line-through;
+}
+.product-details .p-discount-price{
+	font-size: 24px;
+	color: $success;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
 .product-details .p-price {
 	font-size: 24px;
 	color: #414141;
@@ -962,10 +976,6 @@
 .product-details .fw-size-choose .disable label {
 	border: 2px solid #e1e1e1;
 	color: #cacaca;
-}
-
-.product-details .site-btn {
-	min-width: 190px;
 }
 
 .product-details .social-sharing {

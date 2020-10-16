@@ -157,6 +157,7 @@ ol {
 
 .site-btn.sb-dark {
   background: #393733;
+  color: #ffffff;
 }
 
 .site-btn.sb-dark.sb-line {
@@ -930,6 +931,17 @@ ol {
 }
 .trace-section .trace-order-result h4 {
   font-size: 1.3em;
+}
+
+/* ------------------
+  Products section
+---------------------*/
+.all-products-filters-form select {
+  border: none;
+  background-color: #f1f1f1;
+  border: 2px solid #FEC906;
+  border-radius: 50px;
+  padding: 0 15px;
 }
 
 /* ------------------
@@ -1757,6 +1769,19 @@ ol {
   margin-bottom: 18px;
 }
 
+.product-details .p-old-price {
+  font-size: 16px;
+  color: #c54343;
+  text-decoration: line-through;
+}
+
+.product-details .p-discount-price {
+  font-size: 24px;
+  color: green;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
 .product-details .p-price {
   font-size: 24px;
   color: #414141;
@@ -1833,10 +1858,6 @@ ol {
 .product-details .fw-size-choose .disable label {
   border: 2px solid #e1e1e1;
   color: #cacaca;
-}
-
-.product-details .site-btn {
-  min-width: 190px;
 }
 
 .product-details .social-sharing {
@@ -2723,4 +2744,27 @@ ol {
 }
 .auth-form .no-account-box h4 {
   margin-bottom: 20px;
+}
+
+.static-content-section {
+  direction: rtl;
+  text-align: right;
+  padding: 50px;
+}
+.static-content-section h1 {
+  color: #FEC906;
+  font-size: 2.5em;
+  margin-bottom: 25px;
+}
+.static-content-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+.static-content-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+.static-content-section p {
+  line-height: 2;
+  color: #707070;
 }

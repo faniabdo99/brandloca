@@ -1,0 +1,10 @@
+//Products Related SCSS
+.all-products-filters-form{
+  select{
+    border: none;
+    background-color: $lightgray;
+    border: 2px solid $brand;
+    border-radius: 50px;
+    padding: 0 15px;
+  }
+}

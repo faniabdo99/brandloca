@@ -22,7 +22,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Model Number *</label>
-                                                <input type="text" class="form-control" name="model_number" value="{{old('model_number') ?? {{$ProductData->model_number}}}}" placeholder="Enter Model Number Here">
+                                                <input type="text" class="form-control" name="model_number" value="{{old('model_number') ?? $ProductData->model_number}}" placeholder="Enter Model Number Here">
                                             </div>
                                             <div class="form-group">
                                                 <label>Product Main Image (Unchanged)</label>
@@ -62,6 +62,35 @@
                                                         <option value="Available">Available</option>
                                                         <option value="Sold Out">Sold out</option>
                                                         <option value="Invisible">Invisible</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Sizes</label>
+                                                <select class="form-control" name="size" required>
+                                                        <option value="{{$ProductData->size}}" selected>{{$ProductData->size}}</option>
+                                                        <option value="mini_bb">Mini Baby (3m - 1y)</option>
+                                                        <option value="bb">Baby (1-4 years)</option>
+                                                        <option value="medium">Medium (5-9 years)</option>
+                                                        <option value="adult">Adults (10-16 years)</option>
+                                                        <option value="older">Older (16+ years)</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Season</label>
+                                                <select class="form-control" name="season" required>
+                                                        <option value="{{$ProductData->season}}" selected>{{$ProductData->season}}</option>
+                                                        <option value="summer">Summer</option>
+                                                        <option value="winter">Winter</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Type</label>
+                                                <select class="form-control" name="type" required>
+                                                        <option value="{{$ProductData->type}}" selected>{{$ProductData->type}}</option>
+                                                        <option value="pajama">Pajama</option>
+                                                        <option value="tshirt">T-Shirts</option>
+                                                        <option value="pants">Pants</option>
+                                                        <option value="shoes">Shoes</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">

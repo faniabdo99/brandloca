@@ -1,6 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@getHomepage')->name('home');
+//Static Pages
+Route::get('privacy-policy' , 'PagesController@getPrivacyPolicy')->name('privacy.policy');
+Route::get('return-policy' , 'PagesController@getReturnPolicy')->name('return.policy');
 //Users System
 Route::middleware('auth')->group(function () {
   Route::get('profile' , 'AuthController@getProfile')->name('profile');
@@ -30,12 +33,15 @@ Route::middleware('guest')->group(function () {
 Route::get('trace-order' , 'OrdersController@getTrace')->name('order.trace');
 //Products List
 Route::get('shop' , 'ProductsController@getAll')->name('shop');
+Route::get('category/{category}' , 'ProductsController@getCategoryAll')->name('shop.category');
+Route::get('size/{size}' , 'ProductsController@getSizeAll')->name('shop.size');
+Route::get('season/{season}' , 'ProductsController@getSeasonAll')->name('shop.season');
+Route::get('type/{type}' , 'ProductsController@getTypeAll')->name('shop.type');
+Route::get('search' , 'ProductsController@searchProducts')->name('shop.search');
 Route::get('product/{id}/{slug}' , 'ProductsController@getSingle')->name('product');
-//Pages Routes
+//Contact Us
 Route::get('contact' , 'PagesController@getContact')->name('contact');
 Route::post('contact' , 'PagesController@postContact')->name('contact.post');
-Route::get('checkout' , 'PagesController@getCheckout')->name('checkout');
-Route::get('category' , 'PagesController@getCategoryPage')->name('category');
 //Admin Only Routes
 Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
     Route::get('/' , 'AdminController@getHome')->name('admin.home');
@@ -66,7 +72,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
     });
     //Users System
     Route::prefix('users')->group(function(){
-      Route::get('/' , 'UsersController@getHome')->name('admin.users.home');
+      Route::get('/' , 'AuthController@getHome')->name('admin.users.home');
     });
     //Discount System
     Route::prefix('discount')->group(function(){
@@ -84,23 +90,10 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
       Route::get('/edit/{id}' , 'CoupounsController@getEdit')->name('admin.coupoun.getEdit');
       Route::post('/edit/{id}' , 'CoupounsController@postEdit')->name('admin.coupoun.postEdit');
     });
-    //Shipping Costs System
-    Route::prefix('shipping-costs')->group(function(){
-      Route::get('/' , 'ShippingCostsController@getHome')->name('admin.shippingCosts.home');
-      Route::get('/new' , 'ShippingCostsController@getNew')->name('admin.shippingCosts.getNew');
-      Route::post('/new' , 'ShippingCostsController@postNew')->name('admin.shippingCosts.postNew');
-      Route::get('/edit/{id}' , 'ShippingCostsController@getEdit')->name('admin.shippingCosts.getEdit');
-      Route::post('/edit/{id}' , 'ShippingCostsController@postEdit')->name('admin.shippingCosts.postEdit');
-    });
       //Orders System
       Route::prefix('orders')->group(function(){
         Route::get('/' , 'OrdersController@getHome')->name('admin.orders.home');
         Route::get('/single/{id}' , 'OrdersController@getSingleOrder')->name('admin.orders.single');
         Route::post('/update-status/{id}' , 'OrdersController@updateOrderStatus')->name('admin.orders.updateStatus');
-        Route::get('/new' , 'ProductsController@getNew')->name('admin.products.getNew');
-        Route::post('/new' , 'ProductsController@postNew')->name('admin.products.postNew');
-        Route::get('/edit/{id}' , 'ProductsController@getEdit')->name('admin.products.getEdit');
-        Route::post('/edit/{id}' , 'ProductsController@postEdit')->name('admin.products.postEdit');
-        Route::get('/localize/{id}' , 'ProductsController@getLocalize')->name('admin.products.getLocalize');
       });
   });

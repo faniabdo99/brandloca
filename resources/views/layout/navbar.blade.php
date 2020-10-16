@@ -1,7 +1,7 @@
 	<!-- Page Preloder -->
-	<div id="preloder">
+	{{-- <div id="preloder">
 		<div class="loader"></div>
-	</div>
+	</div> --}}
 	<!-- Header section -->
 	<header class="header-section">
 		<div class="header-top">
@@ -14,8 +14,8 @@
 						</a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
-						<form class="header-search-form">
-							<input type="text" placeholder="ابحث عن منتجات ...">
+						<form class="header-search-form" action="{{route('shop.search')}}" method="get">
+							<input id="search_term" type="text" placeholder="ابحث عن منتجات ..." name="search_term" value="{{$_GET['search_term'] ?? ''}}">
 							<button><i class="fas fa-search"></i></button>
 						</form>
 					</div>
@@ -38,11 +38,11 @@
 									<i class="fas fa-shopping-cart"></i>
 									<span>0</span>
 								</div>
-								<a href="#">عربة التسوق</a>				
+								<a href="#">عربة التسوق</a>
 							</div>
 						</div>
 						@endauth
-						@guest 
+						@guest
 						<div class="user-panel">
 							<div class="up-item">
 								<i class="fas fa-user"></i>
@@ -59,16 +59,16 @@
 				<!-- menu -->
 				<ul class="main-menu">
 					<li><a href="{{route('home')}}">الرئيسية</a></li>
-					<li><a href="#">منتجات جديدة</a></li>
+					<li><a href="{{route('shop')}}">قائمة المنتجات</a></li>
 					<li><a href="#">أحدث العروض
 						<span class="new">New</span>
 					</a></li>
 					<li><a href="#">الأقسام</a>
 						<ul class="sub-menu">
-							<li><a href="#">بيجامات</a></li>
-							<li><a href="#">جينز</a></li>
-							<li><a href="#">أحذية</a></li>
-							<li><a href="#">ملابس داخلية</a></li>
+							@forelse(CategoriesList() as $Category)
+								<li><a href="{{route('shop.category' , $Category->slug)}}">{{$Category->title}}</a></li>
+							@empty
+							@endforelse
 						</ul>
 					</li>
 					<li><a href="#">الطلبات</a>

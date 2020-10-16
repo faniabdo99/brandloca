@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>آرتي - {{$pageTitle ?? ' متجر الملابس الأفضل'}}</title>
+	<title>آرتي - {{$PageTitle ?? ' متجر الملابس الأفضل'}}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="آرتي - {{$PageTitle ?? ' متجر الملابس الأفضل'}}">
 	<meta name="keywords" content="divisima, eCommerce, creative, html">
