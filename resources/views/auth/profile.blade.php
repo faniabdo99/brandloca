@@ -53,12 +53,16 @@
                               </tr>
                             </thead>
                             <tbody>
+                              @forelse(auth()->user()->Orders() as $Order)
                               <tr>
-                                <th scope="row">1550-5444</th>
-                                <td>550 L.E</td>
-                                <td>تم الشحن</td>
+                                <th scope="row">{{$Order->id}}</th>
+                                <td>{{$Order->total_amount}} L.E</td>
+                                <td>{{$Order->status}}</td>
                                 <td><a href="#" class="text-primary">تفاصيل الطلب</a></td>
                               </tr>
+                              @empty
+                                <p>لم تقم بانشاء اي طلب بعد</p>
+                              @endforelse
                             </tbody>
                           </table>
                     </div>

@@ -11,8 +11,8 @@ Route::post('add-to-wishlist' , 'FavouriteController@ToggleFavourite')->name('fa
 Route::post('product/filter' , 'ProductsController@ApplyFilters')->name('shop.filter');
 //Cart
 Route::post('add-to-cart' , 'CartController@addToCart')->name('cart.add');
-
-
+Route::post('update-cart/{item}/{user}' , 'CartController@updateCart')->name('cart.update');
+Route::post('apply-coupon' , 'CartController@ApplyCoupon')->name('cart.coupon');
 
 
 
@@ -43,10 +43,6 @@ Route::post('delete-coupon' , 'CoupounsController@delete')->name('admin.coupoun.
 //Shipping Costs
 Route::post('delete-shipping-cost' , 'ShippingCostsController@delete')->name('admin.shippingCosts.delete');
 Route::post('calculate-shipping-cost' , 'ShippingCostsController@calculateShippingCost')->name('admin.shippingCosts.calculate');
-//Cart
-Route::post('update-cart' , 'CartController@postUpdate')->name('cart.update');
-//Order VAT Number
-Route::post('update-order-vat/{id}' , 'OrdersController@updateVatNumber')->name('order.updateVat');
 //*********non-Admin API Routes
 Route::post('send-activate-link' , 'AuthController@sendActivateEmail')->name('user.sendActivateLink');
 Route::post('ask-question-about-product' , 'ProductsController@askQuestion')->name('product.askQuestion');

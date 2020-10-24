@@ -1,51 +1,50 @@
-<div class="header navbar">
-    <div class="header-container">
-        <ul class="nav-left">
-            <li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i class="fas fa-bars"></i></a></li>
-            <li class="search-box"><a class="search-toggle no-pdd-right" href="javascript:void(0);"><i class="fas fa-search pdd-right-10"></i></a></li>
-            <li class="search-input"><input class="form-control" type="text" placeholder="Search..."></li>
-        </ul>
-        <ul class="nav-right">
-            <li class="notifications dropdown"><span class="counter bgc-red">3</span> <a href="" class="dropdown-toggle no-after" data-toggle="dropdown"><i class="fas fa-bell"></i></a>
-                <ul class="dropdown-menu">
-                    <li class="pX-20 pY-15 bdB"><i class="ti-bell pR-10"></i> <span class="fsz-sm fw-600 c-grey-900">Notifications</span></li>
-                    <li>
-                        <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
-                        </ul>
-                    </li>
-                    <li class="pX-20 pY-15 ta-c bdT"><span><a href="" class="c-grey-600 cH-blue fsz-sm td-n">View All Notifications <i class="ti-angle-right fsz-xs mL-10"></i></a></span></li>
-                </ul>
-            </li>
-            <li class="notifications dropdown"><span class="counter bgc-blue">3</span> <a href="" class="dropdown-toggle no-after" data-toggle="dropdown"><i class="fas fa-envelope"></i></a>
-                <ul class="dropdown-menu">
-                    <li class="pX-20 pY-15 bdB"><i class="ti-email pR-10"></i> <span class="fsz-sm fw-600 c-grey-900">Emails</span></li>
-                    <li>
-                        <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
-                        </ul>
-                    </li>
-                    <li class="pX-20 pY-15 ta-c bdT"><span><a href="email.html" class="c-grey-600 cH-blue fsz-sm td-n">View All Email <i class="fs-xs ti-angle-right mL-10"></i></a></span></li>
-                </ul>
-            </li>
-            <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-                    <div class="peer mR-10"><img class="w-2r bdrs-50p" src="{{auth()->user()->profile_image}}" alt="{{auth()->user()->name}}"></div>
-                    <div class="peer"><span class="fsz-sm c-grey-900">{{auth()->user()->name}}</span></div>
-                </a>
-                <ul class="dropdown-menu fsz-sm">
-                    <li><a href="#" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="fas fa-power-off mR-10"></i><span>Logout</span></a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+<div class="dashboard-header">
+    <nav class="navbar navbar-expand-lg bg-white fixed-top">
+        <a class="navbar-brand" href="{{route('admin.home')}}">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right-top">
+                <li class="nav-item">
+                    <div id="custom-search" class="top-search-bar">
+                        <input class="form-control" type="text" placeholder="Global Search ..">
+                    </div>
+                </li>
+                <li class="nav-item dropdown notification">
+                    <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                    <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                        <li>
+                            <div class="notification-title"> Notification</div>
+                            <div class="notification-list">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action active">
+                                        <div class="notification-info">
+                                            <div class="notification-list-user-img"><img src="{{url('public/admin/images/')}}/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
+                                            <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                <div class="notification-date">2 min ago</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-footer"> <a href="#">View all notifications</a></div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown nav-user">
+                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{auth()->user()->ProfileImage}}" class="user-avatar-md rounded-circle"></a>
+                    <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                        <div class="nav-user-info">
+                            <h5 class="mb-0 text-white nav-user-name">{{auth()->user()->name}}</h5>
+                        </div>
+                        <a class="dropdown-item" href="{{route('profile')}}"><i class="fas fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
-@if(session()->has('success'))
-<div class="noto noto-success">
-    {{session('success')}}
-</div>
-@endif
-@if ($errors->any())
-<div class="noto noto-danger">
-    @foreach ($errors->all() as $error)
-    {!! $error . '<br>' !!}
-    @endforeach
-</div>
-@endif

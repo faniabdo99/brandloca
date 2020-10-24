@@ -170,7 +170,7 @@ $(window).on('load', function () {
   --------------------*/
 
   $('.product-slider').owlCarousel({
-    loop: true,
+    loop: false,
     nav: true,
     dots: false,
     margin: 30,
@@ -192,7 +192,7 @@ $(window).on('load', function () {
     }
   });
   $('.product-slider-small').owlCarousel({
-    loop: true,
+    loop: false,
     nav: true,
     dots: false,
     margin: 30,
@@ -440,7 +440,7 @@ $(window).on('load', function () {
         That.html('<i class="flaticon-bag"></i> في السلة ' + Data.qty); //Update navbar cart icon
 
         var CurrentValue = parseInt($('.shopping-card').find('span').html());
-        $('.shopping-card').find('span').html(CurrentValue + Data.qty);
+        $('.shopping-card').find('span').html(CurrentValue + parseInt(Data.qty));
       },
       error: function error(response, textStatus, errorThrown) {
         console.log(response);
@@ -448,8 +448,66 @@ $(window).on('load', function () {
         ShowNoto('notification-danger', response.responseJSON, 'Error');
       }
     });
+  }); //Disable Arrows on Qty Filed
+
+  $('.cart-qty-input').keydown(function (e) {
+    if (e.which === 38 || e.which === 40) {
+      e.preventDefault();
+    }
+  }); //Update Cart as the User Done Typing
+
+  $('.cart-qty-input').change(function (e) {
+    var ActionRoute = $(this).data('target');
+    var TheItem = $(this);
+    var ItemValue = $(this).val();
+    $.ajax({
+      'method': 'post',
+      'url': ActionRoute,
+      'data': {
+        'qty': ItemValue
+      },
+      success: function success(response) {
+        $("#update-cart-btn").removeClass('d-none');
+      },
+      error: function error(response) {
+        console.log(response);
+        ShowNoto('notification-danger', response.responseText, 'Error');
+      }
+    });
+  });
+  $('#cart-coupon').click(function (e) {
+    e.preventDefault();
+    $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+    var ActionRoute = $(this).data('target');
+    var Data = $(this).parent('form').serialize();
+    var TheButton = $(this); //Do Ajax Call
+
+    $.ajax({
+      method: 'POST',
+      url: ActionRoute,
+      data: Data,
+      success: function success(response) {
+        TheButton.html('<i class="fas fa-check text-success"></i>');
+        location.reload(true);
+      },
+      error: function error(response) {
+        TheButton.html('ادخال');
+        ShowNoto('notification-danger', response.responseText, 'Error');
+      }
+    });
   });
 })(jQuery);
+
+/***/ }),
+
+/***/ "./resources/sass/admin/admin.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/admin/admin.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -465,14 +523,15 @@ $(window).on('load', function () {
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/style.scss ***!
-  \***************************************************************/
+/*!*************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/style.scss ./resources/sass/admin/admin.scss ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\arte\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\style.scss */"./resources/sass/style.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
 
 
 /***/ })

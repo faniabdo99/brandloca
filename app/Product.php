@@ -22,6 +22,7 @@ class Product extends Model{
       ];
       return $AvailableStatuses[$this->status];
     }
+
     public function getIsActiveAttribute(){
         if($this->status == 'Available'){
             return true;
@@ -68,6 +69,13 @@ class Product extends Model{
         }
         return $ReturnedArray;
     }
+    public function FinalPrice(){
+      if($this->HasDiscount()){
+        return $this->HasDiscount()['NewPrice'];
+      }else{
+        return $this->price;
+      }
+    }
     public function getStatusClassAttribute(){
         $StatuesArray = [];
         if($this->status == 'Sold Out'){
@@ -85,7 +93,6 @@ class Product extends Model{
         }
         return $StatuesArray;
     }
-
     public function AvailableVariations(){
       //Get Sizes
       $Variations = Product_Variation::where('product_id' , $this->id)->get();

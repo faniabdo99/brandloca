@@ -87,27 +87,30 @@
 			<div class="section-title">
 				<h2>منتجات جديدة</h2>
 			</div>
-			<div class="product-slider owl-carousel">
+			<div class="row">
 				@forelse($NewProducts as $NewProduct)
-				<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
-							<div class="pi-links">
-								{{-- <a href="{{route('cart.add')}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a> --}}
-								@auth
-									<a href="javascript:;" class="wishlist-btn @if($NewProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$NewProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
-								@endauth
-							</div>
-						</div>
-						<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
-							<div class="pi-text">
-								<h6>{{$NewProduct->price}} L.E</h6>
-								<p>{{$NewProduct->title}}</p>
-							</div>
-						</a>
-					</div>
-				</a>
+					<div class="col-lg-3">
+							<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
+								<div class="product-item">
+									<div class="pi-pic">
+										<div class="tag-new">جديد</div>
+										<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
+										<div class="pi-links">
+											{{-- <a href="{{route('cart.add')}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a> --}}
+											@auth
+												<a href="javascript:;" class="wishlist-btn @if($NewProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$NewProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+											@endauth
+										</div>
+									</div>
+									<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
+										<div class="pi-text">
+											<h6>{{$NewProduct->price}} L.E</h6>
+											<p>{{$NewProduct->title}}</p>
+										</div>
+									</a>
+								</div>
+							</a>
+				</div>
 				@empty
 				<p class="text-center">لا يوجد منتجات جديدة حالياً</p>
 				@endforelse

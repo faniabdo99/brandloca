@@ -1,24 +1,41 @@
-<div class="sidebar">
-    <div class="sidebar-inner">
-        <ul class="sidebar-menu scrollable pos-r">
-            <li class="nav-item mT-30 actived"><a class="sidebar-link" href="{{route('admin.home')}}"><span class="icon-holder"><i class="fas fa-home"></i> </span><span class="title">Dashboard</span></a></li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="fas fa-sitemap"></i> </span><span class="title">Categories</span> <span class="arrow"><i class="fas fa-chevron-right"></i></span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="sidebar-link" href="{{route('admin.categories.home')}}">All Categories</a></li>
-                    <li><a class="sidebar-link" href="{{route('admin.categories.getNew')}}">New Category</a></li>
+<div class="nav-left-sidebar sidebar-dark">
+    <div class="menu-list">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="d-xl-none d-lg-none" href="{{route('admin.home')}}">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Menu
+                    </li>
+                    <li class="nav-item "><a class="nav-link" href="{{route('admin.home')}}"><i class="fa fa-fw fa-home"></i>Home</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#categories-menu" aria-controls="categories-menu"><i class="fa fa-fw fa-project-diagram"></i>Categories</a>
+                        <div id="categories-menu" class="collapse submenu">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="{{route('admin.categories.home')}}">View All</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('admin.categories.getNew')}}">New Category</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#products-menu" aria-controls="products-menu"><i class="fa fa-fw fa-shopping-bag"></i>Products</a>
+                        <div id="products-menu" class="collapse submenu">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="{{route('admin.products.home')}}">View All</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('admin.products.getNew')}}">New Product</a></li>
+                                <li class="nav-item"><a class="nav-link" href="pages/cards.html">Low Inventory</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('admin.users.home')}}"><i class="fa fa-fw fa-user"></i>Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('admin.discount.home')}}"><i class="fa fa-fw fa-tags"></i>Discounts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('admin.coupoun.home')}}"><i class="fa fa-fw fa-ticket-alt"></i>Cuopons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-fw fa-file"></i>Orders</a></li>
                 </ul>
-            </li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span class="icon-holder"><i class="fas fa-shopping-basket"></i> </span><span class="title">Products</span> <span class="arrow"><i class="fas fa-chevron-right"></i></span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="sidebar-link" href="{{route('admin.products.home')}}">All Products</a></li>
-                    <li><a class="sidebar-link" href="{{route('admin.products.getNew')}}">New Product</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a class="sidebar-link" href="{{route('admin.system.home')}}"><span class="icon-holder"><i class="fas fa-cogs"></i> </span><span class="title">System Settings</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="{{route('admin.users.home')}}"><span class="icon-holder"><i class="fas fa-users"></i> </span><span class="title">Users</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="{{route('admin.discount.home')}}"><span class="icon-holder"><i class="fas fa-percent"></i> </span><span class="title">Discounts</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="{{route('admin.coupoun.home')}}"><span class="icon-holder"><i class="fas fa-ticket-alt"></i> </span><span class="title">Coupon Codes</span></a></li>
-            <li class="nav-item"><a class="sidebar-link" href="{{route('admin.orders.home')}}"><span class="icon-holder"><i class="fas fa-file"></i> </span><span class="title">Orders</span></a></li>
-        </ul>
+            </div>
+        </nav>
     </div>
 </div>

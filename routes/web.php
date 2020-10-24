@@ -6,6 +6,7 @@ Route::get('privacy-policy' , 'PagesController@getPrivacyPolicy')->name('privacy
 Route::get('return-policy' , 'PagesController@getReturnPolicy')->name('return.policy');
 //Users System
 Route::middleware('auth')->group(function () {
+  //User Profile
   Route::get('profile' , 'AuthController@getProfile')->name('profile');
   Route::get('wishlist' , 'AuthController@getWishlist')->name('wishlist');
   Route::get('report' , 'AuthController@getReport')->name('profile.report');
@@ -16,6 +17,14 @@ Route::middleware('auth')->group(function () {
   Route::post('edit-password' , 'AuthController@postUpdatePassword')->name('profile.password.edit.post');
   //Account Approval
   Route::get('approve-account/{code}' , 'AuthController@getApproveAccount')->name('profile.approve');
+  //Cart
+  Route::get('cart' , 'CartController@getCart')->name('order.cart');
+  Route::get('delete-from-cart/{id}' , 'CartController@deleteFromCart')->name('cart.delete');
+  Route::get('delete-coupon/{id}/{couponid}' , 'CartController@deleteCuopon')->name('cart.coupon.delete');
+  //Checkout
+  Route::get('checkout' , 'OrdersController@getCheckout')->name('orders.checkout');
+  Route::post('checkout' , 'OrdersController@postCheckout')->name('orders.checkout.post');
+  Route::get('thank-you/{id}' , 'OrdersController@getOrderComplete')->name('order.complete');
 });
 Route::middleware('guest')->group(function () {
   Route::get('login' , 'AuthController@getLogin')->name('login.get');
@@ -31,7 +40,7 @@ Route::middleware('guest')->group(function () {
   Route::get('login/{driver}/callback' , 'AuthController@handleProviderCallback')->name('login.social.callback');
 });
 Route::get('trace-order' , 'OrdersController@getTrace')->name('order.trace');
-Route::get('cart' , 'CartController@getCart')->name('order.cart');
+
 //Products List
 Route::get('shop' , 'ProductsController@getAll')->name('shop');
 Route::get('category/{category}' , 'ProductsController@getCategoryAll')->name('shop.category');
@@ -39,7 +48,7 @@ Route::get('size/{size}' , 'ProductsController@getSizeAll')->name('shop.size');
 Route::get('season/{season}' , 'ProductsController@getSeasonAll')->name('shop.season');
 Route::get('type/{type}' , 'ProductsController@getTypeAll')->name('shop.type');
 Route::get('search' , 'ProductsController@searchProducts')->name('shop.search');
-Route::get('product/{id}/{slug}' , 'ProductsController@getSingle')->name('product');
+Route::get('product/{slug}/{id}' , 'ProductsController@getSingle')->name('product');
 //Contact Us
 Route::get('contact' , 'PagesController@getContact')->name('contact');
 Route::post('contact' , 'PagesController@postContact')->name('contact.post');

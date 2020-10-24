@@ -165,7 +165,7 @@ class ProductsController extends Controller{
         return back()->withErrors($Validator->errors()->all());
       }else{
         //Check if This Variation Exsist
-        $ProductModelNumber = Product::find($id)->first()->model_number;
+        $ProductModelNumber = Product::find($id)->model_number;
         $CurrentVariations = Product_Variation::where('product_id' , $id)->get();
         $isDupliact = $CurrentVariations->map(function($item) use($r){
           if($item->color == $r->color and $item->size == $r->size and $item->color_code and $r->color_code){

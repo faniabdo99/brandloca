@@ -6,7 +6,10 @@ class Cart extends Model{
     public function Product(){
         return $this->belongsTo(Product::class);
     }
+    public function Variation(){
+      return $this->belongsTo(Product_Variation::class);
+    }
     public function getTotalPriceAttribute(){
-        return $this->Product->price * $this->qty;
+        return $this->Product->FinalPrice() * $this->qty;
     }
 }
