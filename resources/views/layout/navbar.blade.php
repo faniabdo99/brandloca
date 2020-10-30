@@ -9,9 +9,7 @@
 				<div class="row">
 					<div class="col-lg-2 text-center text-lg-left">
 						<!-- logo -->
-						<a href="{{route('home')}}" class="site-logo">
-							<img src="{{url('public/img')}}/logo.png" alt="شعار آرتي">
-						</a>
+						<a href="{{route('home')}}" class="site-logo"><img src="{{url('public/img')}}/logo.png" alt="شعار آرتي"></a>
 					</div>
 					<div class="col-xl-6 col-lg-5">
 						<form class="header-search-form" action="{{route('shop.search')}}" method="get">
@@ -60,9 +58,6 @@
 				<ul class="main-menu">
 					<li><a href="{{route('home')}}">الرئيسية</a></li>
 					<li><a href="{{route('shop')}}">قائمة المنتجات</a></li>
-					<li><a href="#">أحدث العروض
-						<span class="new">New</span>
-					</a></li>
 					<li><a href="#">الأقسام</a>
 						<ul class="sub-menu">
 							@forelse(CategoriesList() as $Category)

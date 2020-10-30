@@ -9,7 +9,8 @@
 					<div class="footer-widget about-widget">
 						<h2>عن Arte</h2>
 						<p>متجر الملابس الأول في مصر لعام 2021</p>
-						<img src="{{url('public/img')}}/cards.png" alt="">
+						<img src="{{url('public/img')}}/vodafone-cash.png" width="60" height="30" alt="vodafone-cash">
+						<img src="{{url('public/img')}}/mastercart.png" width="60" height="30" alt="Master Card">
 					</div>
 				</div>
 				<div class="col-lg-3 col-sm-6">
@@ -19,8 +20,8 @@
 							<li><a href="">شركائنا</a></li>
 							<li><a href="">المدونون</a></li>
 							<li><a href="">المساعدة و الدعم</a></li>
-							<li><a href="">شروط الاستخدام</a></li>
-							<li><a href="">سياسة الخصوصية</a></li>
+							<li><a href="{{route('return.policy')}}">سياسة الاسترجاع</a></li>
+							<li><a href="{{route('privacy.policy')}}">سياسة الخصوصية</a></li>
 						</ul>
 					</div>
 				</div>

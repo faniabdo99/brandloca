@@ -8,8 +8,11 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="cart-table text-right">
-                      <div class="d-flex justify-content-between">
-                        <h3>سلة المشتريات</h3>
+                      <div>
+                        <h3 class="mb-2">سلة المشتريات</h3>
+                        @if($CartItems->count() > 0)
+                            <p>تبقى جميع العناصر في سلة مشترياتك لمدة 3 ساعات , في حال لم تقم باكمال عملية الشراء خلال 3 ساعات سيتم افراغ سلة مشترياتك تلقائياً</p>
+                        @endif
                         <a class="text-success font-weight-bold d-none" id="update-cart-btn" href="{{route('order.cart')}}">تحديث السلة</a>
                       </div>
                         <div class="cart-table-warp">
