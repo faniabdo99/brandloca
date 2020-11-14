@@ -9,9 +9,9 @@
                 <div class="col-lg-12">
                     <div class="trace-order-form mb-5">
                         <h4>رقم التتبع</h4>
-                        <form action="#" method="post">
+                        <form>
                             <input type="number" name="order_serial_number" id="order-id" placeholder="55516476">
-                            <button type="submit"><i class="fas fa-search"></i></button>
+                            <button type="submit" id="trace-order-form"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
                     <div class="trace-order-result">

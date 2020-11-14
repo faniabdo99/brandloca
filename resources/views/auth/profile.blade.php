@@ -43,7 +43,7 @@
                     </div>
                     <div class="account-latest-orders">
                         <h4 class="mb-3">أحدث الطلبات</h4>
-                        <table class="table table-striped">
+                        <table class="table table-striped mb-5">
                             <thead>
                               <tr>
                                 <th scope="col">رقم التتبع</th>
@@ -58,7 +58,7 @@
                                 <th scope="row">{{$Order->id}}</th>
                                 <td>{{$Order->total_amount}} L.E</td>
                                 <td>{{$Order->status}}</td>
-                                <td><a href="#" class="text-primary">تفاصيل الطلب</a></td>
+                                <td><a href="{{route('order.complete' , $Order)}}" class="text-primary">تفاصيل الطلب</a></td>
                               </tr>
                               @empty
                                 <p>لم تقم بانشاء اي طلب بعد</p>

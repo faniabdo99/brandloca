@@ -10,6 +10,9 @@ Route::middleware('auth')->group(function () {
   Route::get('profile' , 'AuthController@getProfile')->name('profile');
   Route::get('wishlist' , 'AuthController@getWishlist')->name('wishlist');
   Route::get('report' , 'AuthController@getReport')->name('profile.report');
+  Route::get('kids' , 'AuthController@getKids')->name('profile.kids');
+  Route::post('add-kids' , 'AuthController@AddNewKids')->name('profile.kids.add');
+  Route::get('delete-kid/{id}' , 'AuthController@DeleteKid')->name('profile.kid.delete');
   Route::get('logout' , 'AuthController@logout')->name('logout');
   //Update Account Data
   Route::get('edit-profile' , 'AuthController@getEditProfile')->name('profile.edit');

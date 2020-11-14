@@ -19,6 +19,9 @@
 	<link rel="stylesheet" href="{{url('public/css')}}/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="{{url('public/css')}}/animate.css"/>
 	<link rel="stylesheet" href="{{url('public/css')}}/style.css"/>
+	@if(isset($Printable) && $Printable)
+		<link rel="stylesheet" type="text/css" href="{{url('public/css')}}/print.css" media="print">
+	@endif
 	<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

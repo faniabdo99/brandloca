@@ -7,8 +7,10 @@ use Auth;
 use Mail;
 use Image;
 use Socialite;
+use Carbon\Carbon;
 //Models
 use App\User;
+use App\Kid;
 //Mails
 use App\Mail\WelcomeNewUser;
 use App\Mail\EmailUpdatedMail;
@@ -311,6 +313,45 @@ class AuthController extends Controller{
     }
     public function getReport(){
         return view('auth.report');
+    }
+    public function getKids(){
+      return view('auth.kids');
+    }
+    public function AddNewKids(Request $r){
+      //Validate the request
+      $Rules = [
+        'name' => 'required',
+        'gender' => 'required',
+        'dob' => 'required'
+      ];
+      $ErrorMessages = [
+        'name.required' => 'حقل اسم الطفل مطلوب',
+        'gender.required' => 'حقل جنس الطفل مطلوب',
+        'dob.required' => 'حقل تاريخ الميلاد مطلوب'
+      ];
+      $Validator = Validator::make($r->all() , $Rules , $ErrorMessages);
+      if($Validator->fails()){
+        return back()->withErrors($Validator->errors()->all())->withInput();
+      }else{
+        //Make sure the kids is less than 18 years old
+        $KidAge = Carbon::create($r->dob)->age;
+        if($KidAge > 18){
+          return back()->withErrors('لا يمكن اضافة طفل أكبر من 18 سنة!')->withInput();
+        }
+        //Make sure the father dosen't have more than 5 kids
+        if(auth()->user()->Kids()->count() >= 5){
+          return back()->withErrors('لا يمكنك اضافة أكثر من 5 أطفال!')->withInput();
+        }
+        //Store the data
+        $KidData = $r->except('_token');
+        $KidData['parent_id'] = auth()->user()->id;
+        Kid::create($KidData);
+        return back()->withSuccess('تم اضافة الطفل بنجاح!');
+      }
+    }
+    public function DeleteKid($id){
+      Kid::find($id)->delete();
+      return back()->withSuccess('تم حذف الطفل بنجاح');
     }
     public function postReport(Request $r){
         //Validate the request

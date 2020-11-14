@@ -495,6 +495,12 @@ $(window).on('load', function () {
         ShowNoto('notification-danger', response.responseText, 'Error');
       }
     });
+  }); //Order Trace 
+
+  $('#trace-order-form').click(function (e) {
+    e.preventDefault();
+    var OrderId = $(this).closest('#order-id').val();
+    console.log(OrderId);
   });
 })(jQuery);
 
@@ -504,6 +510,17 @@ $(window).on('load', function () {
 /*!*****************************************!*\
   !*** ./resources/sass/admin/admin.scss ***!
   \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/print.scss":
+/*!***********************************!*\
+  !*** ./resources/sass/print.scss ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -523,14 +540,15 @@ $(window).on('load', function () {
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/style.scss ./resources/sass/admin/admin.scss ***!
-  \*************************************************************************************************/
+/*!*****************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/style.scss ./resources/sass/print.scss ./resources/sass/admin/admin.scss ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\arte\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\print.scss */"./resources/sass/print.scss");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
 
 

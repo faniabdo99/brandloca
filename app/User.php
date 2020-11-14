@@ -33,6 +33,9 @@ class User extends Authenticatable{
     public function Orders(){
         return Order::where('user_id' , $this->id)->get();
     }
+    public function Kids(){
+      return $this->hasMany(Kid::class , 'parent_id');
+    }
     public function getNameAttribute(){
         return $this->first_name . ' ' . $this->last_name;
     }

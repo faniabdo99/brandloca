@@ -382,4 +382,10 @@ $(window).on('load', function () {
         }
       });
     });
+    //Order Trace 
+    $('#trace-order-form').click(function(e){
+      e.preventDefault();
+      var OrderId = $(this).closest('#order-id').val();
+      console.log(OrderId);
+    });
 })(jQuery);

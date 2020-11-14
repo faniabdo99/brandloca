@@ -1,35 +1,41 @@
-.trace-section{
+.trace-section {
     padding-top: 50px;
-    .trace-order-form{
+
+    .trace-order-form {
         text-align: right;
-        h4{
+
+        h4 {
             display: block;
             margin-bottom: 15px;
             font-weight: bold;
             font-size: 1.3em;
         }
-        form{
+
+        form {
             display: flex;
-            input{
+
+            input {
                 display: block;
                 width: 100%;
-                padding:15px;
+                padding: 15px;
                 border-top-right-radius: 4px;
                 border-bottom-right-radius: 4px;
-                border:0;
-                box-shadow: 0 0 25px rgba(0,0,0,0.2);
+                border: 0;
+                box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
                 flex: 10;
             }
-            button{
+
+            button {
                 flex: 1;
                 background-color: $brand;
-                color:$black;
-                border:0;
+                color: $black;
+                border: 0;
                 border-top-left-radius: 4px;
                 border-bottom-left-radius: 4px;
-                box-shadow: 0 0 25px rgba(0,0,0,0.2);
+                box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
                 transition: background-color ease 0.3s;
-                &:hover{
+
+                &:hover {
                     cursor: pointer;
                     background-color: $brand-hover;
                     transition: background-color ease 0.3s;
@@ -37,10 +43,22 @@
             }
         }
     }
-    .trace-order-result{
+
+    .trace-order-result {
         text-align: right;
-        h4{
+
+        h4 {
             font-size: 1.3em;
         }
+    }
+}
+
+//Thanks Page
+.thanks-section {
+    padding-top: 50px;
+
+    h2.page-title {
+        font-size: 2.2em;
+
     }
 }

@@ -1,0 +1,11 @@
+section.footer-section {
+  display: none;
+}
+
+header.header-section {
+  display: none;
+}
+
+.hide-on-print {
+  display: none;
+}

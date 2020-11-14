@@ -12,6 +12,7 @@
         <ul>
             <li @if(\Route::current()->action['as'] == 'profile') class="active" @endif><a class="d-block stretched-link" href="{{route('profile')}}"><i class="fas fa-user ml-3"></i> الملف الشخصي</a></li>
             <li @if(\Route::current()->action['as'] == 'profile.edit') class="active" @endif><a class="d-block stretched-link" href="{{route('profile.edit')}}"><i class="fas fa-edit ml-3"></i> تحديث الملف الشخصي</a></li>
+            <li @if(\Route::current()->action['as'] == 'profile.kids') class="active" @endif><a class="d-block stretched-link" href="{{route('profile.kids')}}"><i class="fas fa-users ml-3"></i> أطفالي</a></li>
             <li @if(\Route::current()->action['as'] == 'wishlist') class="active" @endif><a class="d-block stretched-link" href="{{route('wishlist')}}"><i class="fas fa-heart ml-3"></i> المفضلة</a></li>
             <li @if(\Route::current()->action['as'] == 'profile.report') class="active" @endif><a class="d-block stretched-link" href="{{route('profile.report')}}"><i class="fas fa-bug ml-3"></i> ابلاغ عن مشكلة</a></li>
             <li><a class="d-block stretched-link" href="{{route('logout')}}"><i class="fas fa-sign-out-alt ml-3"></i> تسجيل الخروج</a></li>

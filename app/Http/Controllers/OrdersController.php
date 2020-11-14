@@ -32,6 +32,8 @@ class OrdersController extends Controller{
                     $CartTotal = 0;
                 }
             }
+        }else{
+          $TheCoupon = null;
         }
         return view('orders.checkout', compact('CartItems', 'CartOrigin','CartTotal', 'HasCoupon' , 'TheCoupon'));
     }
@@ -82,7 +84,9 @@ class OrdersController extends Controller{
             $item->update(['status' => 'complete']);
           });
           //Redirect to payment gatway
-
+          if($TheOrder->paymen_method == 'credit-card'){
+            //Creidet Card => Redirect or contact the Payment API
+          }
           return redirect()->route('order.complete' , $TheOrder->id);
         }else{
           return back()->withErrors('طريقة الدفع غير متاحة')->withInput();
