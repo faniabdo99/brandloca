@@ -46,7 +46,7 @@
                             </tbody>
                         </table>
                         @else
-                        <p>لم تقم باضافة أي طفل الى حسابك</p>
+                        <p class="tex-center text-danger">لم تقم باضافة أي طفل الى حسابك</p>
                         @endif
                         <h4 class="mb-4 text-right">اضافة بيانات طفل</h4>
                         <div class="arte-form mb-5">
