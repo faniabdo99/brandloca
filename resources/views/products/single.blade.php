@@ -76,6 +76,11 @@
                             @else
                               <p class="text-danger">تم البيع بالكامل</p>
                             @endif
+                          @endauth
+                          @guest
+                            <p>يرجى <a href="{{route('login.get')}}">تسجيل الدخول</a> لاضافة المنتج الى سلة المشتريات</p>
+                          @endguest
+                          @auth
                             @if($TheProduct->LikedByUser())
                                 <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}"
                                   class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="flaticon-heart"></i> أحببته</a>
