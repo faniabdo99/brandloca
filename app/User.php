@@ -28,10 +28,10 @@ class User extends Authenticatable{
         }
     }
     public function LikedProducts(){
-        return Favourite::where('user_id' , $this->id)->get();
+        return Favourite::where('user_id' , $this->id)->latest()->get();
     }
     public function Orders(){
-        return Order::where('user_id' , $this->id)->get();
+        return Order::where('user_id' , $this->id)->latest()->get();
     }
     public function Kids(){
       return $this->hasMany(Kid::class , 'parent_id');

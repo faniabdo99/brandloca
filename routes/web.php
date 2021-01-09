@@ -43,7 +43,6 @@ Route::middleware('guest')->group(function () {
   Route::get('login/{driver}/callback' , 'AuthController@handleProviderCallback')->name('login.social.callback');
 });
 Route::get('trace-order' , 'OrdersController@getTrace')->name('order.trace');
-
 //Products List
 Route::get('shop' , 'ProductsController@getAll')->name('shop');
 Route::get('category/{category}' , 'ProductsController@getCategoryAll')->name('shop.category');

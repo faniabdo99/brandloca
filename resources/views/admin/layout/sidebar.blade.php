@@ -33,7 +33,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{route('admin.users.home')}}"><i class="fa fa-fw fa-user"></i>Users</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('admin.discount.home')}}"><i class="fa fa-fw fa-tags"></i>Discounts</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('admin.coupoun.home')}}"><i class="fa fa-fw fa-ticket-alt"></i>Cuopons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-fw fa-file"></i>Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('admin.orders.home')}}"><i class="fa fa-fw fa-file"></i>Orders</a></li>
                 </ul>
             </div>
         </nav>

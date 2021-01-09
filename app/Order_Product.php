@@ -6,4 +6,7 @@ class Order_Product extends Model{
     public function Product(){
       return $this->belongsTo(Product::class , 'product_id');
     }
+    public function Variation(){
+      return $this->belongsTo(Product_Variation::class , 'variation_id');
+    }
 }

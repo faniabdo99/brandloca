@@ -1,5 +1,4 @@
 @include('admin.layout.header')
-
 <body>
     <div class="dashboard-main-wrapper">
         @include('admin.layout.navbar')
@@ -28,7 +27,7 @@
                                       <td>{{$Variation->ref_code}}</td>
                                       <td>{{$Variation->size}}</td>
                                       <td>{{$Variation->color}}</td>
-                                      <td>{{$Variation->color_code}}</td>
+                                      <td class="text-white font-weight-bold" style="background:{{$Variation->color_code}};">{{$Variation->color_code}}</td>
                                       <td>{{$Variation->inventory}}</td>
                                       <td>{{$Variation->status}}</td>
                                       <td><a class="btn btn-sm btn-danger btn-rounded" href="{{route('admin.products.variation.delete' , $Variation->id)}}">Delete</a></td>
@@ -85,6 +84,11 @@
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     @include('admin.layout.scripts')
+    <script>
+        $('input[name="color_code"]').spectrum({
+            color: "#f00"
+        });
+    </script>
 </body>
 
 </html>

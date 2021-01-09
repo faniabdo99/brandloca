@@ -38,7 +38,7 @@
                                         <td width="10%" >
                                           <div style="height:20px;width:20px;border-radius: 50%;background:{{$Cart->color}};"></div>
                                         </td>
-                                        <td width="10%">{{$Cart->TotalPrice}} L.E</td>
+                                        <td width="10%">{{$Cart->Product->price}} L.E</td>
                                     </tr>
                                   @empty
                                     <p>لا يوجد عناصر في سلة المشتريات الخاصة بك</p>

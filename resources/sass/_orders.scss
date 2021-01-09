@@ -1,19 +1,15 @@
 .trace-section {
     padding-top: 50px;
-
     .trace-order-form {
         text-align: right;
-
         h4 {
             display: block;
             margin-bottom: 15px;
             font-weight: bold;
             font-size: 1.3em;
         }
-
         form {
             display: flex;
-
             input {
                 display: block;
                 width: 100%;
@@ -23,6 +19,14 @@
                 border: 0;
                 box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
                 flex: 10;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+            input[type=number] {
+            -moz-appearance: textfield;
             }
 
             button {

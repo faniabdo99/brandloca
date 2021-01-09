@@ -9,8 +9,8 @@
                     <div class="product-pic-zoom">
                         <img class="product-big-img" src="{{$TheProduct->MainImage}}" alt="{{$TheProduct->title}}">
                     </div>
-                    <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
-                        <div class="product-thumbs-track">
+                    <div class="product-thumbs" tabindex="1">
+                        <div class="product-thumbs-track ml-auto">
                             <div class="pt active" data-imgbigurl="{{$TheProduct->MainImage}}"><img src="{{$TheProduct->MainImage}}" alt="{{$TheProduct->title}}"></div>
                             @forelse($TheProduct->GalleryImages as $Image)
                                 <div class="pt active" data-imgbigurl="{{$Image->ImagePath}}"><img src="{{$Image->ImagePath}}" alt="{{$TheProduct->title}}"></div>

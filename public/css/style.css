@@ -932,6 +932,14 @@ ol {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   flex: 10;
 }
+.trace-section .trace-order-form form input::-webkit-outer-spin-button,
+.trace-section .trace-order-form form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.trace-section .trace-order-form form input[type=number] {
+  -moz-appearance: textfield;
+}
 .trace-section .trace-order-form form button {
   flex: 1;
   background-color: #FEC906;
@@ -1760,15 +1768,12 @@ ol {
   margin-bottom: 35px;
 }
 
-.product-thumbs-track {
-  width: 1200px;
-}
-
 .product-thumbs .pt {
   width: 116px;
   height: 116px;
-  float: left;
-  margin-right: 31px;
+  float: right;
+  margin-left: 31px;
+  margin-bottom: 15px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
@@ -2618,9 +2623,7 @@ ol {
     display: none;
   }
 }
-/*====================
-    Pages CSS
-=====================*/
+/*========== Pages CSS ==========*/
 .auth-hero {
   height: 50vh;
   background-image: url("../img/bg.jpg");
@@ -2730,4 +2733,76 @@ ol {
 .static-content-section p {
   line-height: 2;
   color: #707070;
+}
+
+/*========== Errors CSS ==========*/
+.error-page-section {
+  padding: 3em 0;
+}
+.error-page-section h1 {
+  color: #FEC906;
+  font-size: 2.5em;
+  margin-bottom: 25px;
+}
+.error-page-section form label {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+}
+.error-page-section form input {
+  width: 90%;
+  padding: 10px;
+  border-radius: 4px;
+  background: #f1f1f1;
+  border: none;
+}
+.error-page-section form button {
+  background-color: #FEC906;
+  padding: 5px 10px;
+  color: #393733;
+  border: none;
+  border-radius: 4px;
+  width: 10%;
+}
+.error-page-section .page-sub-heading {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #393733;
+  margin-bottom: 15px;
+}
+.error-page-section ul.quick-links-list {
+  list-style-type: none;
+}
+.error-page-section ul.quick-links-list li {
+  display: inline-block;
+}
+.error-page-section ul.quick-links-list li a {
+  background-color: #f1f1f1;
+  padding: 5px 15px;
+  border-radius: 4px;
+  transition: all ease 0.3s;
+  color: #393733;
+  display: block;
+}
+.error-page-section ul.quick-links-list li:hover a {
+  transition: all ease 0.3s;
+  background: #FEC906;
+}
+.error-page-section img.error-image {
+  width: auto;
+  margin: auto;
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .error-page-section form input {
+    width: 80%;
+  }
+  .error-page-section form button {
+    width: 20%;
+  }
+  .error-page-section img.error-image {
+    width: 50%;
+    margin: auto auto 50px auto;
+  }
 }

@@ -11,6 +11,7 @@ use App\Coupoun;
 use App\Order_Product;
 
 class OrdersController extends Controller{
+  //Admin Panel Realted
     public function getCheckout(){
         $CartItems = Cart::where('user_id', auth()->user()->id)->where('status', 'active')->get();
         $HasCoupon = 0;
@@ -70,6 +71,7 @@ class OrdersController extends Controller{
           $OrderData['is_paid'] = 0;
           $OrderData['total_shipping_cost'] = 5;
           $OrderData['user_id'] = auth()->user()->id;
+          $OrderData['tracking_number'] = mt_rand(10000000, 99999999);
           $TheOrder = Order::create($OrderData);
           //Create order-products record
           $CartItems = Cart::where('user_id', auth()->user()->id)->where('status', 'active')->get();
@@ -100,7 +102,33 @@ class OrdersController extends Controller{
     public function getTrace(){
         return view('orders.trace');
     }
-
+    public function postTrace(Request $r){
+      //Validate the request
+      if(!isset($r->tracking_number) || strlen($r->tracking_number) != 8 || !is_numeric($r->tracking_number)){
+        return response('صيغة رقم التتبع غير صحيحة!' , 422);
+      }
+      $TheOrder = Order::where('tracking_number' , $r->tracking_number)->first();
+      if($TheOrder){
+        if($r->user_id != 0){
+          if($TheOrder->user_id != $r->user_id){
+            return response('ليس لديك الصلاحية لعرض هذا الطلب!' , 403);
+          }
+        }
+        $Resultes = $TheOrder;
+        if(isset($TheOrder->user_id)){
+          $Resultes['name'] = $TheOrder->User->name;
+        }else{
+          $Resultes['name'] = $TheOrder->name;
+        }
+        $Resultes['total'] = $TheOrder->FinalTotal;
+        $Resultes['items'] = $TheOrder->Items->count();
+        $Resultes['payment_method_text'] = $TheOrder->PaymentMethodText;
+        $Resultes['order_date'] = $TheOrder->created_at->format('Y-m-d');
+        return response($Resultes,200);
+      }else{
+        return response('لا يوجد طلب مرتبط برقم التتبع الذي أدخلته',404);
+      }
+  }
 
 
 

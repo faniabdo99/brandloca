@@ -21,5 +21,6 @@
 <script src="{{url('public/admin/')}}/charts/morris-bundle/morris.js"></script>
 <script src="{{url('public/admin/')}}/charts/c3charts/c3.min.js"></script>
 <script src="{{url('public/admin/')}}/charts/c3charts/d3-5.4.0.min.js"></script>
-<script src="{{url('public/admin/')}}/charts/c3charts/C3chartjs.js"></script> --}}
+<script src="{{url('public/admin/')}}/charts/c3charts/C3chartjs.js"></script>
 <script src="{{url('public/admin/')}}/js/dashboard-ecommerce.js"></script>
+<script src="{{url('public/admin/')}}/js/spectrum.min.js"></script>

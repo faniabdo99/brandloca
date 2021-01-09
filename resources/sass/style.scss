@@ -852,16 +852,12 @@
 .product-pic-zoom {
 	margin-bottom: 35px;
 }
-
-.product-thumbs-track {
-	width: 1200px;
-}
-
 .product-thumbs .pt {
 	width: 116px;
 	height: 116px;
-	float: left;
-	margin-right: 31px;
+	float: right;
+	margin-left: 31px;
+	margin-bottom: 15px;
 	overflow: hidden;
 	cursor: pointer;
 	position: relative;
@@ -1687,7 +1683,7 @@
 		display: none;
 	}
 }
-/*====================
-    Pages CSS
-=====================*/
+/*========== Pages CSS ==========*/
 @import 'pages';
+/*========== Errors CSS ==========*/
+@import 'errors';

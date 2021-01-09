@@ -13,8 +13,8 @@ Route::post('product/filter' , 'ProductsController@ApplyFilters')->name('shop.fi
 Route::post('add-to-cart' , 'CartController@addToCart')->name('cart.add');
 Route::post('update-cart/{item}/{user}' , 'CartController@updateCart')->name('cart.update');
 Route::post('apply-coupon' , 'CartController@ApplyCoupon')->name('cart.coupon');
-
-
+//Trace Order
+Route::post('trace-order' , 'OrdersController@postTrace')->name('order.trace.post');
 
 
 

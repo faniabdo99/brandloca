@@ -385,7 +385,82 @@ $(window).on('load', function () {
     //Order Trace 
     $('#trace-order-form').click(function(e){
       e.preventDefault();
-      var OrderId = $(this).closest('#order-id').val();
-      console.log(OrderId);
+      var TrackingNumber = $(this).prev('input#tracking-number').val();
+      //Check if the Tracking Number exists
+      if(!TrackingNumber || TrackingNumber == undefined || TrackingNumber == null){
+        $(this).prev('input#tracking-number').css('border' , 'red 2px solid');
+        ShowNoto('notification-danger' , 'حقل رقم التتبع مطلوب!' , 'Error');
+        return false;
+      }
+      //All Good (Kinda)
+      $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+      var ActionRoute = $(this).data('target');
+      var Data = $(this).parent('form').serialize();
+      var TheButton = $(this);
+      $.ajax({
+        method : 'POST',
+        url : ActionRoute,
+        data : Data,
+        success: function(response){
+          TheButton.html('<i class="fas fa-search"></i>');
+          $('.trace-order-result').html(`
+          <h4 class="mb-3">معلومات الطلب</h4>
+          <table class="table table-striped border">
+              <thead>
+              <tbody>
+                  <tr>
+                      <th scope="row">رقم الطلب</th>
+                      <td>${response.id}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">رقم التتبع</th>
+                      <td>${response.tracking_number}</td>
+                    </tr>
+                <tr>
+                  <th scope="row">اسم العميل</th>
+                  <td>${response.name}</td>
+                </tr>
+                <tr>
+                  <th scope="row">حالة الطلب</th>
+                  <td>${response.status}</td>
+                </tr>
+                <tr>
+                  <th scope="row">المحافظة</th>
+                  <td>${response.shipping_province}</td>
+                </tr>
+                <tr>
+                  <th scope="row">المدينة</th>
+                  <td>${response.shipping_city}</td>
+                </tr>
+                <tr>
+                  <th scope="row">العنوان التفصيلي</th>
+                  <td>${response.shipping_street_address}</td>
+                </tr>
+                <tr>
+                  <th scope="row">عدد المنتجات</th>
+                  <td>${response.items.length}</td>
+                </tr>
+                <tr>
+                  <th scope="row">السعر الاجمالي</th>
+                  <td>${response.total} L.E</td>
+                </tr>
+                <tr>
+                  <th scope="row">طريقة الدفع</th>
+                  <td>${response.payment_method_text}</td>
+                </tr>
+                <tr>
+                  <th scope="row">تاريخ الطلب</th>
+                  <td>${response.order_date}</td>
+                </tr>
+              </tbody>
+            </table>
+          `);
+          console.log(response);
+        },
+        error: function(response){
+          TheButton.html('<i class="fas fa-search"></i>');
+          ShowNoto('notification-danger' , response.responseText , 'Error');
+        }
+      });
     });
 })(jQuery);

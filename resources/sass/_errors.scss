@@ -1,0 +1,77 @@
+.error-page-section{
+  padding: 3em 0;
+  h1{
+    color:$brand;
+    font-size: 2.5em;
+    margin-bottom: 25px;
+  }
+  form{
+    label{
+      display: block;
+      width: 100%;
+      font-weight: bold;
+    }
+    input{
+      width: 90%;
+      padding: 10px;
+      border-radius: 4px;
+      background: $lightgray;
+      border:none;
+    }
+    button{
+      background-color: $brand;
+      padding: 5px 10px;
+      color:$black;
+      border:none;
+      border-radius: 4px;
+      width: 10%;
+    }
+  }
+  .page-sub-heading{
+    font-size: 1.1em;
+    font-weight: bold;
+    color: $black;
+    margin-bottom: 15px;
+  }
+  ul.quick-links-list{
+    list-style-type: none;
+    li{
+      display: inline-block;
+      a{
+        background-color: $lightgray;
+        padding: 5px 15px;
+        border-radius: 4px;
+        transition: all ease 0.3s;
+        color: $black;
+        display: block;
+      }
+      &:hover{
+        a{
+          transition: all ease 0.3s;
+          background: $brand;
+        }
+      }
+    }
+  }
+  img.error-image{
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+}
+@media screen and (max-width:768px){
+  .error-page-section{
+    form{
+      input{
+        width: 80%;
+      }
+      button{
+        width: 20%;
+      }
+    }
+    img.error-image{
+      width: 50%;
+      margin: auto auto 50px auto;
+    }
+  }
+}

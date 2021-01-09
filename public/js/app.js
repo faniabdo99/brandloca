@@ -499,8 +499,33 @@ $(window).on('load', function () {
 
   $('#trace-order-form').click(function (e) {
     e.preventDefault();
-    var OrderId = $(this).closest('#order-id').val();
-    console.log(OrderId);
+    var TrackingNumber = $(this).prev('input#tracking-number').val(); //Check if the Tracking Number exists
+
+    if (!TrackingNumber || TrackingNumber == undefined || TrackingNumber == null) {
+      $(this).prev('input#tracking-number').css('border', 'red 2px solid');
+      ShowNoto('notification-danger', 'حقل رقم التتبع مطلوب!', 'Error');
+      return false;
+    } //All Good (Kinda)
+
+
+    $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+    var ActionRoute = $(this).data('target');
+    var Data = $(this).parent('form').serialize();
+    var TheButton = $(this);
+    $.ajax({
+      method: 'POST',
+      url: ActionRoute,
+      data: Data,
+      success: function success(response) {
+        TheButton.html('<i class="fas fa-search"></i>');
+        $('.trace-order-result').html("\n          <h4 class=\"mb-3\">\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0627\u0644\u0637\u0644\u0628</h4>\n          <table class=\"table table-striped border\">\n              <thead>\n              <tbody>\n                  <tr>\n                      <th scope=\"row\">\u0631\u0642\u0645 \u0627\u0644\u0637\u0644\u0628</th>\n                      <td>".concat(response.id, "</td>\n                    </tr>\n                    <tr>\n                      <th scope=\"row\">\u0631\u0642\u0645 \u0627\u0644\u062A\u062A\u0628\u0639</th>\n                      <td>").concat(response.tracking_number, "</td>\n                    </tr>\n                <tr>\n                  <th scope=\"row\">\u0627\u0633\u0645 \u0627\u0644\u0639\u0645\u064A\u0644</th>\n                  <td>").concat(response.name, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u062D\u0627\u0644\u0629 \u0627\u0644\u0637\u0644\u0628</th>\n                  <td>").concat(response.status, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u0627\u0644\u0645\u062D\u0627\u0641\u0638\u0629</th>\n                  <td>").concat(response.shipping_province, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u0627\u0644\u0645\u062F\u064A\u0646\u0629</th>\n                  <td>").concat(response.shipping_city, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u0627\u0644\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062A\u0641\u0635\u064A\u0644\u064A</th>\n                  <td>").concat(response.shipping_street_address, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u0639\u062F\u062F \u0627\u0644\u0645\u0646\u062A\u062C\u0627\u062A</th>\n                  <td>").concat(response.items.length, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u0627\u0644\u0633\u0639\u0631 \u0627\u0644\u0627\u062C\u0645\u0627\u0644\u064A</th>\n                  <td>").concat(response.total, " L.E</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u0637\u0631\u064A\u0642\u0629 \u0627\u0644\u062F\u0641\u0639</th>\n                  <td>").concat(response.payment_method_text, "</td>\n                </tr>\n                <tr>\n                  <th scope=\"row\">\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u0637\u0644\u0628</th>\n                  <td>").concat(response.order_date, "</td>\n                </tr>\n              </tbody>\n            </table>\n          "));
+        console.log(response);
+      },
+      error: function error(response) {
+        TheButton.html('<i class="fas fa-search"></i>');
+        ShowNoto('notification-danger', response.responseText, 'Error');
+      }
+    });
   });
 })(jQuery);
 
@@ -546,10 +571,10 @@ $(window).on('load', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\arte\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\style.scss */"./resources/sass/style.scss");
-__webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\print.scss */"./resources/sass/print.scss");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\arte\resources\sass\admin\admin.scss */"./resources/sass/admin/admin.scss");
+__webpack_require__(/*! /var/www/html/arte_online/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /var/www/html/arte_online/resources/sass/style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! /var/www/html/arte_online/resources/sass/print.scss */"./resources/sass/print.scss");
+module.exports = __webpack_require__(/*! /var/www/html/arte_online/resources/sass/admin/admin.scss */"./resources/sass/admin/admin.scss");
 
 
 /***/ })

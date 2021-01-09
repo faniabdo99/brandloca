@@ -22,10 +22,6 @@
                                     <td>{{$TheOrder->id}}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">رقم التتبع</th>
-                                    <td>5514-6624</td>
-                                </tr>
-                                <tr>
                                     <th scope="row">اسم العميل</th>
                                     <td>{{$TheOrder->User->name}}</td>
                                 </tr>

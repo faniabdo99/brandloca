@@ -12,5 +12,16 @@ class Order extends Model{
     public function getTotalAttribute(){return $this->total_amount;}
     public function getTotalShippingAttribute(){return $this->total_shipping_cost;}
     public function getFinalTotalAttribute(){return $this->total + $this->total_shipping;}
-
+    public function getPaymentMethodTextAttribute(){
+      $PaymetMethods = [
+        'pod' => 'Payment on Delivery',
+        'credit-card' => 'Credit Card',
+        'vodafone-cash' => 'Vodafone Cash'
+      ];
+      if(array_key_exists($this->payment_method, $PaymetMethods)){
+        return $PaymetMethods[$this->payment_method];
+      }else{
+        return $this->payment_method;
+      }
+    }
 }
