@@ -104,4 +104,10 @@ class Product extends Model{
       ];
       return $DataArray;
     }
+    public function Reviews(){
+      return $this->hasMany(Review::class, 'product_id');
+    }
+    public function getRateAttribute(){
+      return round(Review::where('product_id' , $this->id)->avg('rate'),1);
+    }
 }

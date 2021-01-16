@@ -140,15 +140,85 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="panel">
+                                <div class="panel-header" id="headingFive">
+                                    <button class="panel-link text-center" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse4">المراجعات</button>
+                                </div>
+                                <div id="collapse5" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                    <div class="panel-body reviews-panel-body">
+                                        <div class="reviews-overall-text row mb-5">
+                                            <div class="col-6">
+                                                <ul class="detailed-reviws-list text-left mb-0">
+                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',5)->count()}})</span></li>
+                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',4)->count()}})</span></li>
+                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',3)->count()}})</span></li>
+                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',2)->count()}})</span></li>
+                                                    <li><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',1)->count()}})</span></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-6 star-and-number">
+                                                <i class="fas fa-star"></i>
+                                                <p class="mb-0">5 / {{$TheProduct->Rate}}</p>
+                                            </div>
+                                        </div>
+                                        <ul class="reviews-list mb-5">
+                                            @forelse ($TheProduct->Reviews as $Review)
+                                            <li class="d-flex">
+                                                <span class="review-image">
+                                                    <img src="{{$Review->User->ProfileImage}}" alt="{{$Review->User->name}}">
+                                                </span>
+                                                <span class="review-text">
+                                                    <b>{{$Review->User->name}}</b>
+                                                    <ul>
+                                                        @for ($i = 0; $i < $Review->rate ; $i++)
+                                                            <li class="active"><i class="fas fa-star"></i></li>
+                                                        @endfor
+                                                        @for ($i = 0; $i < (5-$Review->rate) ; $i++)
+                                                            <li><i class="fas fa-star"></i></li>
+                                                        @endfor
+                                                    </ul>
+                                                    <p>{{$Review->review}}</p>
+                                                </span>
+                                            </li>
+                                            @empty
+                                                
+                                            @endforelse
+                                          
+                                        </ul>
+                                        @auth
+                                            @if(auth()->user()->Bought($TheProduct->id))
+                                                <form class="review-form mb-5" action="{{route('review.post')}}" method="post">
+                                                    @csrf
+                                                    <input hidden name="product_id" value="{{$TheProduct->id}}">
+                                                    <label for="review">أخبرنا برأيك عن : {{$TheProduct->title}}</label>
+                                                    <div class="rate">
+                                                        <input type="radio" id="star5" name="rate" value="5" required />
+                                                        <label for="star5" title="5 نجوم"></label>
+                                                        <input type="radio" id="star4" name="rate" value="4" required />
+                                                        <label for="star4" title="4 نجوم"></label>
+                                                        <input type="radio" id="star3" name="rate" value="3" required />
+                                                        <label for="star3" title="3 نجوم"></label>
+                                                        <input type="radio" id="star2" name="rate" value="2" required />
+                                                        <label for="star2" title="2 نجوم"></label>
+                                                        <input type="radio" id="star1" name="rate" value="1" required />
+                                                        <label for="star1" title="1 نجمة"></label>
+                                                    </div>
+                                                    <textarea class="mb-2" name="review" id="review" placeholder="ما هو رأيك بهذا المنتج؟" rows="6" required></textarea>
+                                                    <button class="site-btn" type="submit">نشر</button>
+                                                </form>
+                                            @else
+                                                <p>يمكنك تقييم المنتج بعد أن تقوم بعملية الشراء</p>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                 </div>
             </div>
         </div>
     </section>
     <!-- product section end -->
-
-
     <!-- RELATED PRODUCTS section -->
     <section class="related-product-section">
         <div class="container">
@@ -228,6 +298,7 @@
     <!-- RELATED PRODUCTS section end -->
     @include('layout.footer')
     @include('layout.scripts')
+    @include('layout.errors')
 </body>
 
 </html>

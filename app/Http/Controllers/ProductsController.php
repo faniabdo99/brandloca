@@ -225,7 +225,7 @@ class ProductsController extends Controller{
     public function getCategoryAll($Category){
       $TheCategory = Category::where('slug' , $Category)->first();
       $Categories = Category::latest()->get();
-      $Products = Product::where('category_id' , $TheCategory->id)->latest()->limit(9)->get();
+      $Products = Product::where('category_id' , $TheCategory->id)->where('status' , '!=' , 'Invisible')->latest()->limit(9)->get();
       $AvailableSizes = $Products->pluck('size')->unique();
       $AvailableSeasons = $Products->pluck('season')->unique();
       $AvailableTypes = $Products->pluck('type')->unique();
@@ -233,7 +233,7 @@ class ProductsController extends Controller{
     }
     public function getSizeAll($Size){
       $Categories = Category::latest()->get();
-      $Products = Product::where('size' , $Size)->latest()->limit(9)->get();
+      $Products = Product::where('size' , $Size)->where('status' , '!=' , 'Invisible')->latest()->limit(9)->get();
       $AvailableCategories = $Products->pluck('category_id')->unique();
       $AvailableSeasons = $Products->pluck('season')->unique();
       $AvailableTypes = $Products->pluck('type')->unique();
@@ -241,7 +241,7 @@ class ProductsController extends Controller{
     }
     public function getSeasonAll($Season){
       $Categories = Category::latest()->get();
-      $Products = Product::where('season' , $Season)->latest()->get();
+      $Products = Product::where('season' , $Season)->where('status' , '!=' , 'Invisible')->latest()->get();
       $AvailableSizes = $Products->pluck('size')->unique();
       $AvailableCategories = $Products->pluck('category_id')->unique();
       $AvailableTypes = $Products->pluck('type')->unique();
@@ -249,7 +249,7 @@ class ProductsController extends Controller{
     }
     public function getTypeAll($Type){
       $Categories = Category::latest()->get();
-      $Products = Product::where('type' , $Type)->latest()->limit(9)->get();
+      $Products = Product::where('type' , $Type)->where('status' , '!=' , 'Invisible')->latest()->limit(9)->get();
       $AvailableSizes = $Products->pluck('size')->unique();
       $AvailableCategories = $Products->pluck('category_id')->unique();
       $AvailableSeasons = $Products->pluck('season')->unique();
@@ -257,7 +257,7 @@ class ProductsController extends Controller{
     }
     public function searchProducts(Request $r){
       $Categories = Category::latest()->get();
-      $Products = Product::where('title' , 'like' , "%$r->search_term%")->latest()->limit(9)->get();
+      $Products = Product::where('title' , 'like' , "%$r->search_term%")->where('status' , '!=' , 'Invisible')->latest()->limit(9)->get();
       return view('products.all' , compact('Products','Categories'));
     }
     public function filterProductsList(Request $r){

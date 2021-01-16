@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
   Route::post('checkout' , 'OrdersController@postCheckout')->name('orders.checkout.post');
   Route::get('thank-you/{id}' , 'OrdersController@getOrderComplete')->name('order.complete');
 });
+Route::post('add-review' , 'ReviewController@postReview')->name('review.post');
 Route::middleware('guest')->group(function () {
   Route::get('login' , 'AuthController@getLogin')->name('login.get');
   Route::post('login' , 'AuthController@postLogin')->name('login.post');

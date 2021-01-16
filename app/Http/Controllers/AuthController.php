@@ -251,7 +251,7 @@ class AuthController extends Controller{
           $Image = Image::make($r->image)->resize(180,180, function ($constraint) {
               $constraint->aspectRatio();
           });
-          $Image->save('storage/app/public/users/'.$TheUser->id.'.'.$r->image->getClientOriginalExtension());
+          $Image->save('storage/app/images/users/'.$TheUser->id.'.'.$r->image->getClientOriginalExtension());
           $UserData['image'] = $Image->basename;
         }
         if($r->has('email') && $r->email != $TheUser->email){

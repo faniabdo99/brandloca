@@ -93,6 +93,9 @@
 							<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
 								<div class="product-item">
 									<div class="pi-pic">
+										@if($NewProduct->hasDiscount())
+											<div class="tag-sale mr-5">فترة محدودة</div>
+										@endif
 										<div class="tag-new">جديد</div>
 										<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
 										<div class="pi-links">
@@ -104,7 +107,7 @@
 									</div>
 									<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
 										<div class="pi-text">
-											<h6>{{$NewProduct->price}} L.E</h6>
+											<h6>{{$NewProduct->FinalPrice()}} L.E</h6>
 											<p>{{$NewProduct->title}}</p>
 										</div>
 									</a>
@@ -140,6 +143,9 @@
 					<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">
 						<div class="product-item">
 							<div class="pi-pic">
+								@if($PromotedProduct->hasDiscount())
+									<div class="tag-sale">فترة محدودة</div>
+								@endif
 								<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
 								<div class="pi-links">
 									<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
@@ -150,7 +156,7 @@
 							</div>
 							<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">
 								<div class="pi-text">
-									<h6>{{$PromotedProduct->price}} L.E</h6>
+									<h6>{{$PromotedProduct->FinalPrice()}} L.E</h6>
 									<p>{{$PromotedProduct->title}}</p>
 								</div>
 							</a>

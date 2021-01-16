@@ -15,7 +15,7 @@ class User extends Authenticatable{
     public function getProfileImageAttribute(){
         $UserImageArray = explode('.' , $this->image);
         if($UserImageArray[0] == $this->id || $UserImageArray[0] == 'user'){
-            return url('storage/app/public/users').'/'.$this->image;
+            return url('storage/app/images/users').'/'.$this->image;
         }else{
             return $this->image;
         }
@@ -39,4 +39,12 @@ class User extends Authenticatable{
     public function getNameAttribute(){
         return $this->first_name . ' ' . $this->last_name;
     }
+    public function Bought($ProductId){
+        $UserOrders = Order_Product::where('user_id' , $this->id)->where('product_id' , $ProductId)->count();
+        if($UserOrders >= 1){
+          return true;
+        }else{
+          return false;
+        }
+      }
 }

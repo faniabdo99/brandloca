@@ -78,6 +78,7 @@ class OrdersController extends Controller{
           $CartItems->map(function($item) use ($TheOrder){
             Order_Product::create([
               'order_id' => $TheOrder->id,
+              'user_id' => $TheOrder->user_id,
               'product_id' => $item->product_id,
               'is_free_shipping' => 0,
               'qty' => $item->qty,
