@@ -28,13 +28,6 @@
                         <h3 class="p-price">{{$TheProduct->price}} L.E</h3>
                         @endif
                         <h4 class="p-stock">{{$TheProduct->StatusValue}} | <a href="{{route('shop.category' , $TheProduct->Category->slug)}}">{{$TheProduct->Category->title}}</a></h4>
-                        <div class="p-rating mb-5">
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o fa-fade"></i>
-                        </div>
                         <p class="font-weight-bold">الحجم</p>
                         <form action="javascript:;" id="product-cart-form" method="post">
                             <div class="fw-size-choose mb-5">
@@ -149,11 +142,11 @@
                                         <div class="reviews-overall-text row mb-5">
                                             <div class="col-6">
                                                 <ul class="detailed-reviws-list text-left mb-0">
-                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',5)->count()}})</span></li>
-                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',4)->count()}})</span></li>
-                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',3)->count()}})</span></li>
-                                                    <li><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',2)->count()}})</span></li>
-                                                    <li><i class="fas fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',1)->count()}})</span></li>
+                                                    <li><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',5)->count()}})</span></li>
+                                                    <li><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',4)->count()}})</span></li>
+                                                    <li><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',3)->count()}})</span></li>
+                                                    <li><i class="far fa-star mr-1"></i><i class="far fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',2)->count()}})</span></li>
+                                                    <li><i class="far fa-star mr-1"></i><span class="mr-2">({{$TheProduct->Reviews->where('rate',1)->count()}})</span></li>
                                                 </ul>
                                             </div>
                                             <div class="col-6 star-and-number">
@@ -171,10 +164,10 @@
                                                     <b>{{$Review->User->name}}</b>
                                                     <ul>
                                                         @for ($i = 0; $i < $Review->rate ; $i++)
-                                                            <li class="active"><i class="fas fa-star"></i></li>
+                                                            <li class="active"><i class="far fa-star"></i></li>
                                                         @endfor
                                                         @for ($i = 0; $i < (5-$Review->rate) ; $i++)
-                                                            <li><i class="fas fa-star"></i></li>
+                                                            <li><i class="far fa-star"></i></li>
                                                         @endfor
                                                     </ul>
                                                     <p>{{$Review->review}}</p>
@@ -226,72 +219,34 @@
                 <h2>منتجات مشابهة</h2>
             </div>
             <div class="product-slider owl-carousel">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{url('public/img')}}/product/1.jpg" alt="">
-                        <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                        </div>
+                @forelse ($RelatedProducts as $RProduct)
+                    <div class="product-item">
+                        <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}">
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    @if($RProduct->hasDiscount())
+                                        <div class="tag-sale">فترة محدودة</div>
+                                    @endif
+                                    <img src="{{$RProduct->MainImage}}" alt="{{$RProduct->title}}">
+                                    <div class="pi-links">
+                                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+                                        @auth
+                                            <a href="javascript:;" class="wishlist-btn @if($RProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$RProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+                                        @endauth
+                                    </div>
+                                </div>
+                                <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}">
+                                    <div class="pi-text">
+                                        <h6>{{$RProduct->FinalPrice()}} L.E</h6>
+                                        <p>{{$RProduct->title}}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </a>
                     </div>
-                    <div class="pi-text">
-                        <h6>150 L.E</h6>
-                        <p>بيجاما تصميم فيل</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <div class="tag-new">جديد</div>
-                        <img src="{{url('public/img')}}/product/2.jpg" alt="">
-                        <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="pi-text">
-                        <h6>150 L.E</h6>
-                        <p>بيجاما تصميم قطة</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{url('public/img')}}/product/3.jpg" alt="">
-                        <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="pi-text">
-                        <h6>150 L.E</h6>
-                        <p>بيجاما تصميم فيل</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{url('public/img')}}/product/4.jpg" alt="">
-                        <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="pi-text">
-                        <h6>150 L.E</h6>
-                        <p>بيجاما تصميم فيل</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <img src="{{url('public/img')}}/product/6.jpg" alt="">
-                        <div class="pi-links">
-                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
-                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="pi-text">
-                        <h6>150 L.E</h6>
-                        <p>بيجاما تصميم فيل</p>
-                    </div>
-                </div>
+                @empty
+                    
+                @endforelse
             </div>
         </div>
     </section>

@@ -66,15 +66,7 @@
 							@endforelse
 						</ul>
 					</li>
-					<li><a href="#">الطلبات</a>
-						<ul class="sub-menu">
-							<li><a href="./product.html">Product Page</a></li>
-							<li><a href="./category.html">Category Page</a></li>
-							<li><a href="./cart.html">Cart Page</a></li>
-							<li><a href="./checkout.html">Checkout Page</a></li>
-							<li><a href="./contact.html">Contact Page</a></li>
-						</ul>
-					</li>
+					<li><a href="{{route('order.trace')}}">تتبع الطلبات</a></li>
 					<li><a href="{{route('contact')}}">اتصل بنا</a></li>
 					<li><a href="#">المدونة</a></li>
 				</ul>

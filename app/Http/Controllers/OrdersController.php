@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Route;
 use Validator;
+use Mail;
 //Models
 use App\Cart;
 use App\Order;
 use App\Coupoun;
 use App\Order_Product;
-
+//Mails
+use App\Mail\OrderCreatedMail;
 class OrdersController extends Controller{
   //Admin Panel Realted
     public function getCheckout(){
@@ -73,6 +75,8 @@ class OrdersController extends Controller{
           $OrderData['user_id'] = auth()->user()->id;
           $OrderData['tracking_number'] = mt_rand(10000000, 99999999);
           $TheOrder = Order::create($OrderData);
+          //Send Email to the user
+          Mail::to($TheOrder->email)->send(new OrderCreatedMail($TheOrder));
           //Create order-products record
           $CartItems = Cart::where('user_id', auth()->user()->id)->where('status', 'active')->get();
           $CartItems->map(function($item) use ($TheOrder){

@@ -265,10 +265,17 @@ class ProductsController extends Controller{
     }
     public function getSingle($slug,$id){
         $TheProduct = Product::findOrFail($id);
+        $RelatedProducts = Product::where([
+          ['status' , 'Available'],
+          ['category_id' , $TheProduct->category_id],
+          ['season' , $TheProduct->season],
+          ['type' , $TheProduct->type],
+          ['id', '!=', $TheProduct->id]
+        ])->limit(8)->get();
         if($TheProduct->status == 'Invisible'){
           abort(404);
         }
-        return view('products.single' , compact('TheProduct'));
+        return view('products.single' , compact('TheProduct','RelatedProducts'));
     }
     public function askQuestion(Request $r){
         //Validate the request

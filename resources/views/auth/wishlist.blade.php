@@ -3,7 +3,7 @@
     @include('layout.navbar')
     @include('layout.errors')
     <!-- Hero section -->
-	<section class="profile-section">
+	  <section class="profile-section">
         <div class="container">
             <div class="row">
                 @include('auth.profile-sidebar')
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-	</section>
+      </section>
     <!-- Hero section end -->
     @include('layout.footer')
     @include('layout.scripts')

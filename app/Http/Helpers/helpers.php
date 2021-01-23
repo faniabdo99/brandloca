@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Cookie;
 //Models
 use App\Category;
+use App\Product;
 use App\Cart;
 //Cart System Helpers
 function CartItemsCount(){
@@ -68,4 +69,24 @@ function changeDateFormate($date,$date_format){
 }
 function productImagePath($image_name){
     return public_path('images/products/'.$image_name);
+}
+function getLatestProducts($ProductId = null){
+  if(!$ProductId){
+    $Products = Product::where('is_promoted' , 1)->where('discount_id' ,'!=', null)->limit(4)->get();
+    if($Products->count() <= 4){
+      return $Products;
+    }else{
+      $Products = Product::where('is_promoted' , 1)->limit(4)->get();
+      return $Products;
+    }
+  }else{
+    $Products = Product::where('is_promoted' , 1)->where('discount_id' ,'!=', null)->where('id' , '!=' , $ProductId)->limit(4)->get();
+    if($Products->count() <= 4){
+      return $Products;
+    }else{
+      $Products = Product::where('is_promoted' , 1)->where('id' , '!=' , $ProductId)->limit(4)->get();
+      return $Products;
+    }
+  }
+
 }
