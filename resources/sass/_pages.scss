@@ -2,6 +2,7 @@
 .auth-hero{
     height: 50vh;
     background-image: url('../img/bg.jpg');
+    background-size: cover;
     .dark-overlap{
         height: 50vh;
         width: 100%;
@@ -127,6 +128,7 @@
 #about-us-hero{
     height: 50vh;
     background-image: url('../img/bg.jpg');
+    background-size: cover;
     .dark-overlap{
         height: 50vh;
         width: 100%;
@@ -151,5 +153,58 @@
                 color: $brand;
             }
         }
+    }
+}
+
+@media screen and (max-width:768px){
+    //Auth System
+    .auth-hero{
+        .dark-overlap{
+            h1{font-size: 2.5em;}
+        }
+    }
+    .auth-form{
+        form{
+            .social-auth{
+                li{
+                    padding: 4px;
+                    a{i{margin-left: 10px;}}
+                }
+            }
+        }
+        .no-account-box{
+            text-align: right;
+                h4{
+                    margin-bottom: 20px;
+                }
+        }
+    }
+    //Static Pages Content
+    .static-content-section{
+        padding: 20px;
+        h2{margin-bottom: 10px;}
+    }
+    //Homepage
+    .our-brands-section{
+        padding-bottom: 60px;
+        h2{
+            padding-bottom: 60px;
+        }
+        h3{
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+    }
+    //About Us
+    #about-us-hero{
+        .dark-overlap{
+            h1{
+                font-size: 2em;
+                margin-bottom: 40px;
+            }
+        }
+    }
+    .about-company-section{
+        flex-direction: column-reverse;
     }
 }

@@ -2640,8 +2640,8 @@ ol {
     text-align: center;
   }
 
-  .social-links a {
-    margin-right: 15px;
+  .social-links a i {
+    margin-right: 25px;
   }
 
   .social-links a span {
@@ -2729,7 +2729,6 @@ ol {
 
   .social-links a i {
     font-size: 20px;
-    margin-right: 0;
   }
 
   .social-links a span {
@@ -2740,6 +2739,7 @@ ol {
 .auth-hero {
   height: 50vh;
   background-image: url("../img/bg.jpg");
+  background-size: cover;
 }
 .auth-hero .dark-overlap {
   height: 50vh;
@@ -2862,6 +2862,7 @@ ol {
 #about-us-hero {
   height: 50vh;
   background-image: url("../img/bg.jpg");
+  background-size: cover;
 }
 #about-us-hero .dark-overlap {
   height: 50vh;
@@ -2888,6 +2889,51 @@ ol {
   color: #FEC906;
 }
 
+@media screen and (max-width: 768px) {
+  .auth-hero .dark-overlap h1 {
+    font-size: 2.5em;
+  }
+
+  .auth-form form .social-auth li {
+    padding: 4px;
+  }
+  .auth-form form .social-auth li a i {
+    margin-left: 10px;
+  }
+  .auth-form .no-account-box {
+    text-align: right;
+  }
+  .auth-form .no-account-box h4 {
+    margin-bottom: 20px;
+  }
+
+  .static-content-section {
+    padding: 20px;
+  }
+  .static-content-section h2 {
+    margin-bottom: 10px;
+  }
+
+  .our-brands-section {
+    padding-bottom: 60px;
+  }
+  .our-brands-section h2 {
+    padding-bottom: 60px;
+  }
+  .our-brands-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+
+  #about-us-hero .dark-overlap h1 {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+
+  .about-company-section {
+    flex-direction: column-reverse;
+  }
+}
 /*========== Errors CSS ==========*/
 .error-page-section {
   padding: 3em 0;
