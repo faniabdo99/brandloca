@@ -173,7 +173,26 @@
 		</div>
 	</section>
 	<!-- Product filter section end -->
-
+	<!-- Our Brands Start -->
+	<section class="our-brands-section text-right">
+		<div class="container">
+			<div class="section-title">
+				<h2>علاماتنا التجارية</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-4">
+                    <img src="{{url('public')}}/img/arte-logo.png" class="w-auto" alt="Arte Logo">
+                </div>
+                <div class="col-lg-4">
+                    <img src="{{url('public')}}/img/white-card-logo.png" class="w-auto" alt="White Card Logo">
+                </div>
+                <div class="col-lg-4">
+                    <img src="{{url('public')}}/img/enigma-logo.png" class="w-auto" alt="Enigma Logo">
+                </div>
+			</div>
+		</div>
+	</section>
+	<!-- Our Brands End -->
 
 	<!-- Banner section -->
 	<section class="banner-section">

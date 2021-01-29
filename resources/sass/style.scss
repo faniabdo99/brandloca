@@ -1718,6 +1718,7 @@
 }
 @media screen and (max-width:768px){
 	.pwa-add-to-home{
+		display: none;
 		position: fixed;
 		bottom: 50px;
 		width: 90%;

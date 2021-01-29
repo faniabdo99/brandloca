@@ -115,6 +115,17 @@ ol {
   color: #fff;
 }
 
+.img-circle {
+  border-radius: 50% !important;
+}
+
+.badge-brand {
+  background-color: #FEC906;
+  padding: 5px 10px;
+  border-radius: 30px;
+  color: #393733;
+}
+
 /*---------------------
   Commom elements
 -----------------------*/
@@ -2837,6 +2848,46 @@ ol {
   color: #707070;
 }
 
+.our-brands-section {
+  padding-bottom: 60px;
+}
+.our-brands-section h2 {
+  padding-bottom: 60px;
+}
+.our-brands-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+#about-us-hero {
+  height: 50vh;
+  background-image: url("../img/bg.jpg");
+}
+#about-us-hero .dark-overlap {
+  height: 50vh;
+  width: 100%;
+  padding: 10%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+#about-us-hero .dark-overlap h1, #about-us-hero .dark-overlap p {
+  color: #fff;
+}
+#about-us-hero .dark-overlap h1 {
+  margin-bottom: 40px;
+}
+
+.about-us-content .branch-info-list {
+  list-style-type: none;
+}
+.about-us-content .branch-info-list li {
+  margin-bottom: 10px;
+  color: #707070;
+}
+.about-us-content .branch-info-list li i {
+  color: #FEC906;
+}
+
 /*========== Errors CSS ==========*/
 .error-page-section {
   padding: 3em 0;
@@ -2940,6 +2991,7 @@ ol {
 
 @media screen and (max-width: 768px) {
   .pwa-add-to-home {
+    display: none;
     position: fixed;
     bottom: 50px;
     width: 90%;

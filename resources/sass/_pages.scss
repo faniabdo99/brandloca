@@ -112,3 +112,44 @@
     color: $darkgray;
   }
 }
+//Homepage
+.our-brands-section{
+    padding-bottom: 60px;
+    h2{
+        padding-bottom: 60px;
+    }
+    h3{
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+}
+//About Us
+#about-us-hero{
+    height: 50vh;
+    background-image: url('../img/bg.jpg');
+    .dark-overlap{
+        height: 50vh;
+        width: 100%;
+        padding: 10%;
+        text-align: center;
+        background: $darkoverlap;
+        h1 , p{
+            color:#fff;
+        }
+        h1{
+            margin-bottom: 40px;
+        }
+    }
+}
+.about-us-content{
+    .branch-info-list{
+        list-style-type: none;
+        li{
+            margin-bottom: 10px;
+            color: $darkgray;
+            i{
+                color: $brand;
+            }
+        }
+    }
+}

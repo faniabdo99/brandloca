@@ -57,6 +57,7 @@
 				<!-- menu -->
 				<ul class="main-menu">
 					<li><a href="{{route('home')}}">الرئيسية</a></li>
+					<li><a href="{{route('about')}}">عن الشركة</a></li>
 					<li><a href="{{route('shop')}}">قائمة المنتجات</a></li>
 					<li><a href="#">الأقسام</a>
 						<ul class="sub-menu">
@@ -68,7 +69,7 @@
 					</li>
 					<li><a href="{{route('order.trace')}}">تتبع الطلبات</a></li>
 					<li><a href="{{route('contact')}}">اتصل بنا</a></li>
-					<li><a href="#">المدونة</a></li>
+					{{-- <li><a href="#">المدونة</a></li> --}}
 				</ul>
 			</div>
 		</nav>

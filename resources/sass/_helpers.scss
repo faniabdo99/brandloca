@@ -1,17 +1,14 @@
 .section-title {
 	text-align: center;
 }
-
 .section-title h2 {
 	font-size: 36px;
 }
-
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
 }
-
 .spad {
 	padding-top: 105px;
 	padding-bottom: 105px;
@@ -28,4 +25,11 @@
 .text-white li,
 .text-white a {
 	color: #fff;
+}
+.img-circle{border-radius: 50% !important;}
+.badge-brand{
+	background-color: $brand;
+	padding: 5px 10px;
+	border-radius: 30px;
+	color: $black;
 }

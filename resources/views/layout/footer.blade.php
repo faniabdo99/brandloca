@@ -58,11 +58,11 @@
 						</div>
 						<div class="con-info">
 							<span><i class="fas fa-phone"></i></span>
-							<p>+20 115 1411 867</p>
+							<p dir="ltr"><a href="tel:00201151411867">0115 1411 867</a></p>
 						</div>
 						<div class="con-info">
 							<span><i class="fas fa-envelope"></i></span>
-							<p>support@arte.com</p>
+							<p><a href="mailto:arteonline50@gmail.com">arteonline50@gmail.com</a></p>
 						</div>
 					</div>
 				</div>
@@ -71,10 +71,9 @@
 		<div class="social-links-warp">
 			<div class="container">
 				<div class="social-links">
-					<a href="" class="instagram"><i class="fa fa-instagram"></i></a>
-					<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
-					<a href="" class="twitter"><i class="fa fa-twitter"></i></a>
-					<a href="" class="youtube"><i class="fa fa-youtube"></i></a>
+					<a href="https://instagram.com/artekidswear" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+					<a href="https://facebook.com/arte0kids" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+					<a href="https://twitter.com/artekidswear" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
 				</div>
 			</div>
 		</div>

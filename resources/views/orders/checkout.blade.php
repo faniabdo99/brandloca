@@ -56,7 +56,7 @@
 							@endif
 							<li>اجمالي المشتريات :<span>{{$CartTotal}} L.E</span></li>
 							<li>تكلفة التوصيل :<span>مجاني</span></li>
-							<li class="total">الاجمالي : <span>300 L.E</span></li>
+							<li class="total">الاجمالي : <span>{{$CartTotal}} L.E</span></li>
 						</ul>
 					</div>
 				</div>

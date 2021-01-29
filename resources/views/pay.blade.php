@@ -1,0 +1,1 @@
+<iframe src="https://accept.paymob.com/api/acceptance/iframes/154258?payment_token={{$PaymentID}}" frameborder="0"></iframe>
