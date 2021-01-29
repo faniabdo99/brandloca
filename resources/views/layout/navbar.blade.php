@@ -74,3 +74,18 @@
 		</nav>
 	</header>
 	<!-- Header section end -->
+	<!-- PWA Add to home screen -->
+	<div class="add-button pwa-add-to-home">
+		<div class="row">
+		<div class="col-4">
+			<img src="{{url('public')}}/images/pwa-logo/icon-72x72.png" alt="">
+		</div>
+		<div class="col-8">
+			<p class="font-weight-bold">تطبيق Arte Kids</p>
+			<p>قم بتنزيل تطبيق Arte على هاتفك لسهولة الوصول!</p>
+			<button class="site-btn add-button">تنزيل</button>
+			<button id="close-pwa" class="site-btn btn-danger">اغلاق</button>
+		</div>
+		</div>
+	</div>
+	<!-- PWA End-->

@@ -527,6 +527,67 @@ $(window).on('load', function () {
       }
     });
   });
+
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+
+    return "";
+  } //PWA Add to home 
+
+
+  var deferredPrompt;
+  var addBtn = document.querySelector('.add-button');
+  addBtn.style.display = 'none';
+  window.addEventListener('beforeinstallprompt', function (e) {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault(); // Stash the event so it can be triggered later.
+
+    deferredPrompt = e; // Update UI to notify the user they can add to home screen
+
+    addBtn.style.display = 'block';
+    addBtn.addEventListener('click', function (e) {
+      // hide our user interface that shows our A2HS button
+      addBtn.style.display = 'none'; // Show the prompt
+
+      deferredPrompt.prompt(); // Wait for the user to respond to the prompt
+
+      deferredPrompt.userChoice.then(function (choiceResult) {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+
+        deferredPrompt = null;
+      });
+    });
+  });
+  $('#close-pwa').click(function () {
+    alert("CLicked");
+    $(this).parent().parent().fadeOut('fast');
+    setCookie('pwa-hidden', true, 15);
+  });
 })(jQuery);
 
 /***/ }),

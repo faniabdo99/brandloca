@@ -8,3 +8,4 @@
 	<script src="{{url('public/js')}}/jquery.zoom.min.js"></script>
 	<script src="{{url('public/js')}}/jquery-ui.min.js"></script>
 	<script src="{{url('public/js')}}/app.js"></script>
+	{{-- <script src="./sw.js"></script> --}}

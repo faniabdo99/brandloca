@@ -2908,3 +2908,59 @@ ol {
     margin: auto auto 50px auto;
   }
 }
+.pwa-add-to-home {
+  position: fixed;
+  bottom: 50px;
+  width: 25%;
+  right: 5%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: right;
+}
+.pwa-add-to-home .font-weight-bold {
+  font-size: 1.5em;
+  color: #393733;
+  margin-bottom: 0;
+}
+.pwa-add-to-home img {
+  border-radius: 10px;
+}
+.pwa-add-to-home .site-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  min-width: 80px;
+}
+.pwa-add-to-home .site-btn.btn-danger {
+  background: red;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .pwa-add-to-home {
+    position: fixed;
+    bottom: 50px;
+    width: 90%;
+    right: 5%;
+    left: 5%;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .pwa-add-to-home .font-weight-bold {
+    font-size: 1em;
+  }
+  .pwa-add-to-home img {
+    border-radius: 5px;
+  }
+  .pwa-add-to-home .site-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    min-width: 80px;
+  }
+  .pwa-add-to-home .site-btn.btn-danger {
+    background: red;
+    color: #fff;
+  }
+}

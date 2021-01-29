@@ -1687,3 +1687,58 @@
 @import 'pages';
 /*========== Errors CSS ==========*/
 @import 'errors';
+.pwa-add-to-home{
+	position: fixed;
+	bottom: 50px;
+	width: 25%;
+	right: 5%;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: right;
+	.font-weight-bold{
+		font-size: 1.5em;
+		color: $black;
+		margin-bottom: 0;
+	}
+	img{
+		border-radius: 10px;
+	}
+	.site-btn{
+		display: inline-block;
+		padding: 10px 20px;
+		min-width: 80px;
+		&.btn-danger{
+			background:red;
+			color: #fff;
+		}
+	}
+}
+@media screen and (max-width:768px){
+	.pwa-add-to-home{
+		position: fixed;
+		bottom: 50px;
+		width: 90%;
+		right: 5%;
+		left: 5%;
+		padding: 10px;
+		border-radius: 5px;
+		.font-weight-bold{
+			font-size: 1em;
+		}
+		img{
+			border-radius: 5px;
+		}
+		.site-btn{
+			display: inline-block;
+			padding: 10px 20px;
+			min-width: 80px;
+			&.btn-danger{
+				background:red;
+				color: #fff;
+			}
+		}
+	}	
+}

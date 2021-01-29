@@ -110,3 +110,4 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
         Route::post('/update-status/{id}' , 'OrdersController@updateOrderStatus')->name('admin.orders.updateStatus');
       });
   });
+
