@@ -33,7 +33,6 @@
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-
 	gtag('config', 'UA-188412177-1');
 	</script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -42,7 +41,6 @@
 	window.dataLayer = window.dataLayer || [];
 	function gtag(){dataLayer.push(arguments);}
 	gtag('js', new Date());
-
 	gtag('config', 'G-SEKVJMCZNN');
 	</script>
 	<!-- Google Tag Manager -->
