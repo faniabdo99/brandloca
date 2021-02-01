@@ -57,7 +57,7 @@
                               <tr>
                                 <th scope="row">{{$Order->tracking_number}}</th>
                                 <td>{{$Order->total_amount}} L.E</td>
-                                <td>{{$Order->status}}</td>
+                                <td>{{$Order->StatusText}}</td>
                                 <td><a href="{{route('order.complete' , $Order)}}" class="text-primary">تفاصيل الطلب</a></td>
                               </tr>
                               @empty

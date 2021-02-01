@@ -58,37 +58,7 @@
                                 </div>
                                 <div class="col-lg-6 col-12">
                                     <label for="city">المدينة</label>
-                                    <select name="city" id="city">
-                                        <option value="">اختيار مدينة</option>
-                                        <option selected value="{{auth()->user()->city}}">{{auth()->user()->city}}</option>
-                                         <option value="Alexandria">الاسكندرية</option>
-                                         <option value="Aswan">أسوان</option>
-                                         <option value="Asyut">أسيوط</option>
-                                         <option value="Beheira">البحيرة</option>
-                                         <option value="Beni Suef">بني سويف</option>
-                                         <option value="Cairo">القاهرة</option>
-                                         <option value="Dakahlia">الدقهلية</option>
-                                         <option value="Damietta">دمياط</option>
-                                         <option value="Faiyum">الفيوم</option>
-                                         <option value="Gharbia">الغربية</option>
-                                         <option value="Giza">الجيزة</option>
-                                         <option value="Ismailia">الاسماعيلية</option>
-                                         <option value="Kafr El Sheikh">كفر الشيخ</option>
-                                         <option value="Luxor">الأقصر</option>
-                                         <option value="Matruh">مرسى مطروح</option>
-                                         <option value="Minya">المنيا</option>
-                                         <option value="Monufia">المنوفية</option>
-                                         <option value="New Valley">الوادي الجديد</option>
-                                         <option value="North Sinai">شمال سيناء</option>
-                                         <option value="Port Said">بورسعيد</option>
-                                         <option value="Qalyubia">القليوبية</option>
-                                         <option value="Qena">قنا</option>
-                                         <option value="Red Sea">البحر الأحمر</option>
-                                         <option value="Sharqia">الشرقية</option>
-                                         <option value="Sohag">سوهاج</option>
-                                         <option value="South Sinai">جنوب سيناء</option>
-                                         <option value="Suez">السويس</option>
-                                     </select>
+                                    <input type="text" name="city" id="city" value="{{auth()->user()->city}}" placeholder="يرجى ادخال المدينة">
                                  </div>
                             </div>
                             <label for="street_address">العنوان الكامل</label>

@@ -79,7 +79,7 @@
 	</header>
 	<!-- Header section end -->
 	<!-- PWA Add to home screen -->
-	<div class="add-button pwa-add-to-home">
+	{{-- <div class="add-button pwa-add-to-home">
 		<div class="row">
 		<div class="col-4">
 			<img src="{{url('public')}}/images/pwa-logo/icon-72x72.png" alt="">
@@ -91,5 +91,5 @@
 			<button id="close-pwa" class="site-btn btn-danger">اغلاق</button>
 		</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- PWA End-->

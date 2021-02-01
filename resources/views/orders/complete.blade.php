@@ -55,7 +55,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">طريقة الدفع</th>
-                                    <td>{{$TheOrder->payment_method}}</td>
+                                    <td>{{$TheOrder->payment_method_text}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">تاريخ الطلب</th>

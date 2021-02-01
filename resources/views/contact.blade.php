@@ -9,14 +9,12 @@
             <div class="row">
                 <div class="col-12 text-right contact-info">
                     <h3>تواصل معنا</h3>
-                    <p>جسر السويس , شارع جمال عبد الناصر</p>
-                    <p dir="ltr">0020 115 1411 867</p>
-                    <p>support@arteonline.com</p>
+                    <p dir="ltr"><a href="tel:00201151411867">0115 1411 867</a></p>
+                    <p><a href="mailto:arteonline50@gmail.com">arteonline50@gmail.com</a></p>
                     <div class="contact-social">
-                        <a href="#"><i class="fa fa-youtube"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="https://instagram.com/artekidswear" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="https://facebook.com/arte0kids" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/artekidswear" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
                     </div>
                     <form action="{{route('contact.post')}}" method="post" class="contact-form">
                         @csrf

@@ -53,6 +53,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 card-right">
+                  @if(count($CartItems) > 0)
                     <h6 class="text-right mb-3">لديك كوبون خصم؟</h6>
                     @guest
                       <p>سجل الدخول الى حسابك لاستخدام الكوبون</p>
@@ -78,8 +79,9 @@
                           @endif
                       </form>
                       <a href="{{route('orders.checkout')}}" class="site-btn">اكمال عملية الشراء</a>
+                      @endif
                     @endauth
-                    <a href="{{route('shop')}}" class="site-btn sb-dark">شراء منتجات اخرى</a>
+                    <a href="{{route('shop')}}" class="site-btn sb-dark">متابعة التسوق</a>
                 </div>
             </div>
         </div>

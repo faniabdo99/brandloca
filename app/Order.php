@@ -14,14 +14,25 @@ class Order extends Model{
     public function getFinalTotalAttribute(){return $this->total + $this->total_shipping;}
     public function getPaymentMethodTextAttribute(){
       $PaymetMethods = [
-        'pod' => 'Payment on Delivery',
-        'credit-card' => 'Credit Card',
-        'vodafone-cash' => 'Vodafone Cash'
+        'pod' => 'دفع عند الاستلام',
+        'credit-card' => 'بطاقة الائتمان',
+        'vodafone-cash' => 'فودافون كاش'
       ];
       if(array_key_exists($this->payment_method, $PaymetMethods)){
         return $PaymetMethods[$this->payment_method];
       }else{
         return $this->payment_method;
+      }
+    }
+    public function getStatusTextAttribute(){
+      $StatusText = [
+        'Awaits Payment' => 'بانتظار الدفع',
+        'Paid' => 'تم الدفع',
+      ];
+      if(array_key_exists($this->status, $StatusText)){
+        return $StatusText[$this->status];
+      }else{
+        return $this->status;
       }
     }
 }

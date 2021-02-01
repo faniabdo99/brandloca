@@ -66,6 +66,7 @@
                             @auth
                             @if($TheProduct->AvailableVariations()['inventory'] > 0)
                                 <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
+                                <a class="d-inline-block" href="{{route('order.cart')}}">اذهب الى سلة المشتريات</a>
                             @else
                               <p class="text-danger">تم البيع بالكامل</p>
                             @endif
@@ -100,8 +101,7 @@
                                 </div>
                                 <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="panel-body">
-                                        <img src="{{url('public/img')}}/cards.png" alt="">
-                                        <p>نقبل الدفع بجميع الأدوات السابقة</p>
+                                        <p>يمكنك الدفع عن طريق فودافون كاش, بطاقة الائتمان أو الدفع عن الاستلام</p>
                                     </div>
                                 </div>
                             </div>
@@ -111,9 +111,8 @@
                                 </div>
                                 <div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                     <div class="panel-body">
-                                        <h4>يمكن الاسترجاع خلال 7 أيام من البيع</h4>
-                                        <p>دفع عند الإسترجاع</p>
-                                        <p>لا يقبل استرجاع المنتجات التالفة أو بحالتها غير الأصلية , تنطبق <a href="#">شروط الإسترجاع</a> على جميع المنتجات</p>
+                                        <h4>يمكن الاسترجاع خلال 10 أيام من تاريخ انشاء الطلب</h4>
+                                        <p>لا يقبل استرجاع المنتجات التالفة أو بحالتها غير الأصلية , تنطبق <a href="{{route('return.policy')}}">شروط الإسترجاع</a> على جميع المنتجات</p>
                                     </div>
                                 </div>
                             </div>
@@ -124,11 +123,9 @@
                                 <div id="collapse4" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
                                     <div class="panel-body">
                                         <div class="social-sharing text-center">
-                                            <a href=""><i class="fa fa-google-plus"></i></a>
-                                            <a href=""><i class="fa fa-pinterest"></i></a>
-                                            <a href=""><i class="fa fa-facebook"></i></a>
-                                            <a href=""><i class="fa fa-twitter"></i></a>
-                                            <a href=""><i class="fa fa-youtube"></i></a>
+                                            <a href="https://api.whatsapp.com/send?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                            <a href="https://twitter.com/intent/tweet?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="fa fa-twitter"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -139,6 +136,7 @@
                                 </div>
                                 <div id="collapse5" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
                                     <div class="panel-body reviews-panel-body">
+                                        @if(count($TheProduct->Reviews) > 0)
                                         <div class="reviews-overall-text row mb-5">
                                             <div class="col-6">
                                                 <ul class="detailed-reviws-list text-left mb-0">
@@ -178,6 +176,9 @@
                                             @endforelse
                                           
                                         </ul>
+                                        @else
+                                        <p>كن أول من يقوم بمراجعة هذا المنتج!</p>
+                                        @endif
                                         @auth
                                             @if(auth()->user()->Bought($TheProduct->id))
                                                 <form class="review-form mb-5" action="{{route('review.post')}}" method="post">
@@ -203,6 +204,9 @@
                                                 <p>يمكنك تقييم المنتج بعد أن تقوم بعملية الشراء</p>
                                             @endif
                                         @endauth
+                                        @guest
+                                        <p>يرجى <a href="{{route('login.get')}}">تسجيل الدخول</a> لاضافة تقييم</p>    
+                                        @endguest
                                     </div>
                                 </div>
                             </div>
