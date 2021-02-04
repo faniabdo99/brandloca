@@ -171,7 +171,8 @@ class OrdersController extends Controller{
       $TheOrder = Order::findOrFail($id);
       return view('orders.complete', compact('TheOrder'));
     }
-    public function getOrderSuccess(){
+    public function getOrderSuccess(Request $r){
+      dd($r->all());
       return view('orders.success');
     }
     public function getTrace(){
