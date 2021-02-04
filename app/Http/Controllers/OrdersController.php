@@ -172,8 +172,16 @@ class OrdersController extends Controller{
       return view('orders.complete', compact('TheOrder'));
     }
     public function getOrderSuccess(Request $r){
-      dd($r->all());
-      return view('orders.success');
+      $TheOrder = Order::findOrFail($r->merchant_order_id);
+      if($r->success == 'true'){
+        //Update the Order
+        $TheOrder->update([
+          'status' => 'Paid',
+          'payment_id' => $r->id,
+          'is_paid' => 1
+        ]);
+      }
+      return view('orders.complete', compact('TheOrder'));
     }
     public function getTrace(){
         return view('orders.trace');
