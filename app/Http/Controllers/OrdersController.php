@@ -126,13 +126,16 @@ class OrdersController extends Controller{
               'city' => $TheOrder->shipping_city, 
               'country' => 'EG', 
               'state' => $TheOrder->shipping_province,
-              'notes' => $TheOrder->order_notes
+              'notes' => $TheOrder->order_notes,
+              'last_name' => ' Nicolas'
             ]
           ]);
+          $PaymobOrderID = json_decode($OrderRequest)->id;
           //Order Created
           $PaymentRequest = Http::post('https://accept.paymobsolutions.com/api/acceptance/payment_keys' , [
             'auth_token' => $Token,
             'delivery_needed' => true,
+            'order_id' => $PaymobOrderID,
             'expiration' => 3600, 
             'amount_cents' => ($TheOrder->FinalTotal * 100),
             'currency' => 'EGP',
@@ -141,7 +144,7 @@ class OrdersController extends Controller{
                 'apartment' => 803, 
                 'floor' => 42, 
                 'building' => 8028, 
-                'last_name' => 'Nicolas',   
+                'last_name' => ' Nicolas',   
                 'email' => $TheOrder->email, 
                 'first_name' => $TheOrder->name, 
                 'street' => $TheOrder->shipping_street_address, 
