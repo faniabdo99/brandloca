@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Route;
 use Validator;
 use Mail;
+use Http;
 //Models
 use App\Cart;
 use App\Order;
@@ -90,10 +91,73 @@ class OrdersController extends Controller{
             ]);
             $item->update(['status' => 'complete']);
           });
-          //Redirect to payment gatway
-          if($TheOrder->paymen_method == 'credit-card'){
-            //Creidet Card => Redirect or contact the Payment API
-          }
+        //Redirect to payment gatway
+        if($TheOrder->payment_method == 'credit-card'){
+          //Create Order Items Variable
+          $OrderItems = [];
+          foreach($TheOrder->Items() as $Item){
+              array_push($OrderItems ,[
+                'name' => $Item->Variation->ref_code,
+                'amount_cents' => $Item->Product->price * 100,
+                'description' => $Item->Product->title,
+                'quantity' => $Item->qty
+            ]);
+            }
+            $response = Http::post('https://accept.paymobsolutions.com/api/auth/tokens',[
+              'api_key' => 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWFXNXBkR2xoYkNJc0ltTnNZWE56SWpvaVRXVnlZMmhoYm5RaUxDSndjbTltYVd4bFgzQnJJam8yTURjeU4zMC5WYXUwVXNKS1UwNHV5cXF0VTFtN1lUdUtUQ2NfNkxqQk9RNlVJOTdjQU15OFk4d0JJU0ZMVlE4QnlraU9nbURzMWJfVUxZNkpuam9XMVdsXzlaa2xjdw==',
+          ]);
+          $ParseJson = json_decode($response->body());
+          $Token = $ParseJson->token;
+          //Send Order Request
+          $OrderRequest = Http::post('https://accept.paymobsolutions.com/api/ecommerce/orders' , [
+            'auth_token' => $Token,
+            'delivery_needed' => true,
+            'amount_cents' => ($TheOrder->FinalTotal * 100),
+            'currency' => 'EGP',
+            'merchant_order_id'=> $TheOrder->id,
+            'items' => $OrderItems,
+          'shipping_data' => [
+              'email' => $TheOrder->email, 
+              'first_name' => $TheOrder->name, 
+              'street' => $TheOrder->shipping_street_address, 
+              'phone_number' => $TheOrder->phone_number, 
+              'phone_number_2' => $TheOrder->phone_number_2, 
+              'postal_code' => $TheOrder->shipping_zip_code, 
+              'city' => $TheOrder->shipping_city, 
+              'country' => 'EG', 
+              'state' => $TheOrder->shipping_province,
+              'notes' => $TheOrder->order_notes
+            ]
+          ]);
+          //Order Created
+          $PaymentRequest = Http::post('https://accept.paymobsolutions.com/api/acceptance/payment_keys' , [
+            'auth_token' => $Token,
+            'delivery_needed' => true,
+            'expiration' => 3600, 
+            'amount_cents' => ($TheOrder->FinalTotal * 100),
+            'currency' => 'EGP',
+            'integration_id'=> 155229,
+            'billing_data' => [
+                'apartment' => 803, 
+                'floor' => 42, 
+                'building' => 8028, 
+                'last_name' => 'Nicolas',   
+                'email' => $TheOrder->email, 
+                'first_name' => $TheOrder->name, 
+                'street' => $TheOrder->shipping_street_address, 
+                'phone_number' => $TheOrder->phone_number, 
+                'phone_number_2' => $TheOrder->phone_number_2, 
+                'postal_code' => $TheOrder->shipping_zip_code, 
+                'city' => $TheOrder->shipping_city, 
+                'country' => 'EG', 
+                'state' => $TheOrder->shipping_province,
+              ]
+          ]);
+          $PaymentToken = json_decode($PaymentRequest->body());
+          $FrameID = 154258;
+          $PaymentID = $PaymentToken->token;
+          return view('pay' , compact('FrameID','PaymentID'));
+        }
           return redirect()->route('order.complete' , $TheOrder->id);
         }else{
           return back()->withErrors('طريقة الدفع غير متاحة')->withInput();
@@ -103,6 +167,9 @@ class OrdersController extends Controller{
     public function getOrderComplete($id){
       $TheOrder = Order::findOrFail($id);
       return view('orders.complete', compact('TheOrder'));
+    }
+    public function getOrderSuccess(){
+      return view('orders.success');
     }
     public function getTrace(){
         return view('orders.trace');

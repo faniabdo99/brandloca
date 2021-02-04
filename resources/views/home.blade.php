@@ -9,11 +9,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xl-6 col-lg-7 text-white text-right">
-							<span>تشكيلة جديدة</span>
-							<h2>اسم تسويقي لمنتج</h2>
-							<p>شرح عن هذا المنتج</p>
-							<a href="#" class="site-btn sb-line">المزيد</a>
-							<a href="#" class="site-btn sb-white">أضف الى السلة</a>
+							<span>وصل حديثاً</span>
+							<h2>تشكيلة الصيف الجديدة 2021</h2>
+							<p>تشكيلة متنوعة من موديلات صيف 2021! أكثر من 100 منتج جديد لطفلك</p>
+							<a href="{{route('shop')}}" class="site-btn sb-white">استعراض المنتجات</a>
 						</div>
 					</div>
 					<div class="offer-card text-white">

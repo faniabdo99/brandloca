@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
   Route::get('checkout' , 'OrdersController@getCheckout')->name('orders.checkout');
   Route::post('checkout' , 'OrdersController@postCheckout')->name('orders.checkout.post');
   Route::get('thank-you/{id}' , 'OrdersController@getOrderComplete')->name('order.complete');
+  Route::get('order-success' , 'OrdersController@getOrderSuccess')->name('order.thankyou');
 });
 Route::post('add-review' , 'ReviewController@postReview')->name('review.post');
 Route::middleware('guest')->group(function () {
