@@ -1,7 +1,8 @@
-@include('layout.header')
+@include('layout.header', ['PageDescription' => 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'])
 <body>
 	@include('layout.navbar')
 	@include('layout.errors')
+	<h1 class="d-none">موقع ارتي لملابس الأطفال</h1>
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">

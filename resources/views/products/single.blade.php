@@ -1,4 +1,4 @@
-@include('layout.header')
+@include('layout.header' , ['PageTitle' => $TheProduct->title, 'PageDescription' => $TheProduct->description])
 <body>
     @include('layout.navbar')
     <!-- product section -->
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 product-details text-right">
-                    <h2 class="p-title">{{$TheProduct->title}}</h2>
+                    <h1 class="p-title">{{$TheProduct->title}}</h1>
                     @if($TheProduct->HasDiscount()['HasDiscount'])
                         <h3 class="p-old-price">{{$TheProduct->price}} L.E</h3>
                         <h3 class="p-discount-price">{{$TheProduct->HasDiscount()['NewPrice']}} L.E مدة محدودة</h3>
@@ -53,7 +53,7 @@
                             @auth
                             @if($TheProduct->AvailableVariations()['inventory'] > 0)
                                 <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
-                                <a class="@if(userCart()->count() < 1) d-none @endif site-btn sb-white" id="go-to-cart-button" href="{{route('order.cart')}}"><i class="fas fa-shopping-cart"></i> اكمال عملية الشراء ({{userCart()->count()}}) </a>
+                                <a class="@if(userCart()->count() < 1) d-none @endif site-btn sb-white" id="go-to-cart-button" href="{{route('order.cart')}}"><i class="fas fa-shopping-cart"></i> اكمال عملية الشراء</a>
                             @else
                               <p class="text-danger">تم البيع بالكامل</p>
                             @endif

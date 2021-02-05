@@ -3,8 +3,8 @@
 <head>
 	<title>آرتي - {{$PageTitle ?? ' متجر الملابس الأفضل'}}</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="آرتي - {{$PageTitle ?? ' متجر الملابس الأفضل'}}">
-	<meta name="keywords" content="divisima, eCommerce, creative, html">
+	<meta name="description" content="آرتي - {{$PageDescription ?? ' متجر الملابس الأفضل'}}">
+	<meta name="keywords" content="arte, آرتي, ملابس أطفال, بيجاما, تجارة الكترونية, شراء ملابس , arte kids wear, arte kids">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
 	<link href="{{url('public')}}/img/favicon.png" rel="shortcut icon"/>
