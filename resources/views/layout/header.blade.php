@@ -51,5 +51,5 @@
 	})(window,document,'script','dataLayer','GTM-KV5C5BT');</script>
 	<!-- End Google Tag Manager -->
 	<!-- PWA Related -->
-	@laravelPWA
+	{{-- @laravelPWA --}}
 </head>

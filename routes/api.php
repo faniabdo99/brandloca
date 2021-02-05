@@ -10,6 +10,7 @@ Route::post('add-to-wishlist' , 'FavouriteController@ToggleFavourite')->name('fa
 //Products
 Route::post('product/filter' , 'ProductsController@ApplyFilters')->name('shop.filter');
 //Cart
+Route::post('check-color/{id}' , 'ProductsController@checkColors')->name('cart.checkColors');
 Route::post('add-to-cart' , 'CartController@addToCart')->name('cart.add');
 Route::post('update-cart/{item}/{user}' , 'CartController@updateCart')->name('cart.update');
 Route::post('apply-coupon' , 'CartController@ApplyCoupon')->name('cart.coupon');

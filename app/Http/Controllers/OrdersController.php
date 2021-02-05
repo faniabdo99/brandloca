@@ -47,7 +47,7 @@ class OrdersController extends Controller{
         'name' => 'required',
         'phone_number' => 'required|numeric',
         'phone_number_2' => 'required|numeric',
-        'email' => 'required|email|confirmed',
+        'email' => 'required|email',
         'province' => 'required',
         'city' => 'required',
         'zip_code' => 'required',
@@ -103,8 +103,8 @@ class OrdersController extends Controller{
                 'quantity' => $Item->qty
             ]);
             }
-            $response = Http::post('https://accept.paymobsolutions.com/api/auth/tokens',[
-              'api_key' => 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWFXNXBkR2xoYkNJc0ltTnNZWE56SWpvaVRXVnlZMmhoYm5RaUxDSndjbTltYVd4bFgzQnJJam8yTURjeU4zMC5WYXUwVXNKS1UwNHV5cXF0VTFtN1lUdUtUQ2NfNkxqQk9RNlVJOTdjQU15OFk4d0JJU0ZMVlE4QnlraU9nbURzMWJfVUxZNkpuam9XMVdsXzlaa2xjdw==',
+          $response = Http::post('https://accept.paymobsolutions.com/api/auth/tokens',[
+            'api_key' => 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnVZVzFsSWpvaWFXNXBkR2xoYkNJc0ltTnNZWE56SWpvaVRXVnlZMmhoYm5RaUxDSndjbTltYVd4bFgzQnJJam8yTURjeU4zMC5WYXUwVXNKS1UwNHV5cXF0VTFtN1lUdUtUQ2NfNkxqQk9RNlVJOTdjQU15OFk4d0JJU0ZMVlE4QnlraU9nbURzMWJfVUxZNkpuam9XMVdsXzlaa2xjdw==',
           ]);
           $ParseJson = json_decode($response->body());
           $Token = $ParseJson->token;
@@ -116,19 +116,19 @@ class OrdersController extends Controller{
             'currency' => 'EGP',
             'merchant_order_id'=> $TheOrder->id,
             'items' => $OrderItems,
-          'shipping_data' => [
-              'email' => $TheOrder->email, 
-              'first_name' => $TheOrder->name, 
-              'street' => $TheOrder->shipping_street_address, 
-              'phone_number' => $TheOrder->phone_number, 
-              'phone_number_2' => $TheOrder->phone_number_2, 
-              'postal_code' => $TheOrder->shipping_zip_code, 
-              'city' => $TheOrder->shipping_city, 
-              'country' => 'EG', 
-              'state' => $TheOrder->shipping_province,
-              'notes' => $TheOrder->order_notes,
-              'last_name' => ' Nicolas'
-            ]
+            'shipping_data' => [
+                'email' => $TheOrder->email, 
+                'first_name' => $TheOrder->name, 
+                'street' => $TheOrder->shipping_street_address, 
+                'phone_number' => $TheOrder->phone_number, 
+                'phone_number_2' => $TheOrder->phone_number_2, 
+                'postal_code' => $TheOrder->shipping_zip_code, 
+                'city' => $TheOrder->shipping_city, 
+                'country' => 'EG', 
+                'state' => $TheOrder->shipping_province,
+                'notes' => $TheOrder->order_notes,
+                'last_name' => ' Nicolas'
+              ]
           ]);
           $PaymobOrderID = json_decode($OrderRequest)->id;
           //Order Created
@@ -232,7 +232,6 @@ class OrdersController extends Controller{
         //Vlidate the Request
         $Rules = [
           'order_status' => 'required',
-          'tracking_link' => 'nullable|url'
         ];
         $validator = Validator::make($r->all() , $Rules);
         if($validator->fails()){
@@ -241,10 +240,9 @@ class OrdersController extends Controller{
           //Updat the Order
           $TheOrder->update([
             'status' => $r->order_status,
-            'tracking_link' => $r->tracking_link
           ]);
           //Send an Email to The User
-          Mail::to($TheOrder->email)->send(new OrderStatusUpdateMail($TheOrder));
+          // Mail::to($TheOrder->email)->send(new OrderStatusUpdateMail($TheOrder));
           return back()->withSuccess('Order Updated Successfully');
         }
     }else{

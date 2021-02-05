@@ -30,35 +30,22 @@
                         <h4 class="p-stock">{{$TheProduct->StatusValue}} | <a href="{{route('shop.category' , $TheProduct->Category->slug)}}">{{$TheProduct->Category->title}}</a></h4>
                         <p class="font-weight-bold">الحجم</p>
                         <form action="javascript:;" id="product-cart-form" method="post">
-                            <div class="fw-size-choose mb-5">
-                                @forelse ($TheProduct->AvailableVariations()['sizes'] as $Size)
-                                @php
-                                  //Check if this size available
-                                  $CheckSize = App\Product_Variation::where('product_id' , $TheProduct->id)->where('size' , $Size)->where('inventory' , '>' , 0)->where('status' ,'Available')->count();
-                                @endphp
-                                <div class="sc-item @if(!$CheckSize) disable @endif"  >
-                                    <input type="radio" name="size" id="size-{{$Size}}" value="{{$Size}}"  @if(!$CheckSize) disabled title="تم بيع هذا المقاس بالكامل" @endif>
-                                    <label for="size-{{$Size}}">{{$Size}}</label>
-                                </div>
-                                @empty
-                                <p class="text-right">هذا المنتج غير متوفر للبيع حالياً</p>
-                                @endforelse
+                            <div class="mb-5">
+                                <select id="product-size-selector" data-action="{{route('cart.checkColors',$TheProduct->id)}}" name="size">
+                                    <option value="">اضغط هنا لاختيار الحجم المطلوب</option>
+                                    @forelse ($TheProduct->AvailableVariations()['sizes'] as $Size)
+                                    @php
+                                    //Check if this size available
+                                    $CheckSize = App\Product_Variation::where('product_id' , $TheProduct->id)->where('size' , $Size)->where('inventory' , '>' , 0)->where('status' ,'Available')->count();
+                                    @endphp
+                                    <option value="{{$Size}}">{{$Size}} سنة</option>
+                                    @empty
+                                    <p class="text-right">هذا المنتج غير متوفر للبيع حالياً</p>
+                                    @endforelse
+                                </select>
                             </div>
-                            <p class="font-weight-bold">اللون</p>
-                            <div class="fw-size-choose mb-5">
-                                @forelse ($TheProduct->AvailableVariations()['color_codes'] as $key => $Color)
-                                @php
-                                  //Check if this size available
-                                  $CheckColor = App\Product_Variation::where('product_id' , $TheProduct->id)->where('color_code' , $Color)->where('inventory' , '>' , 0)->where('status' ,'Available')->count();
-                                @endphp
-                                <div class="sc-item @if(!$CheckColor) disable @endif">
-                                    <input type="radio" name="color" id="color-{{$key}}" value="{{$Color}}"  @if(!$CheckColor) disabled title="تم بيع هذا اللون بالكامل" @endif>
-                                    <label for="color-{{$key}}" style="background:{{$Color}};"></label>
-                                </div>
-                                @empty
-                                <p class="text-right">هذا المنتج غير متوفر للبيع حالياً</p>
-                                @endforelse
-                            </div>
+                            <p class="font-weight-bold" id="choose-color-text">يرجى اختيار الحجم أولاً لتحديد اللون</p>
+                            <div id="choose-product-color" class="fw-size-choose mb-5 d-none"></div>
                             <p class="font-weight-bold">الكمية المطلوبة</p>
                             <div class="quantity">
                                 <div class="pro-qty"><input name="qty" type="text" value="1"></div>
@@ -66,7 +53,7 @@
                             @auth
                             @if($TheProduct->AvailableVariations()['inventory'] > 0)
                                 <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
-                                <a class="d-inline-block" href="{{route('order.cart')}}">اذهب الى سلة المشتريات</a>
+                                <a class="@if(userCart()->count() < 1) d-none @endif site-btn sb-white" id="go-to-cart-button" href="{{route('order.cart')}}"><i class="fas fa-shopping-cart"></i> اكمال عملية الشراء ({{userCart()->count()}}) </a>
                             @else
                               <p class="text-danger">تم البيع بالكامل</p>
                             @endif
@@ -75,6 +62,7 @@
                             <p>يرجى <a href="{{route('login.get')}}">تسجيل الدخول</a> لاضافة المنتج الى سلة المشتريات</p>
                           @endguest
                           @auth
+                          <div class="mt-4">
                             @if($TheProduct->LikedByUser())
                                 <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}"
                                   class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="flaticon-heart"></i> أحببته</a>
@@ -82,6 +70,7 @@
                                 <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" class="site-btn sb-white add-to-wishlist-btn"><i
                                       class="flaticon-heart"></i> اضافة الى المفضلة</a>
                                 @endif
+                            </div>
                               @endauth
                         </form>
                         <div id="accordion" class="accordion-area">
@@ -259,5 +248,4 @@
     @include('layout.scripts')
     @include('layout.errors')
 </body>
-
 </html>

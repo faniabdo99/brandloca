@@ -88,5 +88,11 @@ function getLatestProducts($ProductId = null){
       return $Products;
     }
   }
-
+}
+function userCart(){
+  if(auth()->check()){
+    return Cart::where('user_id' , auth()->user()->id)->where('status' , 'active')->get();
+  }else{
+    return 0;
+  }
 }

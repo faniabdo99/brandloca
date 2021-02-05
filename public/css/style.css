@@ -8,12 +8,12 @@
 }
 html,
 body {
-  height: 100%;
   font-family: "ArteSans", "Tajawal", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   direction: rtl;
   font-size: 14px;
+  margin-top: 60px;
 }
 
 h1,
@@ -400,8 +400,16 @@ ol {
 /*------------------
   Header section
 ---------------------*/
+.header-section {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  top: 0;
+}
+
 .header-top {
   padding: 18px 0 14px;
+  background-color: #fff;
 }
 
 .site-logo {
@@ -992,6 +1000,14 @@ ol {
   padding: 0 15px;
 }
 
+#product-cart-form select {
+  width: 100%;
+  padding: 20px;
+  border-radius: 50px;
+  background-color: #f1f1f1;
+  border: 0;
+}
+
 .reviews-overall-text {
   padding: 20px;
   border-radius: 10px;
@@ -1182,10 +1198,12 @@ ol {
 }
 
 .product-item .tag-new,
-.product-item .tag-sale {
-  position: absolute;
-  right: 16px;
-  top: 14px;
+.product-item .tag-sale,
+.product-item .tag-sold {
+  position: relative;
+  display: inline-block;
+  left: 20px;
+  top: 35px;
   font-size: 10px;
   font-weight: 700;
   color: #fff;
@@ -1194,15 +1212,16 @@ ol {
   text-transform: uppercase;
   padding: 5px;
   border-radius: 15px;
-  width: 42px;
+  width: auto;
   text-align: center;
 }
 
 .product-item .tag-sale {
-  text-align: center;
-  padding: 5px;
-  min-width: 65px;
   background: #FEC906;
+}
+
+.product-item .tag-sold {
+  background: #c54343;
 }
 
 .product-item .pi-links {
@@ -2503,11 +2522,12 @@ ol {
 /* Tablet :768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .site-logo {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    height: 50px;
   }
 
   .header-search-form {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 
   .user-panel {
@@ -2575,11 +2595,15 @@ ol {
 /* Large Mobile :480px. */
 @media only screen and (max-width: 767px) {
   .site-logo {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+  .site-logo img {
+    height: 50px;
+    width: auto;
   }
 
   .header-search-form {
-    margin-bottom: 15px;
+    display: none;
   }
 
   .user-panel {

@@ -92,6 +92,9 @@
 							<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
 								<div class="product-item">
 									<div class="pi-pic">
+										@if($NewProduct->AvailableVariations()['inventory'] == 0)
+											<div class="tag-sold mr-5">تم البيع بالكامل</div>
+										@endif
 										@if($NewProduct->hasDiscount())
 											<div class="tag-sale mr-5">فترة محدودة</div>
 										@endif
@@ -142,6 +145,9 @@
 					<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">
 						<div class="product-item">
 							<div class="pi-pic">
+								@if($PromotedProduct->AvailableVariations()['inventory'] == 0)
+									<div class="tag-sold mr-5">تم البيع بالكامل</div>
+								@endif
 								@if($PromotedProduct->hasDiscount())
 									<div class="tag-sale">فترة محدودة</div>
 								@endif

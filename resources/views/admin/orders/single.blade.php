@@ -14,6 +14,7 @@
             <div class="container-fluid dashboard-content">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        @include('admin.layout.errors')
                         <div class="card">
                             <div class="card-header">
                                 <h2 class="mb-0">Order #{{$TheOrder->id}}</h2>
@@ -139,15 +140,17 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <form class="mt-5" action="#" method="post">
+                                <form class="mt-5" action="{{route('admin.orders.updateStatus' , $TheOrder->id)}}" method="post">
+                                    @csrf
                                     <label class="font-weight-bold">Update Order Status</label>
-                                    <select class="form-control mb-3" name="status" required>
+                                    <select class="form-control mb-3" name="order_status" required>
                                         <option value="">Select a status</option>
                                         <option value="order_recived">Order Recived</option>
-                                        <option value="ready_to_ship">Ready to ship</option>
-                                        <option value="shipped">Shipped</option>
-                                        <option value="returned">Returned</option>
-                                        <option value="complete">Complete</option>
+                                        <option value="Awaits Payment">Awaits Payment</option>
+                                        <option value="Paid">Paid</option>
+                                        <option value="Shipped">Shipped</option>
+                                        <option value="Returned">Returned</option>
+                                        <option value="Complete">Complete</option>
                                     </select>
                                     <button type="sybmit" class="btn btn-success btn-rounded">Update</button>
                                 </form>

@@ -1,6 +1,6 @@
 @include('layout.header')
 <body>
-		@include('layout.navbar')
+	@include('layout.navbar')
     @include('layout.errors')
 	<!-- checkout section  -->
 	<section class="checkout-section spad text-right">
@@ -17,12 +17,11 @@
 								<input required type="text" name="phone_number" placeholder="رقم الهاتف" value="{{old('phone_number') ?? auth()->user()->phone_number}}">
 								<input required type="text" name="phone_number_2" placeholder="رقم هاتف بديل" value="{{old('phone_number_2') ?? ''}}">
 								<input required type="text" name="email" placeholder="البريد الإلكتروني" value="{{old('email') ?? auth()->user()->email}}">
-								<input required type="text" name="email_confirmation" placeholder="تأكيد البريد الإلكتروني" value="{{old('email_conf') ?? ''}}">
 							</div>
 							<div class="col-md-12"><input required type="text" name="province" placeholder="المحافظة" value="{{old('province') ?? auth()->user()->province}}"></div>
 							<div class="col-md-6"><input required name="city" type="text" placeholder="المدينة" value="{{old('city') ?? auth()->user()->city}}"></div>
 							<div class="col-md-6"><input required name="zip_code" type="text" placeholder="الرمز البريدي" value="{{old('zip_code') ?? auth()->user()->zip_code}}"></div>
-              <div class="col-md-12"><input required type="text" name="street_address" placeholder="العنوان" value="{{old('street_address') ?? auth()->user()->street_address}}"></div>
+             				 <div class="col-md-12"><input required type="text" name="street_address" placeholder="العنوان" value="{{old('street_address') ?? auth()->user()->street_address}}"></div>
 						</div>
 						<div class="cf-title">معلومات الشحن</div>
 						<div class="row shipping-btns">

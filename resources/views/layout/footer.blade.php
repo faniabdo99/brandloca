@@ -8,6 +8,7 @@
 						<p>15 سنة من الخبرة في انتاج ملابس الأطفال من عمر 6 أشهر الى 16 سنة و اكثر من 200 منتج جديد سنوياً</p>
 						<img src="{{url('public/img')}}/vodafone-cash.png" width="60" height="30" alt="vodafone-cash">
 						<img src="{{url('public/img')}}/mastercart.png" width="60" height="30" alt="Master Card">
+						<img src="{{url('public/img')}}/visa-card.png" width="60" height="30" alt="Visa Card">
 					</div>
 				</div>
 				<div class="col-lg-3 col-sm-6">
@@ -54,11 +55,11 @@
 						</div>
 						<div class="con-info">
 							<span><i class="fas fa-map-marker-alt"></i></span>
-							<p>مدينة السادس من أكتوبر , المنطقة الصناعية الأولى</p>
+							<p>142 مدينة الصفا , جسر السويس</p>
 						</div>
 						<div class="con-info">
 							<span><i class="fas fa-phone"></i></span>
-							<p dir="ltr"><a href="tel:00201151411867">0115 1411 867</a></p>
+							<p dir="ltr"><a href="tel:00201027099000">0102 7099 000</a></p>
 						</div>
 						<div class="con-info">
 							<span><i class="fas fa-envelope"></i></span>

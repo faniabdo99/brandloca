@@ -8,6 +8,16 @@
     padding: 0 15px;
   }
 }
+//Single Product Form
+#product-cart-form{
+  select{
+    width: 100%;
+    padding:20px;
+    border-radius: 50px;
+    background-color: $lightgray;
+    border:0;
+  }
+}
 // Reviews System
 .reviews-overall-text{
   padding: 20px;

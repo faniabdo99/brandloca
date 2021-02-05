@@ -1,12 +1,16 @@
-
+.header-section{
+	position: fixed;
+	width:100%;
+	z-index: 9999;
+	top: 0;
+}
 .header-top {
 	padding: 18px 0 14px;
+	background-color: #fff;
 }
-
 .site-logo {
 	display: inline-block;
 }
-
 .header-search-form {
 	width: 100%;
 	position: relative;

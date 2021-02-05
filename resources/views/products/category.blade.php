@@ -54,6 +54,12 @@
                             <a href="{{route('product' , [$Product->slug , $Product->id])}}">
                                 <div class="product-item">
                                     <div class="pi-pic">
+                                        @if($Product->AvailableVariations()['inventory'] == 0)
+                                          <div class="tag-sold mr-5">تم البيع بالكامل</div>
+                                       @endif  
+                                        @if($Product->hasDiscount())
+                                           <div class="tag-sale">فترة محدودة</div>
+                                        @endif
                                         <img src="{{$Product->MainImage}}" alt="{{$Product->title}}">
                                         <div class="pi-links">
                                             <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>

@@ -28,6 +28,9 @@ class Order extends Model{
       $StatusText = [
         'Awaits Payment' => 'بانتظار الدفع',
         'Paid' => 'تم الدفع',
+        'Shipped' => 'تم الشحن',
+        'Returned' => 'تم الارجاع',
+        'Complete' => 'مكتمل'
       ];
       if(array_key_exists($this->status, $StatusText)){
         return $StatusText[$this->status];

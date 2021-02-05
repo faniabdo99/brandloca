@@ -20,7 +20,7 @@ $(window).on('load', function () {
     $(".loader").fadeOut();
     $("#preloder").delay(400).fadeOut("slow");
 });
-(function ($) {
+
     /*------------------
     	Navigation
     --------------------*/
@@ -288,13 +288,42 @@ $(window).on('load', function () {
         }
       });
     });
-
+    $('#product-size-selector').change(function(){
+      console.log("Changed");
+      $('#choose-product-color').removeClass('d-none').html('<i class="fas fa-spinner fa-spin"></i>');
+      var ActionRoute = $(this).data('action');
+      //Send API Request to get available colors
+      $.ajax({
+        method: 'post',
+        url: ActionRoute,
+        data: {'size':$(this).val()} ,
+        success: function (response) {
+          //Update the text
+          $('#choose-color-text').html('اختر اللون:');
+          $('#choose-product-color').html('');
+          //Plug the colors
+          response.forEach(function(color,i){
+            $('#choose-product-color').append(`
+              <div class="sc-item">
+                  <input type="radio" name="color" id="color-${i}" value="${color.color_code}">
+                  <label for="color-${i}" style="background:${color.color_code};"></label>
+              </div>
+            `);
+          });
+        },
+        error: function(response, textStatus, errorThrown){
+          $('#choose-product-color').removeClass('d-none').html('حدث خطأ خلال استخراج الألوان, سيتم تحديث الصفحة تلقائياً');
+          location.reload();
+        }
+      })
+    });
     $('#add-to-cart').click(function(e){
       e.preventDefault();
       //Validate the Stuff
-      var size = $('#product-cart-form input[name="size"]:checked').val();
+      var size = $('#product-cart-form select[name="size"] option:selected').val();
       var color = $('#product-cart-form input[name="color"]:checked').val();
       var qty = $('#product-cart-form input[name="qty"]').val();
+      console.log(size);
       if(!size){
         ShowNoto('notification-danger' , 'يرجى اختيار الحجم المطلوب' , 'Error');
         return false;
@@ -324,6 +353,8 @@ $(window).on('load', function () {
         data: Data,
         success: function(response){
           That.html('<i class="flaticon-bag"></i> في السلة '+Data.qty);
+          //Show Go to cart Button
+          That.next('#go-to-cart-button').removeClass('d-none');
           //Update navbar cart icon
           var CurrentValue = parseInt($('.shopping-card').find('span').html());
           $('.shopping-card').find('span').html(CurrentValue + parseInt(Data.qty));
@@ -455,7 +486,6 @@ $(window).on('load', function () {
               </tbody>
             </table>
           `);
-          console.log(response);
         },
         error: function(response){
           TheButton.html('<i class="fas fa-search"></i>');
@@ -467,58 +497,57 @@ $(window).on('load', function () {
 
 
 
-    function setCookie(cname, cvalue, exdays) {
-      var d = new Date();
-      d.setTime(d.getTime() + (exdays*24*60*60*1000));
-      var expires = "expires="+ d.toUTCString();
-      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-    function getCookie(cname) {
-      var name = cname + "=";
-      var decodedCookie = decodeURIComponent(document.cookie);
-      var ca = decodedCookie.split(';');
-      for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
-        }
-      }
-      return "";
-    }
-    //PWA Add to home 
-    let deferredPrompt;
-    const addBtn = document.querySelector('.add-button');
-    addBtn.style.display = 'none';
-    window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-    // Update UI to notify the user they can add to home screen
-    addBtn.style.display = 'block';
-    addBtn.addEventListener('click', (e) => {
-      // hide our user interface that shows our A2HS button
-      addBtn.style.display = 'none';
-      // Show the prompt
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-        } else {
-        console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-      });
-    });
-    });
-    $('#close-pwa').click(function(){
-      alert("CLicked");
-      $(this).parent().parent().fadeOut('fast');
-      setCookie('pwa-hidden' , true, 15);
-    });
-    
-})(jQuery);
+    // function setCookie(cname, cvalue, exdays) {
+    //   var d = new Date();
+    //   d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    //   var expires = "expires="+ d.toUTCString();
+    //   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    // }
+    // function getCookie(cname) {
+    //   var name = cname + "=";
+    //   var decodedCookie = decodeURIComponent(document.cookie);
+    //   var ca = decodedCookie.split(';');
+    //   for(var i = 0; i <ca.length; i++) {
+    //     var c = ca[i];
+    //     while (c.charAt(0) == ' ') {
+    //       c = c.substring(1);
+    //     }
+    //     if (c.indexOf(name) == 0) {
+    //       return c.substring(name.length, c.length);
+    //     }
+    //   }
+    //   return "";
+    // }
+    // //PWA Add to home 
+    // let deferredPrompt;
+    // const addBtn = document.querySelector('.add-button');
+    // addBtn.style.display = 'none';
+    // window.addEventListener('beforeinstallprompt', (e) => {
+    // // Prevent Chrome 67 and earlier from automatically showing the prompt
+    // e.preventDefault();
+    // // Stash the event so it can be triggered later.
+    // deferredPrompt = e;
+    // // Update UI to notify the user they can add to home screen
+    // addBtn.style.display = 'block';
+    // addBtn.addEventListener('click', (e) => {
+    //   // hide our user interface that shows our A2HS button
+    //   addBtn.style.display = 'none';
+    //   // Show the prompt
+    //   deferredPrompt.prompt();
+    //   // Wait for the user to respond to the prompt
+    //   deferredPrompt.userChoice.then((choiceResult) => {
+    //     if (choiceResult.outcome === 'accepted') {
+    //     console.log('User accepted the A2HS prompt');
+    //     } else {
+    //     console.log('User dismissed the A2HS prompt');
+    //     }
+    //     deferredPrompt = null;
+    //   });
+    // });
+    // });
+    // $('#close-pwa').click(function(){
+    //   alert("CLicked");
+    //   $(this).parent().parent().fadeOut('fast');
+    //   setCookie('pwa-hidden' , true, 15);
+    // });
+

@@ -277,30 +277,14 @@ class ProductsController extends Controller{
         }
         return view('products.single' , compact('TheProduct','RelatedProducts'));
     }
-    public function askQuestion(Request $r){
-        //Validate the request
-        $Rules = [
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone_number' => 'required',
-            'country' => 'required',
-            'message' => 'required'
-        ];
-        $Messages = [
-            'name.required' => 'Your name is required !',
-            'email.email' => 'Your Email is invalid !',
-            'email.required' => 'Your email is required !',
-            'phone_number.required' => 'Your number is required !',
-            'country.required' => 'Your country is required !',
-            'message.required' => 'Your message is required !',
-        ];
-        $validator = Validator::make($r->all() , $Rules ,$Messages);
-        if($validator->fails()){
-            return response($validator->errors()->all() , 403);
-        }else{
-            //Send Message to The Admin
-            Mail::to('admin@ukfashioshop.com')->send(new QuestionAboutProduct($r->all()));
-            return response("Your Question was recived m you'll hear from us soon");
-        }
+    public function checkColors(Request $r,$id){
+      //Get the Product
+      $TheProduct = Product::find($id);
+      if($TheProduct){
+        $AvailableColors = Product_Variation::where('product_id' , $id)->where('size' , $r->size)->where('inventory' , '>' , 0)->where('status','Available')->select('color','color_code')->get();
+        return response($AvailableColors,200);
+      }else{
+        return response('This product ID is not valid',404);
+      }
     }
 }
