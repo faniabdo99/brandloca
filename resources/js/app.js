@@ -323,7 +323,6 @@ $(window).on('load', function () {
       var size = $('#product-cart-form select[name="size"] option:selected').val();
       var color = $('#product-cart-form input[name="color"]:checked').val();
       var qty = $('#product-cart-form input[name="qty"]').val();
-      console.log(size);
       if(!size){
         ShowNoto('notification-danger' , 'يرجى اختيار الحجم المطلوب' , 'Error');
         return false;
@@ -342,7 +341,7 @@ $(window).on('load', function () {
       var Data = {
         'qty': $('#product-cart-form input[name="qty"]').val(),
         'color': $('#product-cart-form input[name="color"]:checked').val(),
-        'size': $('#product-cart-form input[name="size"]:checked').val(),
+        'size' : $('#product-cart-form select[name="size"] option:selected').val(),
         'user_id': $(this).data('user'),
         'product_id': $(this).data('product')
       }
