@@ -2,15 +2,15 @@
 use Illuminate\Support\Facades\Route;
 Route::get('/','HomeController@getHomepage')->name('home');
 Route::get('/about','PagesController@getAbout')->name('about');
-Route::get('/test','PagesController@testPaymob');
 //Static Pages
 Route::get('privacy-policy' , 'PagesController@getPrivacyPolicy')->name('privacy.policy');
 Route::get('return-policy' , 'PagesController@getReturnPolicy')->name('return.policy');
 //Blog System
 Route::prefix('blog')->group(function(){
   Route::get('/' , 'BlogController@getFrontendHome')->name('blog');
-  Route::get('/{id}' , 'BlogController@getSingle')->name('blog.single');
+  Route::get('/{id}/{slug?}' , 'BlogController@getSingle')->name('blog.single');
 });
+Route::get('sitemap.xml' , 'SitemapController@getSitemap');
 //Users System
 Route::middleware('auth')->group(function () {
   //User Profile

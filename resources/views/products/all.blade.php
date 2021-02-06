@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 @include('products.filters-sidebar' , ['Categories' => $Categories])
-                <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
+                <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                     <div class="row">
                         @forelse ($Products as $Product)
                         <div class="col-lg-4 col-12">

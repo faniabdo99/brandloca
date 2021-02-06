@@ -1,42 +1,17 @@
 //SCSS Variables
 @import 'vars';
-/*---------------------
-  Reset CSS
------------------------*/
 @import 'reset';
-/*---------------------
-  Helper CSS
------------------------*/
 @import 'helpers';
-/*---------------------
-  Commom elements
------------------------*/
 @import 'common';
-/*------------------
-  Header section
----------------------*/
 @import 'header';
-/* ----------------
-  Features
----------------------*/
 @import 'features';
-/* ------------------
-  Auth section
----------------------*/
 @import 'auth';
-/* ------------------
-  Orders section
----------------------*/
 @import 'orders';
-/* ------------------
-  Products section
----------------------*/
+@import 'pages';
+@import 'errors';
 @import 'products';
 @import 'homepage';
 @import 'blog';
-/* ------------------
-  Features section
----------------------*/
 
 .feature {
 	text-align: center;
@@ -854,13 +829,14 @@
 }
 
 .product-pic-zoom {
+	width: 80%;
 	margin-bottom: 35px;
 }
 .product-thumbs .pt {
-	width: 116px;
-	height: 116px;
+	width: 50px;
+	height: 50px;
 	float: right;
-	margin-left: 31px;
+	margin-left: 21px;
 	margin-bottom: 15px;
 	overflow: hidden;
 	cursor: pointer;
@@ -1613,9 +1589,11 @@
 		display: none;
 	}
 	.cart-table,
-	.checkout-cart,
-	.product-thumbs {
+	.checkout-cart{
 		margin-bottom: 50px;
+	}
+	.product-thumbs{
+		margin-bottom: 20px;
 	}
 	.cart-table .size-col h4,
 	.cart-table table tr th.size-th,
@@ -1690,10 +1668,7 @@
 		display: none;
 	}
 }
-/*========== Pages CSS ==========*/
-@import 'pages';
-/*========== Errors CSS ==========*/
-@import 'errors';
+
 .pwa-add-to-home{
 	position: fixed;
 	bottom: 50px;

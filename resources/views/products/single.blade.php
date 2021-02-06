@@ -86,7 +86,7 @@
                                         <h4>طرق الدفع المتاحة</h4>
                                         <p>يمكنك الدفع عن طريق فودافون كاش, بطاقة الائتمان أو الدفع عن الاستلام</p>
                                         <br>
-                                        <h4>شارك المنتج مع أصدقائك!</h4>
+                                        <h4>شارك المنتج مع أصدقائك !</h4>
                                         <div class="social-sharing text-right">
                                             <a class="ml-3" href="https://api.whatsapp.com/send?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="text-whatsapp fa fa-whatsapp"></i></a>
                                             <a class="ml-3" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank"><i class="text-facebook fa fa-facebook"></i></a>
