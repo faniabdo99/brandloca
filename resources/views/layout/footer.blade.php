@@ -16,7 +16,7 @@
 						<h2>صفحات</h2>
 						<ul>
 							<li><a href="{{route('shop')}}">المنتجات</a></li>
-							<li><a href="{{route('return.policy')}}">عن Arte Kids</a></li>
+							<li><a href="{{route('about')}}">عن Arte Kids</a></li>
 							<li><a href="{{route('order.trace')}}">تتبع الطلبات</a></li>
 							<li><a href="{{route('return.policy')}}">سياسة الاسترجاع</a></li>
 							<li><a href="{{route('privacy.policy')}}">سياسة الخصوصية</a></li>
@@ -27,22 +27,18 @@
 					<div class="footer-widget about-widget">
 						<h2>من المدونة</h2>
 						<div class="fw-latest-post-widget">
+							@forelse (getImportantArticles(2) as $FArticle)
 							<div class="lp-item">
 								<div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/1.jpg"></div>
 								<div class="lp-content">
-									<h6>جديد الموضة</h6>
-									<span>Oct 21, 2018</span>
-									<a href="#" class="readmore">قراءة المزيد</a>
+									<h6>{{$FArticle->title}}</h6>
+									<span>{{$FArticle->created_at->format('d, M y')}}</span>
+									<a href="{{route('blog.single' , [$FArticle->id,$FArticle->slug])}}" class="readmore">قراءة المزيد</a>
 								</div>
 							</div>
-							<div class="lp-item">
-								<div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/2.jpg"></div>
-								<div class="lp-content">
-									<h6>جديدنا هذه السنة</h6>
-									<span>Oct 21, 2018</span>
-									<a href="#" class="readmore">قراءة المزيد</a>
-								</div>
-							</div>
+							@empty
+								
+							@endforelse
 						</div>
 					</div>
 				</div>

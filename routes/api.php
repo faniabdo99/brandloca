@@ -41,6 +41,8 @@ Route::post('delete-discount' , 'DiscountController@delete')->name('admin.discou
 Route::post('activate-deactivate-user' , 'AuthController@ToggleActive')->name('admin.user.toggleActive');
 //Coupon
 Route::post('delete-coupon' , 'CoupounsController@delete')->name('admin.coupoun.delete');
+//Blog
+Route::post('delete-article' , 'BlogController@delete')->name('admin.blog.delete');
 //Shipping Costs
 Route::post('delete-shipping-cost' , 'ShippingCostsController@delete')->name('admin.shippingCosts.delete');
 Route::post('calculate-shipping-cost' , 'ShippingCostsController@calculateShippingCost')->name('admin.shippingCosts.calculate');

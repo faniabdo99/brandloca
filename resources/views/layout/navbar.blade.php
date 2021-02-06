@@ -68,7 +68,7 @@
 					</li>
 					<li><a href="{{route('order.trace')}}">تتبع الطلبات</a></li>
 					<li><a href="{{route('contact')}}">اتصل بنا</a></li>
-					{{-- <li><a href="#">المدونة</a></li> --}}
+					<li><a href="{{route('blog')}}">المدونة</a></li>
 				</ul>
 			</div>
 		</nav>

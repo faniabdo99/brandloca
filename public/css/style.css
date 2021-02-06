@@ -13,7 +13,7 @@ body {
   font-smoothing: antialiased;
   direction: rtl;
   font-size: 14px;
-  margin-top: 60px;
+  margin-top: 65px;
 }
 
 h1,
@@ -80,6 +80,11 @@ ol {
   margin: 0;
 }
 
+@media screen and (max-width: 768px) {
+  body {
+    margin-top: 115px;
+  }
+}
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -1049,6 +1054,82 @@ ol {
   border-radius: 10px;
   background-color: #f1f1f1;
   padding: 10px;
+}
+
+.our-reviews {
+  background-color: #FEC906;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+}
+.our-reviews h2 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+.our-reviews a {
+  background-color: #4267B2;
+  color: #fff;
+  transition: all ease 0.3s;
+}
+.our-reviews a:hover {
+  background-color: #3b5c9f;
+  transition: all ease 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+  .our-reviews {
+    background-color: #FEC906;
+    padding: 20px 10px;
+  }
+  .our-reviews h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 25px;
+  }
+  .our-reviews a {
+    font-size: 0.8em;
+    text-align: center;
+  }
+}
+#blog-hero {
+  height: 50vh;
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+}
+#blog-hero .dark-overlap {
+  height: 50vh;
+  width: 100%;
+  padding: 10%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+#blog-hero .dark-overlap h1, #blog-hero .dark-overlap p {
+  color: #fff;
+}
+#blog-hero .dark-overlap h1 {
+  margin-bottom: 40px;
+}
+
+.index-single-blog-item img {
+  height: 300px;
+  width: 100%;
+  border-radius: 8px;
+}
+.index-single-blog-item h2 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.single-blog-article .blog-single-main-image {
+  height: 400px;
+  width: 100%;
+}
+.single-blog-article .blog-single-title {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+.single-blog-article .blog-single-description {
+  font-size: 1.3em;
+  color: #707070;
 }
 
 /* ------------------

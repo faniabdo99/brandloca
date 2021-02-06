@@ -6,6 +6,11 @@ Route::get('/test','PagesController@testPaymob');
 //Static Pages
 Route::get('privacy-policy' , 'PagesController@getPrivacyPolicy')->name('privacy.policy');
 Route::get('return-policy' , 'PagesController@getReturnPolicy')->name('return.policy');
+//Blog System
+Route::prefix('blog')->group(function(){
+  Route::get('/' , 'BlogController@getFrontendHome')->name('blog');
+  Route::get('/{id}' , 'BlogController@getSingle')->name('blog.single');
+});
 //Users System
 Route::middleware('auth')->group(function () {
   //User Profile
@@ -106,11 +111,19 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'isAdmin'] , function () {
       Route::get('/edit/{id}' , 'CoupounsController@getEdit')->name('admin.coupoun.getEdit');
       Route::post('/edit/{id}' , 'CoupounsController@postEdit')->name('admin.coupoun.postEdit');
     });
-      //Orders System
-      Route::prefix('orders')->group(function(){
-        Route::get('/' , 'OrdersController@getHome')->name('admin.orders.home');
-        Route::get('/single/{id}' , 'OrdersController@getSingleOrder')->name('admin.orders.single');
-        Route::post('/update-status/{id}' , 'OrdersController@updateOrderStatus')->name('admin.orders.updateStatus');
-      });
-  });
+    //Orders System
+    Route::prefix('orders')->group(function(){
+      Route::get('/' , 'OrdersController@getHome')->name('admin.orders.home');
+      Route::get('/single/{id}' , 'OrdersController@getSingleOrder')->name('admin.orders.single');
+      Route::post('/update-status/{id}' , 'OrdersController@updateOrderStatus')->name('admin.orders.updateStatus');
+    });
+    //Discount System
+    Route::prefix('blog')->group(function(){
+      Route::get('/' , 'BlogController@getHome')->name('admin.blog.home');
+      Route::get('/new' , 'BlogController@getNew')->name('admin.blog.getNew');
+      Route::post('/new' , 'BlogController@postNew')->name('admin.blog.postNew');
+      Route::get('/edit/{id}' , 'BlogController@getEdit')->name('admin.blog.getEdit');
+      Route::post('/edit/{id}' , 'BlogController@postEdit')->name('admin.blog.postEdit');
+    });
+});
 

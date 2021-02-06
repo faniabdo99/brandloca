@@ -9,7 +9,7 @@ body {
 	font-smoothing: antialiased;
 	direction: rtl;
 	font-size: 14px;
-	margin-top: 60px;
+	margin-top: 65px;
 }
 h1,
 h2,
@@ -73,4 +73,9 @@ ul,
 ol {
 	padding: 0;
 	margin: 0;
+}
+@media screen and (max-width:768px){
+	body{
+		margin-top:115px;
+	}
 }

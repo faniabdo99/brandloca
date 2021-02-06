@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\Category;
 use App\Product;
 use App\Cart;
+use App\Blog;
 //Cart System Helpers
 function CartItemsCount(){
   if(auth()->check()){
@@ -95,4 +96,7 @@ function userCart(){
   }else{
     return 0;
   }
+}
+function getImportantArticles($limit = null){
+  return Blog::where('is_important' , 1)->limit($limit)->get();
 }

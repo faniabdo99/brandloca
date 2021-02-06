@@ -199,7 +199,20 @@
 		</div>
 	</section>
 	<!-- Our Brands End -->
-
+	<!-- Our Reviews -->
+	<section class="our-reviews text-right">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-12">
+					<h2><i class="fas fa-star"></i> مقييم 4.5 / 5 على فيسوك</h2>
+				</div>
+				<div class="col-lg-4 col-12 text-center">
+					<a class="site-btn" href="https://www.facebook.com/arte0kids/reviews/" target="_blank"><i class="fab fa-facebook"></i> عرض الآراء على فيسبوك</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Our Reviews End -->
 	<!-- Banner section -->
 	<section class="banner-section">
 		<div class="container">

@@ -1,24 +1,24 @@
 /* forms */
 .arte-form{
-		text-align: right;
-		form {
-				label{
-						font-weight: bold;
-						display: block;
-				}
-				input , select , textarea{
-						display: block;
-						width: 100%;
-						padding: 14px;
-						border-radius: 50px;
-						border:0;
-						background-color: $lightgray;
-						margin-bottom: 25px;
-				}
-				textarea{
-						border-radius: 20px;
-				}
+	text-align: right;
+	form {
+		label{
+			font-weight: bold;
+			display: block;
 		}
+		input , select , textarea{
+			display: block;
+			width: 100%;
+			padding: 14px;
+			border-radius: 50px;
+			border:0;
+			background-color: $lightgray;
+			margin-bottom: 25px;
+		}
+		textarea{
+			border-radius: 20px;
+		}
+	}
 }
 /* buttons */
 .site-btn {
