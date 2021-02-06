@@ -1,26 +1,18 @@
-'use strict';
-function ShowNoto(className,text,type){
-    //Create The Element
-    $('body').append(`
-      <div class="notification ${className}">
-          <div class="notification-icon">
-              <i class="fas fa-times"></i>
-          </div>
-          <div class="notification-content">
-              <b>خطأ</b>
-              <p>${text}</p>
-          </div>
-      </div>`);
-    $('.notification').fadeIn('fast').delay(3000).fadeOut('fast');
-}
-$(window).on('load', function () {
-    /*------------------
-    	Preloder
-    --------------------*/
-    $(".loader").fadeOut();
-    $("#preloder").delay(400).fadeOut("slow");
-});
-
+  'use strict';
+  function ShowNoto(className,text,type){
+      //Create The Element
+      $('body').append(`
+        <div class="notification ${className}">
+            <div class="notification-icon">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="notification-content">
+                <b>خطأ</b>
+                <p>${text}</p>
+            </div>
+        </div>`);
+      $('.notification').fadeIn('fast').delay(3000).fadeOut('fast');
+  }
     /*------------------
     	Navigation
     --------------------*/

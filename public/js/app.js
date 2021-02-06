@@ -98,20 +98,13 @@
 
 function ShowNoto(className, text, type) {
   //Create The Element
-  $('body').append("\n      <div class=\"notification ".concat(className, "\">\n          <div class=\"notification-icon\">\n              <i class=\"fas fa-times\"></i>\n          </div>\n          <div class=\"notification-content\">\n              <b>\u062E\u0637\u0623</b>\n              <p>").concat(text, "</p>\n          </div>\n      </div>"));
+  $('body').append("\n        <div class=\"notification ".concat(className, "\">\n            <div class=\"notification-icon\">\n                <i class=\"fas fa-times\"></i>\n            </div>\n            <div class=\"notification-content\">\n                <b>\u062E\u0637\u0623</b>\n                <p>").concat(text, "</p>\n            </div>\n        </div>"));
   $('.notification').fadeIn('fast').delay(3000).fadeOut('fast');
 }
-
-$(window).on('load', function () {
-  /*------------------
-  	Preloder
-  --------------------*/
-  $(".loader").fadeOut();
-  $("#preloder").delay(400).fadeOut("slow");
-});
 /*------------------
 	Navigation
 --------------------*/
+
 
 $('.main-menu').slicknav({
   prependTo: '.main-navbar .container'
