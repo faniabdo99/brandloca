@@ -102,7 +102,7 @@
 										<div class="tag-new">جديد</div>
 										<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
 										<div class="pi-links">
-											{{-- <a href="{{route('cart.add')}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a> --}}
+											<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="flaticon-bag"></i><span>عرض المنتج</span></a>
 											@auth
 												<a href="javascript:;" class="wishlist-btn @if($NewProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$NewProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
 											@endauth
@@ -130,16 +130,6 @@
 			<div class="section-title">
 				<h2>الأكثر مبيعاً</h2>
 			</div>
-			{{-- <ul class="product-filter-menu">
-				<li><a href="#">TOPS</a></li>
-				<li><a href="#">JUMPSUITS</a></li>
-				<li><a href="#">LINGERIE</a></li>
-				<li><a href="#">JEANS</a></li>
-				<li><a href="#">DRESSES</a></li>
-				<li><a href="#">COATS</a></li>
-				<li><a href="#">JUMPERS</a></li>
-				<li><a href="#">LEGGINGS</a></li>
-			</ul> --}}
 			<div class="row">
 				@forelse($PromotedProducts as $PromotedProduct)
 				<div class="col-lg-3 col-sm-6">
@@ -154,7 +144,7 @@
 								@endif
 								<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
 								<div class="pi-links">
-									<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+									<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}" class="add-card"><i class="flaticon-bag"></i><span>عرض المنتج</span></a>
 									@auth
 										<a href="javascript:;" class="wishlist-btn @if($PromotedProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$PromotedProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
 									@endauth

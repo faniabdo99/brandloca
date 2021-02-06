@@ -28,11 +28,11 @@
                         <h3 class="p-price">{{$TheProduct->price}} L.E</h3>
                         @endif
                         <h4 class="p-stock">{{$TheProduct->StatusValue}} | <a href="{{route('shop.category' , $TheProduct->Category->slug)}}">{{$TheProduct->Category->title}}</a></h4>
-                        <p class="font-weight-bold">الحجم</p>
+                        <p class="font-weight-bold">اختر المقاس المطلوب</p>
                         <form action="javascript:;" id="product-cart-form" method="post">
                             <div class="mb-5">
                                 <select id="product-size-selector" data-action="{{route('cart.checkColors',$TheProduct->id)}}" name="size">
-                                    <option value="">اضغط هنا لاختيار الحجم المطلوب</option>
+                                    <option value="">اضغط هنا لاختيار المقاس المطلوب</option>
                                     @forelse ($TheProduct->AvailableVariations()['sizes'] as $Size)
                                     @php
                                     //Check if this size available
@@ -44,7 +44,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <p class="font-weight-bold" id="choose-color-text">يرجى اختيار الحجم أولاً لتحديد اللون</p>
+                            <p class="font-weight-bold" id="choose-color-text">يرجى اختيار المقاس أولاً لتحديد اللون</p>
                             <div id="choose-product-color" class="fw-size-choose mb-5 d-none"></div>
                             <p class="font-weight-bold">الكمية المطلوبة</p>
                             <div class="quantity">
@@ -80,41 +80,17 @@
                                 </div>
                                 <div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                     <div class="panel-body">
+                                        <h4>شرح عن المنتج</h4>
                                         {!! $TheProduct->body !!}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-header" id="headingTwo">
-                                    <button class="panel-link text-center" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">معلومات الدفع</button>
-                                </div>
-                                <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                    <div class="panel-body">
+                                        <br>
+                                        <h4>طرق الدفع المتاحة</h4>
                                         <p>يمكنك الدفع عن طريق فودافون كاش, بطاقة الائتمان أو الدفع عن الاستلام</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-header" id="headingThree">
-                                    <button class="panel-link text-center" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">الشحن و الاسترجاع</button>
-                                </div>
-                                <div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                    <div class="panel-body">
-                                        <h4>يمكن الاسترجاع خلال 10 أيام من تاريخ انشاء الطلب</h4>
-                                        <p>لا يقبل استرجاع المنتجات التالفة أو بحالتها غير الأصلية , تنطبق <a href="{{route('return.policy')}}">شروط الإسترجاع</a> على جميع المنتجات</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel">
-                                <div class="panel-header" id="headingThree">
-                                    <button class="panel-link text-center" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">شارك المنتج</button>
-                                </div>
-                                <div id="collapse4" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                                    <div class="panel-body">
-                                        <div class="social-sharing text-center">
-                                            <a href="https://api.whatsapp.com/send?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="fa fa-whatsapp"></i></a>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank"><i class="fa fa-facebook"></i></a>
-                                            <a href="https://twitter.com/intent/tweet?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                        <br>
+                                        <h4>شارك المنتج مع أصدقائك!</h4>
+                                        <div class="social-sharing text-right">
+                                            <a class="ml-3" href="https://api.whatsapp.com/send?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="text-whatsapp fa fa-whatsapp"></i></a>
+                                            <a class="ml-3" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}" target="_blank"><i class="text-facebook fa fa-facebook"></i></a>
+                                            <a class="ml-3" href="https://twitter.com/intent/tweet?text=منتج%20مميز%20من%20Arte%0D%0A{{url()->current()}}" target="_blank"><i class="text-twitter fa fa-twitter"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +198,7 @@
                                     @endif
                                     <img src="{{$RProduct->MainImage}}" alt="{{$RProduct->title}}">
                                     <div class="pi-links">
-                                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+                                        <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}" class="add-card"><i class="flaticon-bag"></i><span>عرض المنتج</span></a>
                                         @auth
                                             <a href="javascript:;" class="wishlist-btn @if($RProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$RProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
                                         @endauth

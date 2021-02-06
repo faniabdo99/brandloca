@@ -155,6 +155,23 @@ ol {
   border-radius: 20px;
 }
 
+/* text colors */
+.text-whatsapp {
+  color: #25D366;
+}
+
+.text-facebook {
+  color: #4267B2;
+}
+
+.text-twitter {
+  color: #1DA1F2;
+}
+
+.text-instagram {
+  color: #E1306C;
+}
+
 /* buttons */
 .site-btn {
   display: inline-block;
@@ -2054,8 +2071,7 @@ ol {
 
 .product-details .social-sharing a {
   color: #d7d7d7;
-  margin-right: 23px;
-  font-size: 14px;
+  font-size: 25px;
 }
 
 .product-details .social-sharing a:hover {

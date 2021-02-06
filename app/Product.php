@@ -97,7 +97,7 @@ class Product extends Model{
       //Get Sizes
       $Variations = Product_Variation::where('product_id' , $this->id)->get();
       $DataArray = [
-        'sizes' => $Variations->pluck('size')->unique(),
+        'sizes' => $Variations->sortByDesc('size')->pluck('size')->unique(),
         'color_codes' => $Variations->pluck('color_code')->unique(),
         'variations' => $Variations,
         'inventory' => $Variations->sum('inventory')
