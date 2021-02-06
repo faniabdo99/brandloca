@@ -89,6 +89,9 @@ class AuthController extends Controller{
     }
     public function handleProviderCallback(Request $r , $driver){
       $user = Socialite::driver($driver)->user();
+      if(!$user->email){
+        $user->email = 'no@email.com';
+      }
       $FindUser = User::where('email' , $user->email)->get();
       if($FindUser->count() == 0){
         //Signup
