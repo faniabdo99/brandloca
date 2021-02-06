@@ -9,6 +9,7 @@ class SitemapController extends Controller{
         $AllCategories = Category::latest()->get();
         $AllProducts = Product::latest()->get();
         $AllArticles = Blog::latest()->get();
-        return response()->view('sitemap.main',compact('AllCategories','AllProducts','AllArticles'))->header('Content-Type', 'text/xml');
+        $xml_version = '<?xml version="1.0"?>';
+        return response()->view('sitemap.main',compact('xml_version','AllCategories','AllProducts','AllArticles'))->header('Content-Type', 'text/xml');
     }
 }
