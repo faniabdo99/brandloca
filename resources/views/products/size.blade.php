@@ -11,7 +11,7 @@
               <input hidden name="category" value="{{request()->route('category')}}">
               <input hidden name="routeName" value="{{url()->current()}}">
                 <div class="row mb-5">
-                    <div class="col-3 text-right">
+                    <div class="col-lg-3 col-6 mb-lg-0 mb-3 text-right">
                         <label class="font-weight-bold" for="size">الموسم</label>
                         <select class="form-control" id="season" name="season">
                             <option value="">جميع المواسم</option>
@@ -21,7 +21,7 @@
                             @endforelse
                         </select>
                     </div>
-                    <div class="col-3 text-right">
+                    <div class="col-lg-3 col-6 mb-lg-0 mb-3 text-right">
                         <label class="font-weight-bold" for="category_id">القسم</label>
                         <select class="form-control" id="category_id" name="category_id">
                             <option value="">جميع الأقسام</option>
@@ -31,7 +31,7 @@
                             @endforelse
                         </select>
                     </div>
-                    <div class="col-3 text-right">
+                    <div class="col-lg-3 col-6 mb-lg-0 mb-3 text-right">
                         <label class="font-weight-bold" for="type">نوع المنتج</label>
                         <select class="form-control" id="type" name="type">
                             <option value="">جميع الأنواع</option>
@@ -41,7 +41,7 @@
                             @endforelse
                         </select>
                     </div>
-                    <div class="col-3 text-right">
+                    <div class="col-lg-3 col-6 mb-lg-0 mb-3 text-right">
                         <label class="d-block">&nbsp;</label>
                         <button id="filter-products" data-action="{{route('shop.filter')}}" type="submit" class="site-btn site-btn-sm">فلترة</button>
                     </div>
@@ -49,7 +49,7 @@
             </form>
             <div class="row" id="products-list">
                 @forelse ($Products as $Product)
-                <div data-id="{{$Product->id}}" class="col-lg-4 col-6">
+                <div data-id="{{$Product->id}}" class="col-lg-4 col-12">
                     <a href="{{route('product' , [$Product->slug , $Product->id])}}">
                         <div class="product-item">
                             <div class="pi-pic">

@@ -10,7 +10,7 @@
                 <div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
                     <div class="row">
                         @forelse ($Products as $Product)
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-4 col-12">
                             <a href="{{route('product' , [$Product->slug , $Product->id])}}">
                                 <div class="product-item">
                                     <div class="pi-pic">
