@@ -6,6 +6,7 @@
 	<meta name="description" content="{{$PageDescription ?? 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'}}">
 	<meta name="keywords" content="{{$PageKeywords ?? 'arte, آرتي, ملابس أطفال, بيجاما, تجارة الكترونية, شراء ملابس , arte kids wear, arte kids'}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="canonical" href="{{url()->current()}}" />
 	<!-- Favicon -->
 	<link href="{{url('public')}}/img/favicon.png" rel="shortcut icon"/>
 	<!-- Google Font -->
