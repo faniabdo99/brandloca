@@ -1,2 +1,17 @@
 User-agent: *
-Disallow:
+Disallow: /profile
+Disallow: /wishlist
+Disallow: /report
+Disallow: /kids
+Disallow: /add-kids
+Disallow: /delete-kid/*
+Disallow: /logout
+Disallow: /edit-profile
+Disallow: /edit-password
+Disallow: /cart
+Disallow: /delete-from-cart/*
+Disallow: /delete-coupon/*
+Disallow: /checkout
+Disallow: /thank-you/*
+Disallow: /order-success/*
+Sitemap: https://artekidswear.com/sitemap.xml
