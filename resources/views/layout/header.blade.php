@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="ar">
 <head>
 	<title>آرتي للملابس الجاهزة - {{$PageTitle ?? ' الموقع الرسمي'}}</title>
 	<meta charset="UTF-8">
