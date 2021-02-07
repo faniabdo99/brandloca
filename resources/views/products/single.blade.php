@@ -244,6 +244,7 @@
           },
           "aggregateRating": {
                 "@type": "AggregateRating",
+                "bestRating": "5",
                 "ratingValue": "{{$TheProduct->Rate}}",
                 "reviewCount": "{{$TheProduct->Reviews->count()}}"
           }@if($TheProduct->HasDiscount()['HasDiscount']),
