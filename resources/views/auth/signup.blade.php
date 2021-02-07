@@ -1,4 +1,7 @@
-@include('layout.header' , ['pageTitle' => 'انشاء حساب جديد'])
+@include('layout.header' , [
+    'PageTitle' => 'انشاء حساب جديد',
+    'PageDescription' => 'انشاء حساب جديد على موقع أرتي للملابس الجاهزة'
+])
 <body>
     @include('layout.navbar')
     @include('layout.errors')

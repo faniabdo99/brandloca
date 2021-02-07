@@ -1,4 +1,7 @@
-@include('layout.header' , ['pageTitle' => 'تسجيل الدخول'])
+@include('layout.header' , [
+    'PageTitle' => 'تسجيل الدحول',
+    'PageDescription' => 'تسجيل الدخول الى حسابك على موقع أرتي للملابس الجاهزة'
+])
 <body>
     @include('layout.navbar')
     @include('layout.errors')

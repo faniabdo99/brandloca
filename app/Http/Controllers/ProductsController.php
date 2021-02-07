@@ -253,7 +253,7 @@ class ProductsController extends Controller{
       $AvailableSizes = $Products->pluck('size')->unique();
       $AvailableCategories = $Products->pluck('category_id')->unique();
       $AvailableSeasons = $Products->pluck('season')->unique();
-      return view('products.type' , compact('Products' , 'Categories' , 'AvailableSizes' , 'AvailableCategories','AvailableSeasons'));
+      return view('products.type' , compact('Type','Products' , 'Categories' , 'AvailableSizes' , 'AvailableCategories','AvailableSeasons'));
     }
     public function searchProducts(Request $r){
       $Categories = Category::latest()->get();

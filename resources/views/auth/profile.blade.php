@@ -1,4 +1,4 @@
-@include('layout.header' , ['pageTitle' => 'الملف الشخصي'])
+@include('layout.header' , ['PageTitle' => 'الملف الشخصي'])
 <body>
     @include('layout.navbar')
     @include('layout.errors')

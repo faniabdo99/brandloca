@@ -1,4 +1,7 @@
-@include('layout.header' , ['pageTitle' => 'اختيار كلمة المرور الجديدة'])
+@include('layout.header' , [
+    'pageTitle' => 'اختيار كلمة المرور الجديدة',
+    'pageDescription' => 'قم باختيار كلمة مرور جديدة لحسابك على ارتي'
+])
 <body>
     @include('layout.navbar')
     @include('layout.errors')
