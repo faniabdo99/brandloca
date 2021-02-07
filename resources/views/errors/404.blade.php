@@ -1,4 +1,7 @@
-@include('layout.header')
+@include('layout.header' , [
+  'PageTitle' => 'خطأ 404',
+  'PageDescription' => 'خطأ 404 , الصفحة غير موجودة'
+])
 <body>
 	@include('layout.navbar')
 	@include('layout.errors')

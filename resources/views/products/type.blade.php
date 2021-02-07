@@ -1,4 +1,7 @@
-@include('layout.header')
+@include('layout.header' , [
+  'PageTitle' => $Type,
+  'PageDescription' => ' جميع المنتجات من نوع'.$Type.' من شركة أرتي للملابس الجاهزة'
+])
 
 <body>
     @include('layout.navbar')

@@ -1,4 +1,7 @@
-@include('layout.header')
+@include('layout.header' , [
+  'PageTitle' => $TheCategory->title,
+  'PageDescription' => $TheCategory->description
+])
 
 <body>
     @include('layout.navbar')

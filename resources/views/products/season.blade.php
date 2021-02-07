@@ -1,4 +1,7 @@
-@include('layout.header')
+@include('layout.header' , [
+  'PageTitle' => $Season,
+  'PageDescription' => 'جميع المنتجات لموسم ال'.$Season.' من شركة أرتي للملابس الجاهزة'
+])
 <body>
     @include('layout.navbar')
     <!-- Category section -->

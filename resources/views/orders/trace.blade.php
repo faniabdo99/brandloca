@@ -1,4 +1,7 @@
-@include('layout.header' , ['pageTitle' => 'انشاء حساب جديد'])
+@include('layout.header' , [
+  'PageTitle' => 'تتبع الطلبات',
+  'PageDescription' => 'تتبع طلباتك و تابع التقدم الحاصل للمنتجات التي طلبتها من هذه الصفحة'
+])
 <body>
     @include('layout.navbar')
     @include('layout.errors')

@@ -1,4 +1,7 @@
-@include('layout.header' , ['PageTitle' => 'سياسة الخصوصية و شروط الاستخدام'])
+@include('layout.header' , [
+    'PageTitle' => 'سياسة الخصوصية و شروط الاستخدام',
+    'PageDescription' => 'نحن نحترم خصوصية عملائنا و اهمية المعلومات الخاصة بهم, بناءً على هذا الاعتقاد تم تحرير سياسية الخصوصية و شروط الاستخدام لموقع أرتي للملابس الجاهزة'
+])
 <body>
     @include('layout.navbar')
     <!-- Privacy Policy section -->

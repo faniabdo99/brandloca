@@ -1,4 +1,9 @@
-@include('layout.header' , ['PageTitle' => 'عن Arte'])
+@include('layout.header' , [
+  'PageTitle' => 'عن أرتي للملابس الجاهزة',
+  'PageDescription' => 'على مدى ال 15 سنة الفائتة, استمرت شركة Arte Kids للملابس الجاهزة بامداد الأسواق بمنتجات عالية
+                        الجودة, تطورت منتجات الشركة خلال الفترة السابقة لتشمل جميع احتياجات الأطفال من عمر 6 أشهر و حتى
+                        16 سنة'
+])
 
 <body>
     @include('layout.navbar')

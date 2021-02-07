@@ -229,7 +229,7 @@ class ProductsController extends Controller{
       $AvailableSizes = $Products->pluck('size')->unique();
       $AvailableSeasons = $Products->pluck('season')->unique();
       $AvailableTypes = $Products->pluck('type')->unique();
-      return view('products.category' , compact('Products' , 'Categories' , 'AvailableSizes' , 'AvailableSeasons','AvailableTypes'));
+      return view('products.category' , compact('TheCategory' ,'Products' , 'Categories' , 'AvailableSizes' , 'AvailableSeasons','AvailableTypes'));
     }
     public function getSizeAll($Size){
       $Categories = Category::latest()->get();
@@ -237,7 +237,7 @@ class ProductsController extends Controller{
       $AvailableCategories = $Products->pluck('category_id')->unique();
       $AvailableSeasons = $Products->pluck('season')->unique();
       $AvailableTypes = $Products->pluck('type')->unique();
-      return view('products.size' , compact('Products' , 'Categories' , 'AvailableCategories' , 'AvailableSeasons','AvailableTypes'));
+      return view('products.size' , compact('Size','Products' , 'Categories' , 'AvailableCategories' , 'AvailableSeasons','AvailableTypes'));
     }
     public function getSeasonAll($Season){
       $Categories = Category::latest()->get();
@@ -245,7 +245,7 @@ class ProductsController extends Controller{
       $AvailableSizes = $Products->pluck('size')->unique();
       $AvailableCategories = $Products->pluck('category_id')->unique();
       $AvailableTypes = $Products->pluck('type')->unique();
-      return view('products.season' , compact('Products' , 'Categories' , 'AvailableSizes' , 'AvailableCategories','AvailableTypes'));
+      return view('products.season' , compact('Season','Products' , 'Categories' , 'AvailableSizes' , 'AvailableCategories','AvailableTypes'));
     }
     public function getTypeAll($Type){
       $Categories = Category::latest()->get();

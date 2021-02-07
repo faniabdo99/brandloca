@@ -1,4 +1,7 @@
-@include('layout.header')
+@include('layout.header' , [
+  'PageTitle' => 'المتجر',
+  'PageDescription' => 'استمتع بمنتجات مميزة و عروض حصرية من موقع أرتي للملابس الجاهزة'
+])
 
 <body>
     @include('layout.navbar')

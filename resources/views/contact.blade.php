@@ -1,4 +1,7 @@
-@include('layout.header' , ['pageTitle' => 'اتصل بنا'])
+@include('layout.header' , [
+    'PageTitle' => 'اتصل بنا',
+    'PageDescription' => 'يقدم موقع أرتي للملابس الجاهزة خدمة دعم فني طوال أيام الأسبوع , يسعدنا الرد على استفساراتكم و الاجابة على أسئلتكم'
+])
 
 <body>
     @include('layout.navbar')

@@ -1,4 +1,7 @@
-@include('layout.header')
+@include('layout.header' , [
+  'PageTitle' => 'خطأ 500',
+  'PageDescription' => 'خطأ 500 , نواجه في مشكلة في محاولة عرض هذه الصفحة حالياً'
+])
 <body>
 	@include('layout.navbar')
 	@include('layout.errors')

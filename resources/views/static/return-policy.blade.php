@@ -1,4 +1,7 @@
-@include('layout.header' , ['PageTitle' => 'سياسة الاسترجاع و الاستبدال'])
+@include('layout.header' , [
+    'PageTitle' => 'سياسة الاسترجاع و الاستبدال',
+    'PageDescription' => 'تعرض صفحة سياسة الاسترجاع جميع الشروط و البيانات التي نقوم بالرجوع اليها عند تلقينا لطلب استبدال أو استرجاع لمنتج'
+])
 <body>
     @include('layout.navbar')
     <!-- Privacy Policy section -->
