@@ -13,6 +13,10 @@ class Product extends Model{
             'description' => 'Deleted Category'
         ]);
     }
+    //Relations Methods
+    public function Discount(){
+      return $this->belongsTo(Discount::class);
+    }
     //Non-Relation Methods
     public function getStatusValueAttribute(){
       $AvailableStatuses = [
@@ -22,7 +26,6 @@ class Product extends Model{
       ];
       return $AvailableStatuses[$this->status];
     }
-
     public function getIsActiveAttribute(){
         if($this->status == 'Available'){
             return true;

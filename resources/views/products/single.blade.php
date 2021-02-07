@@ -222,6 +222,48 @@
     <!-- RELATED PRODUCTS section end -->
     @include('layout.footer')
     @include('layout.scripts')
+    <script type="application/ld+json">
+        {
+         "@context": "https://schema.org/",
+         "@type": "Product",
+           "name": "{{$TheProduct->title}}",
+           "image": [
+            "{{$TheProduct->MainImage}}",
+            @forelse($TheProduct->GalleryImages as $Image)
+"{{$Image->ImagePath}}"@if(!$loop->last),@endif
+            @empty
+            @endforelse
+            
+           ],
+           "description": "{{$TheProduct->description}}",
+           "sku": "{{$TheProduct->model_number}}",
+           "mpn": "ARTE{{$TheProduct->model_number}}",
+           "brand": {
+            "@type": "Brand",
+            "name": "أرتي للملابس الجاهزة"
+          },
+          "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "{{$TheProduct->Rate}}",
+                "reviewCount": "{{$TheProduct->Reviews->count()}}"
+          },
+          @if($TheProduct->HasDiscount())
+            "offers": {
+            "@type": "Offer",
+            "url": "{{url()->current()}}",
+            "priceCurrency": "LE",
+            "price": "{{$TheProduct->FinalPrice()}}",
+            "priceValidUntil": "{{$TheProduct->Discount->valid_until->format('Y-m-d')}}",
+            "itemCondition": "https://schema.org/NewCondition",
+            "availability": "https://schema.org/InStock",
+            "seller": {
+                "@type": "Organization",
+                "name": "أرتي للملابس الجاهزة"
+            }
+            }
+            @endif
+        }
+       </script>
     @include('layout.errors')
 </body>
 </html>
