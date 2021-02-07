@@ -242,13 +242,31 @@
             "@type": "Brand",
             "name": "أرتي للملابس الجاهزة"
           },
-          "aggregateRating": {
-                "@type": "AggregateRating",
-                "bestRating": "5",
-                "ratingValue": "{{$TheProduct->Rate}}",
-                "reviewCount": "{{$TheProduct->Reviews->count()}}"
-          }@if($TheProduct->HasDiscount()['HasDiscount']),
-            "offers": {
+          "review": [
+          @forelse ($TheProduct->Reviews as $Review)
+          {
+            "@type": "Review",
+            "author": "{{$Review->name ?? $Review->User->name}}"
+            "datePublished": "{{$Review->created_at->format('Y-m-d')}}",
+            "reviewBody": "{{$Review->review}}",
+            "reviewRating": {
+              "@type": "Rating",
+              "bestRating": "5",
+              "ratingValue": "{{$Review->rate}}",
+              "worstRating": "1"
+            }
+          }@if(!$loop->last),@endif
+          @empty
+              
+          @endforelse
+          ],
+           "aggregateRating": {
+             "@type": "AggregateRating",
+             "ratingValue": "{{$TheProduct->Rate}}",
+             "reviewCount": "{{$TheProduct->Reviews->count()}}"
+           },
+           @if($TheProduct->HasDiscount()['HasDiscount'])
+           "offers": {
             "@type": "Offer",
             "url": "{{url()->current()}}",
             "priceCurrency": "LE",
@@ -257,11 +275,11 @@
             "itemCondition": "https://schema.org/NewCondition",
             "availability": "https://schema.org/InStock",
             "seller": {
-                "@type": "Organization",
-                "name": "أرتي للملابس الجاهزة"
+              "@type": "Organization",
+               "name": "أرتي للملابس الجاهزة"
             }
-            }
-            @endif
+           }
+           @endif
         }
        </script>
     @include('layout.errors')
