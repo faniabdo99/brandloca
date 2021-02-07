@@ -246,8 +246,7 @@
                 "@type": "AggregateRating",
                 "ratingValue": "{{$TheProduct->Rate}}",
                 "reviewCount": "{{$TheProduct->Reviews->count()}}"
-          },
-          @if($TheProduct->HasDiscount()['HasDiscount'])
+          }@if($TheProduct->HasDiscount()['HasDiscount']),
             "offers": {
             "@type": "Offer",
             "url": "{{url()->current()}}",
