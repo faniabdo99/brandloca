@@ -247,7 +247,7 @@
                 "ratingValue": "{{$TheProduct->Rate}}",
                 "reviewCount": "{{$TheProduct->Reviews->count()}}"
           },
-          @if($TheProduct->HasDiscount())
+          @if($TheProduct->HasDiscount()['HasDiscount'])
             "offers": {
             "@type": "Offer",
             "url": "{{url()->current()}}",
