@@ -7,43 +7,47 @@
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item set-bg" data-setbg="{{url('public/img')}}/bg.jpg">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-6 col-lg-7 text-white text-right">
-							<span>وصل حديثاً</span>
-							<h2>تشكيلة الصيف الجديدة 2021</h2>
-							<p>تشكيلة متنوعة من موديلات صيف 2021! أكثر من 100 منتج جديد لطفلك</p>
-							<a href="{{route('shop')}}" class="site-btn sb-white">استعراض المنتجات</a>
+				<div class="dark-overlay">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-6 col-lg-7 text-white text-right">
+								<span>وصل حديثاً</span>
+								<h2>تشكيلة الصيف الجديدة 2021</h2>
+								<p>تشكيلة متنوعة من موديلات صيف 2021! أكثر من 100 منتج جديد لطفلك</p>
+								<a href="{{route('shop')}}" class="site-btn sb-white">استعراض المنتجات</a>
+							</div>
 						</div>
-					</div>
-					<div class="offer-card text-white">
-						<span>من</span>
-						<h2>150</h2>
-						<p>جنيه</p>
+						<div class="offer-card text-white">
+							<span>من</span>
+							<h2>150</h2>
+							<p>جنيه</p>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="hs-item set-bg" data-setbg="{{url('public/img')}}/bg-2.jpg">
-				<div class="container">
-					<div class="row">
-						<div class="col-xl-6 col-lg-7 text-white text-right">
-							<span>جديد</span>
-							<h2>تشكيلة الصيف</h2>
-							<p>أفضل العروض على تشكيلة الصيف الجديدة 2021 - 2022</p>
-							<a href="#" class="site-btn sb-line">عرض</a>
-							<a href="#" class="site-btn sb-white">اضف الى السلة</a>
+				<div class="dark-overlay">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-6 col-lg-7 text-white text-right">
+								<span>جديد</span>
+								<h2>تشكيلة الصيف</h2>
+								<p>أفضل العروض على تشكيلة الصيف الجديدة 2021 - 2022</p>
+								<a href="#" class="site-btn sb-line">عرض</a>
+								<a href="#" class="site-btn sb-white">اضف الى السلة</a>
+							</div>
 						</div>
-					</div>
-					<div class="offer-card text-white">
-						<span>من</span>
-						<h2>200</h2>
-						<p>جنيه</p>
+						<div class="offer-card text-white">
+							<span>من</span>
+							<h2>200</h2>
+							<p>جنيه</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="container">
-			<div class="slide-num-holder" id="snh-1"></div>
+			<div class="slide-num-holder" id="snh-1">fd</div>
 		</div>
 	</section>
 	<!-- Hero section end -->

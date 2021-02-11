@@ -2800,6 +2800,11 @@ ol {
     margin-right: 20px;
   }
 }
+.hero-section .dark-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+}
+
 /* Tablet :768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .site-logo {

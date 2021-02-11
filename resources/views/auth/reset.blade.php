@@ -1,4 +1,7 @@
-@include('layout.header' , ['pageTitle' => 'اعادة تعيين كلمة المرور'])
+@include('layout.header' , [
+    'PageTitle' => 'اعادة تعيين كلمة المرور',
+    'PageDescription' => 'تغيير كلمة المرور'
+    ])
 <body>
     @include('layout.navbar')
     @include('layout.errors')

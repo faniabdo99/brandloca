@@ -4,6 +4,7 @@
 ])
 
 <body>
+    <h1 class="d-none">تواصل معنا</h1>
     @include('layout.navbar')
     @include('layout.errors')
     <!-- Contact section -->

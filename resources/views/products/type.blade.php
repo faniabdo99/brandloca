@@ -4,6 +4,7 @@
 ])
 
 <body>
+    <h1 class="d-none">جميع المنتجات من نوع {{$Type}} من شركة أرتي</h1>
     @include('layout.navbar')
     <!-- Category section -->
     <section class="category-section spad">

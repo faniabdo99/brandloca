@@ -3,6 +3,8 @@
   'PageDescription' => 'جميع المنتجات لمقاس ال'.$Size.' من شركة أرتي للملابس الجاهزة'
 ])
 <body>
+    <h1 class="d-none">جميع المنتجات في مقاس {{$Size}} من شركة أرتي</h1>
+
     @include('layout.navbar')
     	<!-- Category section -->
 	<section class="category-section spad">

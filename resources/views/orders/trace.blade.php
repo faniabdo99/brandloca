@@ -3,6 +3,7 @@
   'PageDescription' => 'تتبع طلباتك و تابع التقدم الحاصل للمنتجات التي طلبتها من هذه الصفحة'
 ])
 <body>
+    <h1 class="d-none">تتبع طلبك من شركة أرتي</h1>
     @include('layout.navbar')
     @include('layout.errors')
     <!-- Hero section -->
