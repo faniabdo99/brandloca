@@ -14,13 +14,13 @@
 						<p>يرجى تزويدنا بالبيانات التالية لنتمكن من الاتصال بك عند تجهيز الطلب</p>
 						<div class="row address-inputs">
 							<div class="col-md-12">
-								<input required type="text" name="name" placeholder="الاسم الكامل (مطلوب)" value="{{old('name') ?? auth()->user()->name}}">
-								<input required type="text" name="phone_number" placeholder="رقم الهاتف (مطلوب)" value="{{old('phone_number') ?? auth()->user()->phone_number}}">
-								<input required type="text" name="email" placeholder="البريد الإلكتروني (مطلوب)" value="{{old('email') ?? auth()->user()->email}}">
+								<input required type="text" name="name" placeholder="الاسم الكامل (مطلوب)" value="{{auth()->user()->name ?? ''}}">
+								<input required type="text" name="phone_number" placeholder="رقم الهاتف (مطلوب)" value="{{auth()->user()->phone_number ?? ''}}">
+								<input required type="text" name="email" placeholder="البريد الإلكتروني (مطلوب)" value="{{auth()->user()->email ?? ''}}">
 							</div>
-							<div class="col-md-12"><input required type="text" name="province" placeholder="المحافظة (مطلوب)" value="{{old('province') ?? auth()->user()->province}}"></div>
-							<div class="col-md-12"><input required name="city" type="text" placeholder="المدينة (مطلوب)" value="{{old('city') ?? auth()->user()->city}}"></div>
-							<div class="col-md-12"><input required type="text" name="street_address" placeholder="العنوان التفصيلي (مطلوب)" value="{{old('street_address') ?? auth()->user()->street_address}}"></div>
+							<div class="col-md-12"><input required type="text" name="province" placeholder="المحافظة (مطلوب)" value="{{auth()->user()->province ?? ''}}"></div>
+							<div class="col-md-12"><input required name="city" type="text" placeholder="المدينة (مطلوب)" value="{{auth()->user()->city ?? ''}}"></div>
+							<div class="col-md-12"><input required type="text" name="street_address" placeholder="العنوان التفصيلي (مطلوب)" value="{{auth()->user()->street_address ?? ''}}"></div>
 						</div>
 						<div class="cf-title">معلومات اضافية</div>
 						<div class="row shipping-btns">

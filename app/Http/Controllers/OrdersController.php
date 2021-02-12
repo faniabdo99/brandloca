@@ -16,7 +16,7 @@ use App\Mail\OrderCreatedMail;
 class OrdersController extends Controller{
   //Admin Panel Realted
     public function getCheckout(){
-        $CartItems = Cart::where('user_id', auth()->user()->id)->where('status', 'active')->get();
+        $CartItems = Cart::where('user_id', getUserId())->where('status', 'active')->get();
         $HasCoupon = 0;
         if ($CartItems->count() >= 1) {
             $HasCoupon = $CartItems->first()->applied_coupon;
@@ -56,8 +56,6 @@ class OrdersController extends Controller{
       if($Validator->fails()){
         return back()->withErrors($Validator->errors()->all())->withInput();
       }else{
-        //Redirect to login if not already logged in
-        if(!auth()->check()){return redirect()->route('login.get');}
         //Check the payment method value
         $ViablePaymentMethods = ['pod','vodafone-cash','credit-card'];
         if(in_array($r->payment_method, $ViablePaymentMethods)){
@@ -67,13 +65,13 @@ class OrdersController extends Controller{
           $OrderData['lang'] = 'ar_EG';
           $OrderData['is_paid'] = 0;
           $OrderData['total_shipping_cost'] = 5;
-          $OrderData['user_id'] = auth()->user()->id;
+          $OrderData['user_id'] = getUserId();
           $OrderData['tracking_number'] = mt_rand(10000000, 99999999);
           $TheOrder = Order::create($OrderData);
           //Send Email to the user
           Mail::to($TheOrder->email)->send(new OrderCreatedMail($TheOrder));
           //Create order-products record
-          $CartItems = Cart::where('user_id', auth()->user()->id)->where('status', 'active')->get();
+          $CartItems = Cart::where('user_id', getUserId())->where('status', 'active')->get();
           $CartItems->map(function($item) use ($TheOrder){
             Order_Product::create([
               'order_id' => $TheOrder->id,
@@ -113,13 +111,12 @@ class OrdersController extends Controller{
             'shipping_data' => [
                 'email' => $TheOrder->email, 
                 'first_name' => $TheOrder->name, 
-                'street' => $TheOrder->shipping_street_address, 
+                'street' => $TheOrder->street_address, 
                 'phone_number' => $TheOrder->phone_number, 
-                'phone_number_2' => $TheOrder->phone_number_2, 
-                'postal_code' => $TheOrder->shipping_zip_code, 
-                'city' => $TheOrder->shipping_city, 
+                'postal_code' => 12511, 
+                'city' => $TheOrder->city, 
                 'country' => 'EG', 
-                'state' => $TheOrder->shipping_province,
+                'state' => $TheOrder->province,
                 'notes' => $TheOrder->order_notes,
                 'last_name' => ' Nicolas'
               ]
@@ -141,13 +138,12 @@ class OrdersController extends Controller{
                 'last_name' => ' Nicolas',   
                 'email' => $TheOrder->email, 
                 'first_name' => $TheOrder->name, 
-                'street' => $TheOrder->shipping_street_address, 
+                'street' => $TheOrder->street_address, 
                 'phone_number' => $TheOrder->phone_number, 
-                'phone_number_2' => $TheOrder->phone_number_2, 
-                'postal_code' => $TheOrder->shipping_zip_code, 
-                'city' => $TheOrder->shipping_city, 
+                'postal_code' => 12511, 
+                'city' => $TheOrder->city, 
                 'country' => 'EG', 
-                'state' => $TheOrder->shipping_province,
+                'state' => $TheOrder->province,
               ]
           ]);
           $PaymentToken = json_decode($PaymentRequest->body());

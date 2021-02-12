@@ -20,7 +20,7 @@ class CartController extends Controller{
         'qty' => 'required|numeric',
         'color' => 'required',
         'size' => 'required',
-        'user_id' => 'required|numeric',
+        'user_id' => 'required',
         'product_id' => 'required|numeric'
       ];
       $ErrorMessages = [
@@ -29,7 +29,6 @@ class CartController extends Controller{
         'color.required' => 'يرجى اختيار اللون المطلوب',
         'size.required' => 'يرجى اختيار الحجم المطلوب',
         'user_id.required' => 'يرجى تسجيل الدخول أولاَ',
-        'user_id.numeric' => 'يرجى تسجيل الدخول أولاَ',
         'product_id.required' => 'حدث خطأ غير معروف , يرجى تحديث الصفحة و المحاولة مجدداً',
         'product_id.numeric' => 'حدث خطأ غير معروف , يرجى تحديث الصفحة و المحاولة مجدداً',
       ];
@@ -63,7 +62,7 @@ class CartController extends Controller{
       }
     }
     public function getCart(){
-        $CartItems = Cart::where('user_id' , auth()->user()->id)->where('status' , 'active')->get();
+        $CartItems = Cart::where('user_id' , getUserId())->where('status' , 'active')->get();
         $HasCoupon = 0;
         if($CartItems->count() >= 1){
           $HasCoupon = $CartItems->first()->applied_coupon;
@@ -139,7 +138,7 @@ class CartController extends Controller{
     public function deleteFromCart($id){
       $Item = Cart::findOrFail($id);
       //Check the user who owns it
-      if($Item->user_id == auth()->user()->id){
+      if($Item->user_id == getUserId()){
         //Return The Product Original Qty Value (to the variation)
         $Item->Variation->update(['inventory' => $Item->Variation->inventory + $Item->qty]);
         $Item->update(['status' => 'Deleted']);

@@ -6,12 +6,20 @@ use App\Product;
 use App\Cart;
 use App\Blog;
 //Cart System Helpers
-function CartItemsCount(){
+function getUserId(){
   if(auth()->check()){
-    return Cart::where('user_id' , auth()->user()->id)->where('status' , 'active')->count('qty');
+    return auth()->user()->id;
   }else{
-    return null;
+    if(Cookie::has('guest_id')){
+    }else{
+      Cookie::queue(Cookie::make('guest_id', md5(rand(1,500))));
+    }
+    //Get the cookie value
+    return Cookie::get('guest_id');
   }
+}
+function CartItemsCount(){
+  return Cart::where('user_id' , getUserId())->where('status' , 'active')->count('qty');
 }
 //List The Categories
 function CategoriesList(){
@@ -91,11 +99,7 @@ function getLatestProducts($ProductId = null){
   }
 }
 function userCart(){
-  if(auth()->check()){
-    return Cart::where('user_id' , auth()->user()->id)->where('status' , 'active')->get();
-  }else{
-    return 0;
-  }
+  return Cart::where('user_id' , getUserId())->where('status' , 'active')->get();
 }
 function getImportantArticles($limit = null){
   return Blog::where('is_important' , 1)->limit($limit)->get();

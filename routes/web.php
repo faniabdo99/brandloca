@@ -27,16 +27,16 @@ Route::middleware('auth')->group(function () {
   Route::post('edit-password' , 'AuthController@postUpdatePassword')->name('profile.password.edit.post');
   //Account Approval
   Route::get('approve-account/{code}' , 'AuthController@getApproveAccount')->name('profile.approve');
-  //Cart
-  Route::get('cart' , 'CartController@getCart')->name('order.cart');
-  Route::get('delete-from-cart/{id}' , 'CartController@deleteFromCart')->name('cart.delete');
-  Route::get('delete-coupon/{id}/{couponid}' , 'CartController@deleteCuopon')->name('cart.coupon.delete');
-  //Checkout
-  Route::get('checkout' , 'OrdersController@getCheckout')->name('orders.checkout');
-  Route::post('checkout' , 'OrdersController@postCheckout')->name('orders.checkout.post');
-  Route::get('thank-you/{id}' , 'OrdersController@getOrderComplete')->name('order.complete');
-  Route::get('order-success' , 'OrdersController@getOrderSuccess')->name('order.thankyou');
 });
+//Cart
+Route::get('cart' , 'CartController@getCart')->name('order.cart');
+Route::get('delete-from-cart/{id}' , 'CartController@deleteFromCart')->name('cart.delete');
+Route::get('delete-coupon/{id}/{couponid}' , 'CartController@deleteCuopon')->name('cart.coupon.delete');
+//Checkout
+Route::get('checkout' , 'OrdersController@getCheckout')->name('orders.checkout');
+Route::post('checkout' , 'OrdersController@postCheckout')->name('orders.checkout.post');
+Route::get('thank-you/{id}' , 'OrdersController@getOrderComplete')->name('order.complete');
+Route::get('order-success' , 'OrdersController@getOrderSuccess')->name('order.thankyou');
 Route::post('add-review' , 'ReviewController@postReview')->name('review.post');
 Route::middleware('guest')->group(function () {
   Route::get('login' , 'AuthController@getLogin')->name('login.get');

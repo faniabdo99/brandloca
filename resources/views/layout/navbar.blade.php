@@ -17,8 +17,8 @@
 						</form>
 					</div>
 					<div class="col-xl-4 col-lg-5">
-						@auth
 						<div class="user-panel">
+							@auth
 							<div class="up-item">
 								<div class="dropdown">
 									<a class="dropdown-toggle" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">مرحباً بك {{auth()->user()->name}}</a>
@@ -30,23 +30,23 @@
 									</div>
 								</div>
 							</div>
+							@endauth
+							@guest
+								<div class="up-item">
+									<i class="fas fa-user"></i>
+									<a href="{{route('login.get')}}">دخول</a> أو <a href="{{route('signup.get')}}">انشاء حساب</a>
+								</div>
+							@endguest
 							<div class="up-item">
+								<a href="{{route('order.cart')}}">
 								<div class="shopping-card">
 									<i class="fas fa-shopping-cart"></i>
 									<span>{{CartItemsCount()}}</span>
 								</div>
-								<a href="{{route('order.cart')}}">عربة التسوق</a>
+								عربة التسوق</a>
 							</div>
 						</div>
-						@endauth
-						@guest
-						<div class="user-panel">
-							<div class="up-item">
-								<i class="fas fa-user"></i>
-								<a href="{{route('login.get')}}">دخول</a> أو <a href="{{route('signup.get')}}">انشاء حساب</a>
-							</div>
-						</div>
-						@endguest
+
 					</div>
 				</div>
 			</div>

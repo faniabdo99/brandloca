@@ -50,17 +50,12 @@
                             <div class="quantity">
                                 <div class="pro-qty"><input name="qty" type="text" value="1"></div>
                             </div>
-                            @auth
                             @if($TheProduct->AvailableVariations()['inventory'] > 0)
-                                <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
+                                <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{getUserId()}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
                                 <a class="@if(userCart()->count() < 1) d-none @endif site-btn sb-white" id="go-to-cart-button" href="{{route('order.cart')}}"><i class="fas fa-shopping-cart"></i> اكمال عملية الشراء</a>
                             @else
                               <p class="text-danger">تم البيع بالكامل</p>
                             @endif
-                          @endauth
-                          @guest
-                            <p>يرجى <a href="{{route('login.get')}}">تسجيل الدخول</a> لاضافة المنتج الى سلة المشتريات</p>
-                          @endguest
                           @auth
                           <div class="mt-4">
                             @if($TheProduct->LikedByUser())
@@ -71,7 +66,7 @@
                                       class="flaticon-heart"></i> اضافة الى المفضلة</a>
                                 @endif
                             </div>
-                              @endauth
+                          @endauth
                         </form>
                         <div id="accordion" class="accordion-area">
                             <div class="panel">

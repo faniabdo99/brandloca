@@ -32,7 +32,7 @@
                                         <td width="50%" class="text-right"><a class="text-dark" href="{{route('product' , [ $Cart->Product->slug , $Cart->Product->id ])}}">{{$Cart->Product->title}}</a></td>
                                         <td width="20%" class="update-cart-column">
                                               <a class="text-danger" href="{{route('cart.delete' , $Cart->id)}}"><i class="fas fa-trash"></i></a>
-                                              <input type="number" data-target="{{route('cart.update' , [$Cart->id , auth()->user()->id])}}" class="cart-qty-input" value="{{$Cart->qty}}">
+                                              <input type="number" data-target="{{route('cart.update' , [$Cart->id , getUserId()])}}" class="cart-qty-input" value="{{$Cart->qty}}">
                                         </td>
                                         <td width="10%">{{$Cart->size}}</td>
                                         <td width="10%" >
@@ -50,11 +50,16 @@
                           <h6>الاجمالي</h6>
                           <h6>{{$CartTotal}} L.E</h6>
                         </div>
-                    </div>
+                      </div>
+                      @if($CartItems->count() > 0)
+                        <div class="text-right">
+                          <a href="{{route('orders.checkout')}}" class="site-btn mt-4">اكمال عملية الشراء</a>
+                        </div>
+                      @endif
                 </div>
-                <div class="col-lg-4 card-right">
+                <div class="col-lg-4 card-right text-right ">
                   @if(count($CartItems) > 0)
-                    <h6 class="text-right mb-3">لديك كوبون خصم؟</h6>
+                    <h6 class="mb-3">لديك كوبون خصم؟</h6>
                     @guest
                       <p>سجل الدخول الى حسابك لاستخدام الكوبون</p>
                     @endguest
@@ -69,16 +74,15 @@
                               <b class="d-block mb-2">{{$Cuopon->coupoun_code}}</b>
                               نسبة الخصم :
                                <b class="d-block mb-2">{{$Cuopon->discount_amount.' '.$Cuopon->TypeSymbole()}}</b>
-                              <a class="text-right btn btn-danger mt-4" href="{{route('cart.coupon.delete' , [auth()->user()->id , $HasCoupon])}}">حذف</a>
+                              <a class="text-right btn btn-danger mt-4" href="{{route('cart.coupon.delete' , [getUserId() , $HasCoupon])}}">حذف</a>
                             </p>
 
                           @else
                             <button id="cart-coupon" data-target="{{route('cart.coupon')}}">ادخال</button>
-                            <input hidden name="user_id" value="{{auth()->user()->id}}">
+                            <input hidden name="user_id" value="{{getUserId()}}">
                             <input type="text" name="cuopon_code" placeholder="ادخل الكوبون">
                           @endif
                       </form>
-                      <a href="{{route('orders.checkout')}}" class="site-btn">اكمال عملية الشراء</a>
                       @endif
                     @endauth
                     <a href="{{route('shop')}}" class="site-btn sb-dark">متابعة التسوق</a>
@@ -107,7 +111,7 @@
 								<div class="pi-links">
 									<a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
 									@auth
-										<a href="javascript:;" class="wishlist-btn @if($Product->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$Product->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+										<a href="javascript:;" class="wishlist-btn @if($Product->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$Product->id}}" data-user="{{getUserId()}}"><i class="flaticon-heart"></i></a>
 									@endauth
 								</div>
 							</div>

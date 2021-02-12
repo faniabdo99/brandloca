@@ -53,6 +53,7 @@
         smartSpeed: 1200,
         autoHeight: false,
         autoplay: true,
+        autoplayHoverPause: true,
         onInitialized: function () {
             var a = this.items().length;
             $("#snh-1").html("<span>1</span><span>" + a + "</span>");

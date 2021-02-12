@@ -23,7 +23,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">اسم العميل</th>
-                                    <td>{{$TheOrder->User->name}}</td>
+                                    <td>{{$TheOrder->name}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">حالة الطلب</th>

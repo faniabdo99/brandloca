@@ -211,10 +211,9 @@
 	<section class="banner-section">
 		<div class="container">
 			<div class="banner set-bg text-right" data-setbg="{{url('public/img')}}/banner-bg.jpg">
-				<div class="tag-new">جديد</div>
 				<div class="row">
-					<div class="col-6"></div>
-					<div class="col-6">
+					<div class="col-lg-6 col-12"></div>
+					<div class="col-lg-6 col-12">
 						<span>وصل حديثاً</span>
 						<h2>تشكيلة صيف 2021</h2>
 						<a href="#" class="site-btn">تسوق الآن</a>
