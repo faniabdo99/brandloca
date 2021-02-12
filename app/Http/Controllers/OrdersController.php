@@ -46,16 +46,10 @@ class OrdersController extends Controller{
       $Rules = [
         'name' => 'required',
         'phone_number' => 'required|numeric',
-        'phone_number_2' => 'required|numeric',
         'email' => 'required|email',
         'province' => 'required',
         'city' => 'required',
-        'zip_code' => 'required',
         'street_address' => 'required',
-        'shipping_province' => 'required',
-        'shipping_city' => 'required',
-        'shipping_zip_code' => 'required',
-        'shipping_street_address' => 'required',
         'payment_method' => 'required'
       ];
       $Validator = Validator::make($r->all() , $Rules);

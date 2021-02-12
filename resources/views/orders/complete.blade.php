@@ -27,7 +27,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">حالة الطلب</th>
-                                    <td>{{$TheOrder->status}}</td>
+                                    <td>{{$TheOrder->StatusText}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">المحافظة</th>
@@ -63,38 +63,6 @@
                                 </tr>
                             </tbody>
                     </table>
-                    <h2 class="page-title mb-4">معلومات التوصيل</h2>
-                    <p>سيتم شحن طلبك بناء على المعلومات التالية</p>
-                    <table class="table table-striped border mb-5">
-                        <thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">اسم العميل</th>
-                                    <td>{{$TheOrder->User->name}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">المحافظة</th>
-                                    <td>{{$TheOrder->shipping_province}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">المدينة</th>
-                                    <td>{{$TheOrder->shipping_city}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">العنوان التفصيلي</th>
-                                    <td>{{$TheOrder->shipping_street_address}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">تكاليف الشحن</th>
-                                    <td>مجاناً</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">تاريخ الوصول المتوقع</th>
-                                    <td>{{$TheOrder->created_at->format('Y / m / d')}} + 3 Days</td>
-                                </tr>
-                            </tbody>
-                    </table>
-
                     <a class="site-btn mb-5 hide-on-print" onclick="window.print();"><i class="fas fa-print"></i> طباعة هذه الصفحة</a>
                 </div>
             </div>

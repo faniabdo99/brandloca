@@ -10,37 +10,30 @@
 					<form class="checkout-form" action="{{route('orders.checkout.post')}}" method="post">
 						@csrf
 						<input hidden name="total_amount" value="{{$CartTotal}}">
-						<div class="cf-title">معلومات الدفع</div>
+						<div class="cf-title">بيانات العميل</div>
+						<p>يرجى تزويدنا بالبيانات التالية لنتمكن من الاتصال بك عند تجهيز الطلب</p>
 						<div class="row address-inputs">
 							<div class="col-md-12">
-								<input required type="text" name="name" placeholder="الاسم الكامل" value="{{old('name') ?? auth()->user()->name}}">
-								<input required type="text" name="phone_number" placeholder="رقم الهاتف" value="{{old('phone_number') ?? auth()->user()->phone_number}}">
-								<input required type="text" name="phone_number_2" placeholder="رقم هاتف بديل" value="{{old('phone_number_2') ?? ''}}">
-								<input required type="text" name="email" placeholder="البريد الإلكتروني" value="{{old('email') ?? auth()->user()->email}}">
+								<input required type="text" name="name" placeholder="الاسم الكامل (مطلوب)" value="{{old('name') ?? auth()->user()->name}}">
+								<input required type="text" name="phone_number" placeholder="رقم الهاتف (مطلوب)" value="{{old('phone_number') ?? auth()->user()->phone_number}}">
+								<input required type="text" name="email" placeholder="البريد الإلكتروني (مطلوب)" value="{{old('email') ?? auth()->user()->email}}">
 							</div>
-							<div class="col-md-12"><input required type="text" name="province" placeholder="المحافظة" value="{{old('province') ?? auth()->user()->province}}"></div>
-							<div class="col-md-6"><input required name="city" type="text" placeholder="المدينة" value="{{old('city') ?? auth()->user()->city}}"></div>
-							<div class="col-md-6"><input required name="zip_code" type="text" placeholder="الرمز البريدي" value="{{old('zip_code') ?? auth()->user()->zip_code}}"></div>
-             				 <div class="col-md-12"><input required type="text" name="street_address" placeholder="العنوان" value="{{old('street_address') ?? auth()->user()->street_address}}"></div>
-						</div>
-						<div class="cf-title">معلومات الشحن</div>
-						<div class="row shipping-btns">
-							<div class="col-md-12"><input required type="text" name="shipping_province" placeholder="المحافظة" value="{{old('province') ?? auth()->user()->province}}"></div>
-							<div class="col-md-6"><input required name="shipping_city" type="text" placeholder="المدينة" value="{{old('city') ?? auth()->user()->city}}"></div>
-							<div class="col-md-6"><input required name="shipping_zip_code" type="text" placeholder="الرمز البريدي" value="{{old('zip_code') ?? auth()->user()->zip_code}}"></div>
-							<div class="col-md-12"><input required type="text" name="shipping_street_address" placeholder="العنوان" value="{{old('street_address') ?? auth()->user()->street_address}}"></div>
+							<div class="col-md-12"><input required type="text" name="province" placeholder="المحافظة (مطلوب)" value="{{old('province') ?? auth()->user()->province}}"></div>
+							<div class="col-md-12"><input required name="city" type="text" placeholder="المدينة (مطلوب)" value="{{old('city') ?? auth()->user()->city}}"></div>
+							<div class="col-md-12"><input required type="text" name="street_address" placeholder="العنوان التفصيلي (مطلوب)" value="{{old('street_address') ?? auth()->user()->street_address}}"></div>
 						</div>
 						<div class="cf-title">معلومات اضافية</div>
 						<div class="row shipping-btns">
 							<div class="col-md-12">
-								<textarea placeholder="ملاحظات اضافية" name="order_notes" rows="5">{{old('order_notes') ?? ''}}</textarea>
+								<textarea placeholder="هل لديك أي ملاحظات اضافية تود اعلامنا بها؟" name="order_notes" rows="5">{{old('order_notes') ?? ''}}</textarea>
 							</div>
 						</div>
 						<div class="cf-title">طريقة الدفع</div>
+						<p>يرجى اختيار طريقة الدفع الأنسب لك, ان كنت غير متأكد من الاختيار المناسب يمكنك اختيار "الدفع عند الاستلام"</p>
 						<ul class="payment-list">
 							<li><input type="radio" name="payment_method" required id="credit-card" value="credit-card"> <label for="credit-card"><i class="fas fa-credit-card"></i> بطاقة الائتمان </label></li>
 							<li><input type="radio" name="payment_method" required id="vodafone-cash" value="vodafone-cash"> <label for="vodafone-cash"><i class="fas fa-mobile-alt"></i> فودافون كاش </label></li>
-							<li><input type="radio" name="payment_method" required id="pod" value="pod"> <label for="pod"><i class="fas fa-truck-pickup"></i> دفع عند الاستلام </label></li>
+							<li><input type="radio" name="payment_method" required id="pod" value="pod" checked> <label for="pod"><i class="fas fa-truck-pickup"></i> دفع عند الاستلام </label></li>
 						</ul>
 						<button class="site-btn submit-order-btn">تأكيد الطلب</button>
 					</form>
