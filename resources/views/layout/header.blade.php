@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-	<title>آرتي للملابس الجاهزة - {{$PageTitle ?? ' الموقع الرسمي'}}</title>
+	<title>أرتي للملابس الجاهزة - {{$PageTitle ?? ' الموقع الرسمي'}}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="{{$PageDescription ?? 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'}}">
-	<meta name="keywords" content="{{$PageKeywords ?? 'arte, آرتي, ملابس أطفال, بيجاما, تجارة الكترونية, شراء ملابس , arte kids wear, arte kids'}}">
+	<meta name="keywords" content="{{$PageKeywords ?? 'arte, أرتي, ملابس أطفال, بيجاما, تجارة الكترونية, شراء ملابس , arte kids wear, arte kids'}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="canonical" href="{{url()->current()}}" />
+	<!-- Open Graph data -->
+	<meta property="og:title" content="{{$PageTitle ?? 'أرتي للملابس الجاهزة - الموقع الرسمي'}}" >
+	<meta property="og:type" content="website" >
+	<meta property="og:url" content="{{url()->current()}}" >
+	<meta property="og:image" content="{{$PageImage ?? url('public/img/arte-logo.png')}}">
+	<meta property="og:description" content="{{$PageDescription ?? 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'}}" >
+	<meta property="og:site_name" content="أرتي للملابس الجاهزة" >
+	<!-- Pointless But Needed Twitter Codes -->
+	<meta name="twitter:card" content="{{$PageDescription ?? 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'}}" >
+	<meta name="twitter:site" content="@artekidswear" >
+	<meta name="twitter:creator" content="@artekidswear" >
+	<meta name="twitter:image" content="{{$PageImage ?? url('public/img/arte-logo.png')}}" >
+	<meta name="twitter:title" content="{{$PageTitle ?? 'أرتي للملابس الجاهزة - الموقع الرسمي'}}" />
+	<meta name="twitter:description" content="{{$PageDescription ?? 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'}}" >
+	<meta name="application-name" content="أرتي للملابس الجاهزة">
+	<meta name="msapplication-TileImage" content="{{config('global.icon')}}/img/favicon.ico">
+	<meta name="msapplication-TileColor" content="#FEC906">
 	<!-- Favicon -->
 	<link href="{{url('public')}}/img/favicon.png" rel="shortcut icon"/>
 	<!-- Google Font -->
