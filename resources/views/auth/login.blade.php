@@ -42,9 +42,9 @@
                         <button class="site-btn mb-5">تسجيل الدخول</button>
                         <p class="text-right">تسجيل الدخول بواسطة :</p>
                         <ul class="social-auth">
-                          <li class="auth-with-google"><a href="{{route('login.social','google')}}"><i class="fab fa-google"></i> جوجل</a></li>
-                          <li class="auth-with-facebook"><a href="{{route('login.social','facebook')}}"><i class="fab fa-facebook"></i> فيسبوك</a></li>
-                          <li class="auth-with-twitter"><a href="{{route('login.social','twitter')}}"><i class="fab fa-twitter"></i> تويتر</a></li>
+                          <li class="auth-with-google"><a rel=”nofollow” href="{{route('login.social','google')}}"><i class="fab fa-google"></i> جوجل</a></li>
+                          <li class="auth-with-facebook"><a rel=”nofollow” href="{{route('login.social','facebook')}}"><i class="fab fa-facebook"></i> فيسبوك</a></li>
+                          <li class="auth-with-twitter"><a rel=”nofollow” href="{{route('login.social','twitter')}}"><i class="fab fa-twitter"></i> تويتر</a></li>
                         </ul>
                     </form>
                 </div>
