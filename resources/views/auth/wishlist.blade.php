@@ -17,7 +17,7 @@
                                 <div class="pi-pic">
                                     <img src="{{$Product->Product->MainImage}}" alt="{{$Product->Product->title}}">
                                     <div class="pi-links">
-                                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span>اضافة الى السلة</span></a>
+                                        <a href="#" class="add-card"><i class="fas fa-eye"></i><span>اضافة الى السلة</span></a>
                                         @auth
                                           <a href="javascript:;" class="wishlist-btn @if($Product->Product->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$Product->Product->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
                                         @endauth

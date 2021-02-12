@@ -106,7 +106,7 @@
 										<div class="tag-new">جديد</div>
 										<img src="{{$NewProduct->MainImage}}" alt="{{$NewProduct->title}}">
 										<div class="pi-links">
-											<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="flaticon-bag"></i><span>عرض المنتج</span></a>
+											<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}" data-id="{{$NewProduct->id}}" class="add-card"><i class="fas fa-eye"></i><span>عرض المنتج</span></a>
 											@auth
 												<a href="javascript:;" class="wishlist-btn @if($NewProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$NewProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
 											@endauth
@@ -148,7 +148,7 @@
 								@endif
 								<img src="{{$PromotedProduct->MainImage}}" alt="{{$PromotedProduct->title}}">
 								<div class="pi-links">
-									<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}" class="add-card"><i class="flaticon-bag"></i><span>عرض المنتج</span></a>
+									<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}" class="add-card"><i class="fas fa-eye"></i><span>عرض المنتج</span></a>
 									@auth
 										<a href="javascript:;" class="wishlist-btn @if($PromotedProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$PromotedProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
 									@endauth

@@ -344,7 +344,7 @@
         url: ActionRoute,
         data: Data,
         success: function(response){
-          That.html('<i class="flaticon-bag"></i> في السلة '+Data.qty);
+          That.html('<i class="fas fa-eye"></i> في السلة '+Data.qty);
           //Show Go to cart Button
           That.next('#go-to-cart-button').removeClass('d-none');
           //Update navbar cart icon
@@ -353,7 +353,7 @@
       },
         error: function(response, textStatus, errorThrown){
           console.log(response);
-          That.html('<i class="flaticon-bag"></i> اضف الى السلة');
+          That.html('<i class="fas fa-eye"></i> اضف الى السلة');
           ShowNoto('notification-danger' , response.responseJSON , 'Error');
         }
       });

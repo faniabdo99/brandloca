@@ -51,7 +51,7 @@
                                 <div class="pro-qty"><input name="qty" type="text" value="1"></div>
                             </div>
                             @if($TheProduct->AvailableVariations()['inventory'] > 0)
-                                <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{getUserId()}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="flaticon-bag"></i> اضف الى السلة</button>
+                                <button id="add-to-cart" type="submit" data-product="{{$TheProduct->id}}" data-user="{{getUserId()}}" data-action="{{route('cart.add')}}" class="d-inline-block site-btn"><i class="fas fa-eye"></i> اضف الى السلة</button>
                                 <a class="@if(userCart()->count() < 1) d-none @endif site-btn sb-white" id="go-to-cart-button" href="{{route('order.cart')}}"><i class="fas fa-shopping-cart"></i> اكمال عملية الشراء</a>
                             @else
                               <p class="text-danger">تم البيع بالكامل</p>
@@ -193,7 +193,7 @@
                                     @endif
                                     <img src="{{$RProduct->MainImage}}" alt="{{$RProduct->title}}">
                                     <div class="pi-links">
-                                        <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}" class="add-card"><i class="flaticon-bag"></i><span>عرض المنتج</span></a>
+                                        <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}" class="add-card"><i class="fas fa-eye"></i><span>عرض المنتج</span></a>
                                         @auth
                                             <a href="javascript:;" class="wishlist-btn @if($RProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$RProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
                                         @endauth

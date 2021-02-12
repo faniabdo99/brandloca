@@ -13,12 +13,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Tajawal:300,300i,400,400i,700,700i" rel="stylesheet">
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="{{url('public/css')}}/bootstrap.min.css"/>
-	<link rel="stylesheet" href="{{url('public/css')}}/font-awesome.min.css"/>
-	<link rel="stylesheet" href="{{url('public/css')}}/flaticon.css"/>
 	<link rel="stylesheet" href="{{url('public/css')}}/slicknav.min.css"/>
 	<link rel="stylesheet" href="{{url('public/css')}}/jquery-ui.min.css"/>
 	<link rel="stylesheet" href="{{url('public/css')}}/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="{{url('public/css')}}/animate.css"/>
 	<link rel="stylesheet" href="{{url('public/css')}}/style.css"/>
 	@if(isset($Printable) && $Printable)
 		<link rel="stylesheet" type="text/css" href="{{url('public/css')}}/print.css" media="print">
