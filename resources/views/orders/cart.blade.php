@@ -31,7 +31,8 @@
                                     <tr>
                                         <td width="50%" class="text-right"><a class="text-dark" href="{{route('product' , [ $Cart->Product->slug , $Cart->Product->id ])}}">{{$Cart->Product->title}}</a></td>
                                         <td width="20%" class="update-cart-column">
-                                              <a class="text-danger" href="{{route('cart.delete' , $Cart->id)}}"><i class="fas fa-trash"></i></a>
+                                          {{-- {{route('cart.delete' , $Cart->id)}} --}}
+                                              <a class="text-danger" rel="nofollow" href="javascript:;" data-toggle="modal" data-target="#delete-from-cart"><i class="fas fa-trash"></i></a>
                                               <input type="number" data-target="{{route('cart.update' , [$Cart->id , getUserId()])}}" class="cart-qty-input" value="{{$Cart->qty}}">
                                         </td>
                                         <td width="10%">{{$Cart->size}}</td>
@@ -91,7 +92,31 @@
         </div>
     </section>
     <!-- cart section end -->
-
+    <!-- Modal -->
+    <div class="modal fade delete-from-cart-modal" id="delete-from-cart" tabindex="-1" role="dialog" aria-labelledby="delete-from-cartLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">تأكيد حذف المنتج</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+              <label class="input-label">لم تريد ازالة هذا المنتج من سلة التسوق؟</label>
+              <p><input type="checkbox" name="reasons[]" id="add-acc" value="Added Accendentally"><label for="add-acc"> قمت باضافة المنتج بالخطأ</label></p>
+              <p><input type="checkbox" name="reasons[]" id="too-exp" value="Too Expensive"><label for="too-exp"> سعر المنتج غير مناسب</label></p>
+              <p><input type="checkbox" name="reasons[]" id="exp-shi" value="Expensive Shipping"><label for="exp-shi"> أسعار التوصيل غير مناسبة</label></p>
+              <br><br>
+              <label class="input-label">معلومات اضافية</label>
+              <textarea class="mb-3" name="more_info" rows="6" placeholder="هل لديك اي بيانات اضافية تريد اضافتها؟"></textarea>
+              <button class="site-btn sb-danger" type="submit"><i class="fas fa-trash"></i> ازالة المنتج من سلة المشتريات</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Related product section -->
     <section class="related-product-section spad">
         <div class="container">
