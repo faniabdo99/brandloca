@@ -60,10 +60,10 @@
                           <div class="mt-4">
                             @if($TheProduct->LikedByUser())
                                 <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}"
-                                  class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="flaticon-heart"></i> أحببته</a>
+                                  class="site-btn sb-white liked add-to-wishlist-btn" title="ازالة من المفضلة"><i class="fas fa-heart"></i> أحببته</a>
                                 @else
                                 <a href="javascript:;" id="product-add-to-wishlist-btn" data-action="{{route('favourite.toggle')}}" data-id="{{$TheProduct->id}}" data-user="{{auth()->user()->id}}" class="site-btn sb-white add-to-wishlist-btn"><i
-                                      class="flaticon-heart"></i> اضافة الى المفضلة</a>
+                                      class="fas fa-heart"></i> اضافة الى المفضلة</a>
                                 @endif
                             </div>
                           @endauth
@@ -195,7 +195,7 @@
                                     <div class="pi-links">
                                         <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}" class="add-card"><i class="fas fa-eye"></i><span>عرض المنتج</span></a>
                                         @auth
-                                            <a href="javascript:;" class="wishlist-btn @if($RProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$RProduct->id}}" data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+                                            <a href="javascript:;" class="wishlist-btn @if($RProduct->LikedByUser()) liked @endif global-add-to-wishlist" data-action="{{route('favourite.toggle')}}" data-id="{{$RProduct->id}}" data-user="{{auth()->user()->id}}"><i class="fas fa-heart"></i></a>
                                         @endauth
                                     </div>
                                 </div>

@@ -323,10 +323,10 @@ $('#product-add-to-wishlist-btn').click(function () {
     success: function success(response) {
       if (response == 'liked') {
         That.addClass('liked');
-        That.html('<i class="flaticon-heart"></i> أحببته');
+        That.html('<i class="fas fa-heart"></i> أحببته');
       } else {
         That.removeClass('liked');
-        That.html('<i class="flaticon-heart"></i> اضافة الى المفضلة');
+        That.html('<i class="fas fa-heart"></i> اضافة الى المفضلة');
       }
     },
     error: function error(XMLHttpRequest, textStatus, errorThrown) {
@@ -351,10 +351,10 @@ $('.global-add-to-wishlist').click(function () {
     success: function success(response) {
       if (response == 'liked') {
         That.addClass('liked');
-        That.html('<i class="flaticon-heart"></i>');
+        That.html('<i class="fas fa-heart"></i>');
       } else {
         That.removeClass('liked');
-        That.html('<i class="flaticon-heart"></i>');
+        That.html('<i class="fas fa-heart"></i>');
       }
     },
     error: function error(XMLHttpRequest, textStatus, errorThrown) {

@@ -73,7 +73,7 @@
                                             <a href="javascript:;"
                                                 class="wishlist-btn @if($Product->LikedByUser()) liked @endif global-add-to-wishlist"
                                                 data-action="{{route('favourite.toggle')}}" data-id="{{$Product->id}}"
-                                                data-user="{{auth()->user()->id}}"><i class="flaticon-heart"></i></a>
+                                                data-user="{{auth()->user()->id}}"><i class="fas fa-heart"></i></a>
                                             @endauth
                                         </div>
                                     </div>

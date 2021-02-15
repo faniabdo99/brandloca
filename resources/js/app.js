@@ -216,10 +216,10 @@
         success: function(response){
           if(response == 'liked'){
             That.addClass('liked');
-            That.html('<i class="flaticon-heart"></i> أحببته');
+            That.html('<i class="fas fa-heart"></i> أحببته');
           }else{
             That.removeClass('liked');
-            That.html('<i class="flaticon-heart"></i> اضافة الى المفضلة');
+            That.html('<i class="fas fa-heart"></i> اضافة الى المفضلة');
           }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -241,10 +241,10 @@
         success: function(response){
           if(response == 'liked'){
             That.addClass('liked');
-            That.html('<i class="flaticon-heart"></i>');
+            That.html('<i class="fas fa-heart"></i>');
           }else{
             That.removeClass('liked');
-            That.html('<i class="flaticon-heart"></i>');
+            That.html('<i class="fas fa-heart"></i>');
           }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
