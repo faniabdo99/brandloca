@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 //Cart
 Route::get('cart' , 'CartController@getCart')->name('order.cart');
-Route::get('delete-from-cart/{id}' , 'CartController@deleteFromCart')->name('cart.delete');
+Route::post('delete-from-cart' , 'CartController@deleteFromCart')->name('cart.delete');
 Route::get('delete-coupon/{id}/{couponid}' , 'CartController@deleteCuopon')->name('cart.coupon.delete');
 //Checkout
 Route::get('checkout' , 'OrdersController@getCheckout')->name('orders.checkout');

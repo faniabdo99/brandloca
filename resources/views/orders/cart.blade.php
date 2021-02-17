@@ -31,8 +31,7 @@
                                     <tr>
                                         <td width="50%" class="text-right"><a class="text-dark" href="{{route('product' , [ $Cart->Product->slug , $Cart->Product->id ])}}">{{$Cart->Product->title}}</a></td>
                                         <td width="20%" class="update-cart-column">
-                                          {{-- {{route('cart.delete' , $Cart->id)}} --}}
-                                              <a class="text-danger" rel="nofollow" href="javascript:;" data-toggle="modal" data-target="#delete-from-cart"><i class="fas fa-trash"></i></a>
+                                              <a class="text-danger" id="delete-from-cart-toggle-modal" rel="nofollow" data-id="{{$Cart->id}}" href="javascript:;" data-toggle="modal" data-target="#delete-from-cart"><i class="fas fa-trash"></i></a>
                                               <input type="number" data-target="{{route('cart.update' , [$Cart->id , getUserId()])}}" class="cart-qty-input" value="{{$Cart->qty}}">
                                         </td>
                                         <td width="10%">{{$Cart->size}}</td>
@@ -103,7 +102,9 @@
             </button>
           </div>
           <div class="modal-body">
-            <form action="" method="post">
+            <form action="{{route('cart.delete')}}" method="post">
+              @csrf
+              <input hidden id="deleted-item-id" name="item_id">
               <label class="input-label">لم تريد ازالة هذا المنتج من سلة التسوق؟</label>
               <p><input type="checkbox" name="reasons[]" id="add-acc" value="Added Accendentally"><label for="add-acc"> قمت باضافة المنتج بالخطأ</label></p>
               <p><input type="checkbox" name="reasons[]" id="too-exp" value="Too Expensive"><label for="too-exp"> سعر المنتج غير مناسب</label></p>

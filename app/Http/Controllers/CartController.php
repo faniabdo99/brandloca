@@ -8,6 +8,7 @@ use App\Product;
 use App\Coupoun;
 use App\Coupoun_User;
 use App\Product_Variation;
+use App\CartDeleteReason;
 class CartController extends Controller{
     public function addToCart(Request $r){
       /*
@@ -135,16 +136,22 @@ class CartController extends Controller{
       Coupoun::find($cuopon_id)->increment('amount' , 1);
       return back()->withSuccess('تم الغاء الكوبون بنجاح!');
     }
-    public function deleteFromCart($id){
-      $Item = Cart::findOrFail($id);
+    public function deleteFromCart(Request $r){
+      $Item = Cart::findOrFail($r->item_id);
       //Check the user who owns it
       if($Item->user_id == getUserId()){
+        //Update Reasons Table
+        $CartDeleteReasonData = $r->all();
+        $CartDeleteReasonData['reasons'] = implode(',',$r->reasons);
+        $CartDeleteReasonData['product_id'] = $Item->Product->id;
+        $CartDeleteReasonData['user_id'] = getUserId();
+        CartDeleteReason::create($CartDeleteReasonData);
         //Return The Product Original Qty Value (to the variation)
         $Item->Variation->update(['inventory' => $Item->Variation->inventory + $Item->qty]);
         $Item->update(['status' => 'Deleted']);
-        return back()->withSuccess('تم ازالة هذا العنصر من قائمة التسوق');
+        return redirect()->route('order.cart')->withSuccess('تم ازالة هذا العنصر من قائمة التسوق');
       }else{
-        return back()->withErrors('لا يمكنك ازالة هذا العنصر!');
+        return redirect()->route('order.cart')->withErrors('لا يمكنك ازالة هذا العنصر!');
       }
     }
     public function updateCart(Request $r , $item , $user){

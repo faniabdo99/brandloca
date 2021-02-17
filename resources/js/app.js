@@ -352,7 +352,6 @@
           $('.shopping-card').find('span').html(CurrentValue + parseInt(Data.qty));
       },
         error: function(response, textStatus, errorThrown){
-          console.log(response);
           That.html('<i class="fas fa-eye"></i> اضف الى السلة');
           ShowNoto('notification-danger' , response.responseJSON , 'Error');
         }
@@ -363,6 +362,11 @@
       if (e.which === 38 || e.which === 40) {
           e.preventDefault();
       }
+    });
+    //Toggle Delete from cart modal
+    $('#delete-from-cart-toggle-modal').click(function(){
+      console.log($(this).data('id'));
+      $('#deleted-item-id').val($(this).data('id'));
     });
     //Update Cart as the User Done Typing
     $('.cart-qty-input').change(function(e){
