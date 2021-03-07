@@ -13,4 +13,7 @@ class HomeController extends Controller{
       $PromotedProducts = Product::latest()->where('status' , '!=' , 'Invisible')->where('is_promoted',1)->limit(15)->get();
       return view('home', compact('NewProducts' , 'PromotedProducts'));
     }
+    public function getSoonPage(){
+      return view('soon');
+    }
 }
