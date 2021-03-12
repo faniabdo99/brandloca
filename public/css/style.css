@@ -1530,7 +1530,7 @@ ol {
   display: block;
 }
 .product-item .pi-pic img {
-  height: 400px;
+  height: 250px;
   width: 100%;
 }
 
@@ -1632,16 +1632,17 @@ ol {
   display: block;
 }
 
-.product-item .pi-text h6 {
+.product-item .pi-text p {
   padding-left: 40px;
   overflow: hidden;
   font-weight: 700;
-  color: #111111;
+  color: #000;
+  margin-bottom: 0px;
 }
 
-.product-item .pi-text p {
+.product-item .pi-text h3 {
   font-size: 16px;
-  color: #111111;
+  color: #393733;
   margin-bottom: 0;
 }
 

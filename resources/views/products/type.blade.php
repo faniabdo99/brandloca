@@ -79,8 +79,8 @@
                                     </div>
                                     <a href="{{route('product' , [$Product->slug , $Product->id])}}">
                                         <div class="pi-text">
-                                            <h6>{{$Product->price}} L.E</h6>
-                                            <p>{{$Product->title}}</p>
+                                            <p>{{$Product->price}} L.E</p>
+                                            <h3>{{$Product->title}}</h3>
                                         </div>
                                     </a>
                                 </div>

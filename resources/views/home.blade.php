@@ -128,8 +128,8 @@
 									</div>
 									<a href="{{route('product' , [$NewProduct->slug , $NewProduct->id])}}">
 										<div class="pi-text">
-											<h6>{{$NewProduct->FinalPrice()}} L.E</h6>
-											<p>{{$NewProduct->title}}</p>
+											<p>{{$NewProduct->FinalPrice()}} L.E</p>
+											<h3>{{$NewProduct->title}}</h3>
 										</div>
 									</a>
 								</div>
@@ -217,8 +217,8 @@
 							</div>
 							<a href="{{route('product' , [$PromotedProduct->slug , $PromotedProduct->id])}}">
 								<div class="pi-text">
-									<h6>{{$PromotedProduct->FinalPrice()}} L.E</h6>
-									<p>{{$PromotedProduct->title}}</p>
+									<p>{{$PromotedProduct->FinalPrice()}} L.E</p>
+									<h3>{{$PromotedProduct->title}}</h3>
 								</div>
 							</a>
 						</div>

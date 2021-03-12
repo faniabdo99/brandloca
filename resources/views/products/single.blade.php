@@ -201,8 +201,8 @@
                                 </div>
                                 <a href="{{route('product' , [$RProduct->slug , $RProduct->id])}}">
                                     <div class="pi-text">
-                                        <h6>{{$RProduct->FinalPrice()}} L.E</h6>
-                                        <p>{{$RProduct->title}}</p>
+                                        <p>{{$RProduct->FinalPrice()}} L.E</p>
+                                        <h3>{{$RProduct->title}}</h3>
                                     </div>
                                 </a>
                             </div>
