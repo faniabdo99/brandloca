@@ -9,7 +9,7 @@ class AdminController extends Controller{
     public function getHome(){
       $TotalProductsCount = Product::count();
       $TotalUsersCount = User::count();
-      $LatestOrders = Order::where('status' , '!=' , 'Complete')->limit(10)->get();
+      $LatestOrders = Order::where('status' , '!=' , 'Complete')->latest()->limit(10)->get();
       //This Month Sales
       $MonthSales = Order::where('status' , 'Complete')->whereMonth('created_at',date('m'))->sum('total_amount');
       //Low Inventory Products

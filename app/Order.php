@@ -4,7 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model{
     protected $guarded = [];
     public function User(){
-      return $this->belongsTo(User::class , 'user_id');
+      return $this->belongsTo(User::class , 'user_id')->withDefault([
+        'id' => 1,
+        'name' => 'deleted user'
+      ]);
     }
     public function Items(){
       return $this->hasMany(Order_Product::class , 'order_id');

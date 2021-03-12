@@ -239,4 +239,11 @@ class OrdersController extends Controller{
       return back()->withErrors('Order is Not Available');
     }
   }
+  public function delete($id){
+    Order_Product::where('order_id' , $id)->get()->map(function($item){
+      $item->delete();
+    });
+    Order::findOrFail($id)->delete();
+    return back()->withSuccess('Order Deleted');
+  }
 }

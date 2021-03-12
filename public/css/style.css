@@ -542,7 +542,7 @@ ol {
 
 .hero-slider .hs-item {
   position: relative;
-  height: 720px;
+  height: 500px;
   direction: ltr;
 }
 
@@ -588,13 +588,13 @@ ol {
 
 .hero-slider .hs-item .container {
   position: relative;
-  padding-top: 170px;
+  padding-top: 80px;
 }
 
 .hero-slider .hs-item .offer-card {
   position: absolute;
   right: 0;
-  top: 226px;
+  top: 80px;
   width: 162px;
   height: 162px;
   border-radius: 50%;
@@ -1327,10 +1327,49 @@ ol {
   padding: 10px;
 }
 
+.categories-section {
+  padding: 70px 20px;
+}
+.categories-section .section-title {
+  margin-bottom: 70px;
+}
+.categories-section ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+}
+.categories-section ul li a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 4px;
+  flex: 1;
+  margin: 5px;
+  transition: all ease 0.3s;
+}
+.categories-section ul li a img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.categories-section ul li a h3 {
+  font-size: 1em;
+}
+.categories-section ul li a:hover {
+  background-color: #FEC906;
+  transition: all ease 0.3s;
+}
+
 .our-reviews {
   background-color: #FEC906;
-  padding: 40px 20px;
-  margin-bottom: 40px;
+  padding: 70px 20px;
+  margin-bottom: 0;
 }
 .our-reviews h2 {
   font-size: 2.5em;
@@ -1359,6 +1398,13 @@ ol {
   .our-reviews a {
     font-size: 0.8em;
     text-align: center;
+  }
+
+  .categories-section .section-title {
+    margin-bottom: 70px;
+  }
+  .categories-section ul {
+    flex-direction: column;
   }
 }
 #blog-hero {

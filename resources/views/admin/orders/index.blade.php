@@ -14,6 +14,7 @@
             <div class="container-fluid dashboard-content">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        @include('admin.layout.errors')
                         <div class="card">
                             <div class="card-header">
                                 <h5 class="mb-0">Orders ({{$Orders->count()}})</h5>
@@ -44,6 +45,7 @@
                                                 <td>{{formatPrice($Single->final_total)}} L.E</td>
                                                 <td>
                                                     <a href="{{route('admin.orders.single' , $Single->id)}}" class="btn btn-primary mb-0">View</a>
+                                                    <a href="{{route('admin.orders.delete' , $Single->id)}}" class="btn btn-danger mb-0">Delete</a>
                                                 </td>
                                             </tr>
                                             @empty

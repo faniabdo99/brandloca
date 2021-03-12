@@ -17,7 +17,7 @@
                     <p><a href="mailto:arteonline50@gmail.com">arteonline50@gmail.com</a></p>
                     <div class="contact-social">
                         <a href="https://instagram.com/artekidswear" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="https://facebook.com/arte0kids" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://facebook.com/artekidswear" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
                         <a href="https://twitter.com/artekidswear" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
                     </div>
                     <form action="{{route('contact.post')}}" method="post" class="contact-form">
