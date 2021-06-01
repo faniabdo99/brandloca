@@ -6,27 +6,17 @@
 		<div class="header-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-2 text-center text-lg-left">
-						<!-- logo -->
-						<a href="{{route('home')}}" class="site-logo"><img src="{{url('public/img')}}/logo.png" alt="شعار آرتي"></a>
-					</div>
-					<div class="col-xl-6 col-lg-5">
-						<form class="header-search-form" action="{{route('shop.search')}}" method="get">
-							<input id="search_term" type="text" placeholder="ابحث عن منتجات ..." name="search_term" value="{{$_GET['search_term'] ?? ''}}">
-							<button><i class="fas fa-search"></i></button>
-						</form>
-					</div>
-					<div class="col-xl-4 col-lg-5">
+					<div class="col-xl-3 col-lg-3">
 						<div class="user-panel">
 							@auth
 							<div class="up-item">
 								<div class="dropdown">
 									<a class="dropdown-toggle" href="#" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">مرحباً بك {{auth()->user()->name}}</a>
 									<div class="dropdown-menu text-right" aria-labelledby="dropdownMenuButton">
-										<a class="dropdown-item" href="{{route('profile')}}">الملف الشخصي</a>
-										<a class="dropdown-item" href="{{route('order.trace')}}">تتبع الطلبات</a>
-										<a class="dropdown-item" href="{{route('wishlist')}}">العناصر المفضلة</a>
-										<a class="dropdown-item text-danger" href="{{route('logout')}}">تسجيل الخروج</a>
+										<a class="dropdown-item" href="{{route('profile')}}">Profile</a>
+										<a class="dropdown-item" href="{{route('order.trace')}}">Trace Orders</a>
+										<a class="dropdown-item" href="{{route('wishlist')}}">Wishlist</a>
+										<a class="dropdown-item text-danger" href="{{route('logout')}}">Logout</a>
 									</div>
 								</div>
 							</div>
@@ -34,7 +24,7 @@
 							@guest
 								<div class="up-item">
 									<i class="fas fa-user"></i>
-									<a href="{{route('login.get')}}">دخول</a> أو <a href="{{route('signup.get')}}">انشاء حساب</a>
+									<a href="{{route('login.get')}}">Login</a> Or <a href="{{route('signup.get')}}">Signup</a>
 								</div>
 							@endguest
 							<div class="up-item">
@@ -43,10 +33,19 @@
 									<i class="fas fa-shopping-cart"></i>
 									<span>{{CartItemsCount()}}</span>
 								</div>
-								عربة التسوق</a>
+								Cart</a>
 							</div>
 						</div>
-
+					</div>
+					<div class="col-xl-7 col-lg-7">
+						<form class="header-search-form" action="{{route('shop.search')}}" method="get">
+							<input id="search_term" type="text" placeholder="Search products ..." name="search_term" value="{{$_GET['search_term'] ?? ''}}">
+							<button><i class="fas fa-search"></i></button>
+						</form>
+					</div>
+					<div class="col-lg-2 text-center text-lg-left">
+						<!-- logo -->
+						<a href="{{route('home')}}" class="site-logo"><img src="{{url('public/img')}}/logo.png" alt="شعار آرتي"></a>
 					</div>
 				</div>
 			</div>
@@ -55,10 +54,10 @@
 			<div class="container">
 				<!-- menu -->
 				<ul class="main-menu">
-					<li><a href="{{route('home')}}">الرئيسية</a></li>
-					<li><a href="{{route('about')}}">عن الشركة</a></li>
-					<li><a href="{{route('shop')}}">قائمة المنتجات</a></li>
-					<li><a href="#">الأقسام</a>
+					<li><a href="{{route('home')}}">Home</a></li>
+					<li><a href="{{route('about')}}">About</a></li>
+					<li><a href="{{route('shop')}}">Products</a></li>
+					<li><a href="#">Categories</a>
 						<ul class="sub-menu">
 							@forelse(CategoriesList() as $Category)
 								<li><a href="{{route('shop.category' , $Category->slug)}}">{{$Category->title}}</a></li>
@@ -66,9 +65,9 @@
 							@endforelse
 						</ul>
 					</li>
-					<li><a href="{{route('order.trace')}}">تتبع الطلبات</a></li>
-					<li><a href="{{route('contact')}}">اتصل بنا</a></li>
-					<li><a href="{{route('blog')}}">المدونة</a></li>
+					<li><a href="{{route('order.trace')}}">Trace Orders</a></li>
+					<li><a href="{{route('contact')}}">Contact</a></li>
+					<li><a href="{{route('blog')}}">Blog</a></li>
 				</ul>
 			</div>
 		</nav>

@@ -124,7 +124,7 @@ ol {
 }
 
 .badge-brand {
-  background-color: #FEC906;
+  background-color: #e3ca8d;
   padding: 5px 10px;
   border-radius: 30px;
   color: #393733;
@@ -178,7 +178,7 @@ ol {
   padding: 14px 47px 14px;
   border-radius: 50px;
   text-transform: uppercase;
-  background: #FEC906;
+  background: #e3ca8d;
   color: #393733;
   line-height: normal;
   cursor: pointer;
@@ -307,7 +307,7 @@ ol {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .accordion-area .panel-body img {
@@ -441,7 +441,7 @@ ol {
   min-width: 16px;
   color: #fff;
   font-size: 13px;
-  background: #FEC906;
+  background: #e3ca8d;
   text-align: center;
   border-radius: 30px;
   padding: 0 2px;
@@ -458,7 +458,7 @@ ol {
 
 .main-menu {
   list-style: none;
-  text-align: right;
+  text-align: left;
 }
 
 .main-menu li {
@@ -470,7 +470,7 @@ ol {
   display: inline-block;
   font-size: 16px;
   color: #ffffff;
-  margin-left: 50px;
+  margin-right: 50px;
   line-height: 1;
   padding: 17px 0;
   position: relative;
@@ -482,7 +482,7 @@ ol {
   font-size: 10px;
   font-weight: 700;
   color: #fff;
-  background: #FEC906;
+  background: #e3ca8d;
   line-height: 1;
   text-transform: uppercase;
   left: calc(50% - 21px);
@@ -498,7 +498,7 @@ ol {
 }
 
 .main-menu li:hover > a {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .main-menu .sub-menu {
@@ -529,7 +529,7 @@ ol {
 }
 
 .main-menu .sub-menu li a:hover {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .nav-switch {
@@ -598,7 +598,7 @@ ol {
   width: 162px;
   height: 162px;
   border-radius: 50%;
-  background: #FEC906;
+  background: #e3ca8d;
   text-align: center;
   padding-top: 20px;
   transform: rotate(45deg);
@@ -822,7 +822,7 @@ ol {
   transition: color ease 0.3s;
 }
 .profile-section .user-account-report ul li a:hover {
-  color: #FEC906;
+  color: #e3ca8d;
   transition: color ease 0.3s;
 }
 
@@ -864,7 +864,7 @@ ol {
   content: "";
   height: 2px;
   width: 25px;
-  background-color: #FEC906;
+  background-color: #e3ca8d;
   border-radius: 5px;
   position: absolute;
   right: 33px;
@@ -876,7 +876,7 @@ ol {
   transition: all ease 0.3s;
 }
 .profile-sidebar .user-profile-actions-list ul li.active a i, .profile-sidebar .user-profile-actions-list ul li:hover a i {
-  color: #FEC906;
+  color: #e3ca8d;
   transition: all ease 0.3s;
 }
 
@@ -915,7 +915,7 @@ ol {
 }
 .trace-section .trace-order-form form button {
   flex: 1;
-  background-color: #FEC906;
+  background-color: #e3ca8d;
   color: #393733;
   border: 0;
   border-top-left-radius: 4px;
@@ -925,7 +925,7 @@ ol {
 }
 .trace-section .trace-order-form form button:hover {
   cursor: pointer;
-  background-color: #ddb113;
+  background-color: #d1b97b;
   transition: background-color ease 0.3s;
 }
 .trace-section .trace-order-result {
@@ -1037,7 +1037,7 @@ ol {
   padding: 50px;
 }
 .static-content-section h1 {
-  color: #FEC906;
+  color: #e3ca8d;
   font-size: 2.5em;
   margin-bottom: 25px;
 }
@@ -1092,7 +1092,7 @@ ol {
   color: #707070;
 }
 .about-us-content .branch-info-list li i {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 @media screen and (max-width: 768px) {
@@ -1144,7 +1144,7 @@ ol {
   padding: 3em 0;
 }
 .error-page-section h1 {
-  color: #FEC906;
+  color: #e3ca8d;
   font-size: 2.5em;
   margin-bottom: 25px;
 }
@@ -1161,7 +1161,7 @@ ol {
   border: none;
 }
 .error-page-section form button {
-  background-color: #FEC906;
+  background-color: #e3ca8d;
   padding: 5px 10px;
   color: #393733;
   border: none;
@@ -1190,7 +1190,7 @@ ol {
 }
 .error-page-section ul.quick-links-list li:hover a {
   transition: all ease 0.3s;
-  background: #FEC906;
+  background: #e3ca8d;
 }
 .error-page-section img.error-image {
   width: auto;
@@ -1213,7 +1213,7 @@ ol {
 .all-products-filters-form select {
   border: none;
   background-color: #f1f1f1;
-  border: 2px solid #FEC906;
+  border: 2px solid #e3ca8d;
   border-radius: 50px;
   padding: 0 15px;
 }
@@ -1236,7 +1236,7 @@ ol {
 }
 .reviews-overall-text .star-and-number i {
   font-size: 5em;
-  color: #FEC906;
+  color: #e3ca8d;
   display: block;
   margin-bottom: 10px;
 }
@@ -1248,7 +1248,7 @@ ol {
   list-style: none;
 }
 .reviews-overall-text .detailed-reviws-list li i {
-  color: #FEC906;
+  color: #e3ca8d;
   font-size: 0.9em;
 }
 
@@ -1275,7 +1275,7 @@ ol {
   color: #cccccc;
 }
 .reviews-list li .review-text ul li.active {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .review-form .rate {
@@ -1301,18 +1301,18 @@ ol {
   margin: 5px;
 }
 .review-form .rate > input:checked ~ label {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 .review-form .rate:not(:checked) > label:hover,
 .review-form .rate:not(:checked) > label:hover ~ label {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 .review-form .rate > input:checked + label:hover,
 .review-form .rate > input:checked + label:hover ~ label,
 .review-form .rate > input:checked ~ label:hover,
 .review-form .rate > input:checked ~ label:hover ~ label,
 .review-form .rate > label:hover ~ input:checked ~ label {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 .review-form label {
   font-weight: bold;
@@ -1362,12 +1362,12 @@ ol {
   font-size: 1em;
 }
 .categories-section ul li a:hover {
-  background-color: #FEC906;
+  background-color: #e3ca8d;
   transition: all ease 0.3s;
 }
 
 .our-reviews {
-  background-color: #FEC906;
+  background-color: #e3ca8d;
   padding: 70px 20px;
   margin-bottom: 0;
 }
@@ -1387,7 +1387,7 @@ ol {
 
 @media screen and (max-width: 768px) {
   .our-reviews {
-    background-color: #FEC906;
+    background-color: #e3ca8d;
     padding: 20px 10px;
   }
   .our-reviews h2 {
@@ -1456,7 +1456,7 @@ ol {
 }
 
 .feature:nth-child(2) {
-  background: #FEC906;
+  background: #e3ca8d;
 }
 
 .feature:nth-child(2) h2 {
@@ -1554,7 +1554,7 @@ ol {
 }
 
 .product-item .tag-sale {
-  background: #FEC906;
+  background: #e3ca8d;
 }
 
 .product-item .tag-sold {
@@ -1725,7 +1725,7 @@ ol {
 .footer-section {
   background: #393733;
   padding-top: 60px;
-  text-align: right;
+  text-align: left;
 }
 
 .footer-logo {
@@ -1765,7 +1765,7 @@ ol {
 .footer-widget ul li a {
   display: inline-block;
   position: relative;
-  padding-right: 20px;
+  padding-left: 20px;
   font-size: 14px;
   color: #8f8f8f;
   margin-bottom: 6px;
@@ -1776,9 +1776,9 @@ ol {
   content: "";
   width: 5px;
   height: 5px;
-  right: 0;
+  left: 0;
   top: 8px;
-  border: 1px solid #FEC906;
+  border: 1px solid #e3ca8d;
   border-radius: 50%;
   transition: all 0.2s;
 }
@@ -1791,7 +1791,7 @@ ol {
   width: 7px;
   height: 7px;
   top: 6px;
-  background: #FEC906;
+  background: #e3ca8d;
 }
 
 .fw-latest-post-widget .lp-item {
@@ -1829,12 +1829,12 @@ ol {
 
 .fw-latest-post-widget .lp-content .readmore {
   font-size: 12px;
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .contact-widget .con-info span {
   float: left;
-  color: #FEC906;
+  color: #e3ca8d;
   margin-right: 15px;
   overflow: hidden;
 }
@@ -1986,16 +1986,16 @@ ol {
   height: 9px;
   right: 0;
   top: 13px;
-  border: 1px solid #FEC906;
+  border: 1px solid #e3ca8d;
   border-radius: 50%;
 }
 
 .category-menu li a:hover {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .category-menu li a:hover:after {
-  background: #FEC906;
+  background: #e3ca8d;
 }
 
 .category-menu li a:last-child a {
@@ -2016,7 +2016,7 @@ ol {
 }
 
 .category-menu li:hover > a {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .category-menu li.active > .sub-menu {
@@ -2166,7 +2166,7 @@ ol {
 }
 
 .fw-color-choose input[type=radio]:checked + label {
-  box-shadow: 0 0 0 2px #FEC906;
+  box-shadow: 0 0 0 2px #e3ca8d;
 }
 
 .fw-color-choose input[type=radio]:checked + label span {
@@ -2198,7 +2198,7 @@ ol {
 }
 
 .fw-size-choose input[type=radio]:checked + label {
-  background: #FEC906;
+  background: #e3ca8d;
   color: #fff;
 }
 
@@ -2261,7 +2261,7 @@ ol {
   height: 100%;
   left: 0;
   top: 0;
-  border: 2px solid #FEC906;
+  border: 2px solid #e3ca8d;
   z-index: 1;
 }
 
@@ -2302,7 +2302,7 @@ ol {
 }
 
 .product-details .p-stock span {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .product-details .p-rating {
@@ -2310,7 +2310,7 @@ ol {
 }
 
 .product-details .p-rating i {
-  color: #FEC906;
+  color: #e3ca8d;
 }
 
 .product-details .p-rating i.fa-fade {
@@ -2356,7 +2356,7 @@ ol {
 }
 
 .product-details .fw-size-choose input[type=radio]:checked + label {
-  border: 2px solid #FEC906;
+  border: 2px solid #e3ca8d;
 }
 
 .product-details .fw-size-choose .disable label {
@@ -2540,7 +2540,7 @@ ol {
 }
 
 .cart-table .total-cost {
-  background: #FEC906;
+  background: #e3ca8d;
   margin: 0 -34px;
   text-align: right;
   padding: 20px 45px;
@@ -2617,7 +2617,7 @@ ol {
   text-transform: uppercase;
   font-size: 16px;
   font-weight: 700;
-  color: #FEC906;
+  color: #e3ca8d;
   cursor: pointer;
 }
 
@@ -2811,7 +2811,7 @@ ol {
 
 .contact-social a:hover {
   color: #fff;
-  background: #FEC906;
+  background: #e3ca8d;
 }
 
 .contact-form input,
@@ -3003,7 +3003,7 @@ ol {
     font-size: 10px;
     font-weight: 700;
     color: #fff;
-    background: #FEC906;
+    background: #e3ca8d;
     line-height: 1;
     text-transform: uppercase;
     padding: 5px 9px 1px;

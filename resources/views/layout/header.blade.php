@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-	<title>أرتي للملابس الجاهزة - {{$PageTitle ?? ' الموقع الرسمي'}}</title>
+	<title>Brandloca - {{$PageTitle ?? ' Think Different Act Local'}}</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="{{$PageDescription ?? 'شركة Arte Kids لملابس الأطفال من عمر 6 أشهر و حتى عمر 16 سنة, نخفيضات و عروض يومية و موديلات متجددة و مميزة'}}">
 	<meta name="keywords" content="{{$PageKeywords ?? 'arte, أرتي, ملابس أطفال, بيجاما, تجارة الكترونية, شراء ملابس , arte kids wear, arte kids'}}">
