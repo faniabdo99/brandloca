@@ -150,37 +150,37 @@
 			<ul>
 				<li>
 					<a href="#">
-						<img src="http://placehold.it/100x100" alt="">
+						<img src="http://placehold.it/120x120" alt="">
 						<h3>Girls</h3>
 					</a>
 				</li>
 				<li>
 					<a href="#">
-						<img src="http://placehold.it/100x100" alt="">
+						<img src="http://placehold.it/120x120" alt="">
 						<h3>Boys</h3>
 					</a>
 				</li>
 				<li>
 					<a href="{{route('shop.type','pajama')}}">
-						<img src="http://placehold.it/100x100" alt="">
+						<img src="http://placehold.it/120x120" alt="">
 						<h3>Pajamas</h3>
 					</a>
 				</li>
 				<li>
 					<a href="{{route('shop.type','tshirt')}}">
-						<img src="http://placehold.it/100x100" alt="">
+						<img src="http://placehold.it/120x120" alt="">
 						<h3>T-Shirt</h3>
 					</a>
 				</li>
 				<li>
 					<a href="{{route('shop.type','pants')}}">
-						<img src="http://placehold.it/100x100" alt="">
+						<img src="http://placehold.it/120x120" alt="">
 						<h3>Pants</h3>
 					</a>
 				</li>
 				<li>
 					<a href="{{route('shop.type','shoes')}}">
-						<img src="http://placehold.it/100x100" alt="">
+						<img src="http://placehold.it/120x120" alt="">
 						<h3>Shoes</h3>
 					</a>
 				</li>
