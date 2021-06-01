@@ -646,10 +646,10 @@ $('#trace-order-form').click(function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/arte_online/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /var/www/html/arte_online/resources/sass/style.scss */"./resources/sass/style.scss");
-__webpack_require__(/*! /var/www/html/arte_online/resources/sass/print.scss */"./resources/sass/print.scss");
-module.exports = __webpack_require__(/*! /var/www/html/arte_online/resources/sass/admin/admin.scss */"./resources/sass/admin/admin.scss");
+__webpack_require__(/*! /var/www/html/brandloca/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /var/www/html/brandloca/resources/sass/style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! /var/www/html/brandloca/resources/sass/print.scss */"./resources/sass/print.scss");
+module.exports = __webpack_require__(/*! /var/www/html/brandloca/resources/sass/admin/admin.scss */"./resources/sass/admin/admin.scss");
 
 
 /***/ })

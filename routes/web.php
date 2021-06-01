@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
-Route::get('/','HomeController@getSoonPage')->name('soon');
-Route::get('/home','HomeController@getHomepage')->name('home');
+// Route::get('/','HomeController@getSoonPage')->name('soon');
+Route::get('/','HomeController@getHomepage')->name('home');
 Route::get('/about','PagesController@getAbout')->name('about');
 //Static Pages
 Route::get('privacy-policy' , 'PagesController@getPrivacyPolicy')->name('privacy.policy');
