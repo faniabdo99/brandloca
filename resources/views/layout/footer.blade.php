@@ -29,7 +29,7 @@
 						<div class="fw-latest-post-widget">
 							@forelse (getImportantArticles(2) as $FArticle)
 							<div class="lp-item">
-								<div class="lp-thumb set-bg" data-setbg="http://placehold.it/100x100"></div>
+								<div class="lp-thumb set-bg" data-setbg="{{url('public/placeholder.png')}}"></div>
 								<div class="lp-content">
 									<h6>{{$FArticle->title}}</h6>
 									<span>{{$FArticle->created_at->format('d, M y')}}</span>
